@@ -1,7 +1,6 @@
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
-import { Button } from '../lib/main';
 
 function App() {
   return (
@@ -14,9 +13,7 @@ function App() {
           <img src={reactLogo} className='logo react' alt='React logo' />
         </a>
       </div>
-      <h1 className='font-bold text-7xl'>Vite + React</h1>
       <div className='card'>
-        <Button />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

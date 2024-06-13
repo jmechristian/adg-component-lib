@@ -1,7 +1,7 @@
 {
   "name": "@jmechristian/ps-component-library",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "dist/ps-component-library.js",
   "types": "dist/main.d.ts",
   "type": "module",
