@@ -6,6 +6,9 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    global: {},
+  },
   plugins: [react(), dts({ include: ['lib'] }), libInjectCss()],
   build: {
     rollupOptions: {

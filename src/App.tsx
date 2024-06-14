@@ -1,26 +1,15 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { AuthorName } from '../lib/main';
+import { Amplify } from 'aws-amplify';
+import awsConfig from './aws-exports';
+
+Amplify.configure(awsConfig);
 
 function App() {
   return (
     <>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <div className='card'>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
+      <AuthorName id='41f53c00-b19f-43ab-ae79-763cb4c88dc4' />
     </>
   );
 }

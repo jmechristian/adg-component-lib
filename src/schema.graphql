@@ -1,0 +1,5823 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type APS @aws_api_key @aws_iam {
+  Registrants(filter: ModelAPSUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSUserConnection
+  Speakers(filter: ModelAPSSpeakerFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSSpeakerConnection
+  Sponsors(filter: ModelAPSSponsorFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSSponsorConnection
+  codes: [RegistrationCode]
+  createdAt: AWSDateTime!
+  id: ID!
+  updatedAt: AWSDateTime!
+  year: Int!
+}
+
+type APSRegistrant @aws_api_key @aws_iam {
+  code: String
+  codeRequested: Boolean
+  codeSent: Boolean
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  innovationWorkshop: String
+  name: String!
+  phone: String!
+  plantTour: String
+  registrationReceived: Boolean
+  speedNetworking: String
+  title: String!
+  updatedAt: AWSDateTime!
+  welcomeEmailSent: Boolean
+  worksWith: String
+  year: String
+}
+
+type APSSpeaker @aws_api_key @aws_iam {
+  aPSSpeakersId: ID
+  apsHistory: APS
+  bio: String!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  firstName: String!
+  headshot: String!
+  id: ID!
+  lastName: String!
+  linkedin: String
+  mediaConsent: Boolean
+  phone: String
+  presentationSummary: String
+  presentationTitle: String
+  privacyConsent: Boolean
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type APSSpeaker2024 @aws_api_key @aws_iam {
+  bio: String!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  firstName: String!
+  headshot: String!
+  id: ID!
+  lastName: String!
+  linkedin: String
+  mediaConsent: Boolean
+  phone: String
+  presentationSummary: String
+  presentationTitle: String
+  privacyConsent: Boolean
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type APSSponsor @aws_api_key @aws_iam {
+  aPS: APS!
+  aPSId: ID!
+  company: Company!
+  companyId: ID!
+  createdAt: AWSDateTime!
+  id: ID!
+  updatedAt: AWSDateTime!
+}
+
+type APSTicket @aws_api_key @aws_iam {
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  name: String!
+  paymentConfirmation: String
+  phone: String!
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type APSTicketRegistrant @aws_api_key @aws_iam {
+  code: String
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  innovationWorkshop: String
+  name: String!
+  phone: String!
+  plantTour: String
+  registrationReceived: Boolean
+  speedNetworking: String
+  title: String!
+  updatedAt: AWSDateTime!
+  welcomeEmailSent: Boolean
+  worksWith: String
+  year: String
+}
+
+type APSUser @aws_api_key @aws_iam {
+  aPS: APS!
+  aPSId: ID!
+  createdAt: AWSDateTime!
+  id: ID!
+  updatedAt: AWSDateTime!
+  user: User!
+  userId: ID!
+}
+
+type AddOnRegistrant @aws_api_key @aws_iam {
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  fullName: String!
+  id: ID!
+  tour: String!
+  updatedAt: AWSDateTime!
+}
+
+type AppStart @aws_api_key @aws_iam {
+  createdOn: AWSDateTime!
+  email: String!
+  firstName: String!
+  id: ID!
+  lastName: String!
+  phone: String
+  source: String
+  sourceUrl: String
+  updatedOn: AWSDateTime!
+}
+
+type ApplicationStart @aws_api_key @aws_iam {
+  createdAt: String!
+  email: String!
+  firstName: String!
+  id: ID!
+  lastName: String!
+  phone: String
+  source: String
+  sourceUrl: String
+  updatedAt: AWSDateTime!
+}
+
+type AristosForm @aws_api_key @aws_iam {
+  approved: Boolean!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  name: String!
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type Article @aws_api_key @aws_iam {
+  content: String
+  createdAt: AWSDateTime!
+  id: ID!
+  media: String
+  relatedCourses(filter: ModelArticleRelatedCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelArticleRelatedCoursesConnection
+  seoImage: String
+  slug: String!
+  subhead: String
+  tags: [String]
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type ArticleRelatedCourses @aws_api_key @aws_iam {
+  article: Article!
+  articleId: ID!
+  course: Course!
+  courseId: ID!
+  createdAt: AWSDateTime!
+  id: ID!
+  updatedAt: AWSDateTime!
+}
+
+type Author @aws_api_key @aws_iam {
+  company: String
+  createdAt: AWSDateTime!
+  headshot: String
+  id: ID!
+  linkedIn: String
+  name: String!
+  templates(filter: ModelAuthorTemplatesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAuthorTemplatesConnection
+  title: String
+  updatedAt: AWSDateTime!
+}
+
+type AuthorTemplates @aws_api_key @aws_iam {
+  author: Author!
+  authorId: ID!
+  createdAt: AWSDateTime!
+  id: ID!
+  indexTemplate: IndexTemplate!
+  indexTemplateId: ID!
+  updatedAt: AWSDateTime!
+}
+
+type Blog @aws_api_key @aws_iam {
+  author: String
+  content: String!
+  createdAt: AWSDateTime!
+  date: String
+  id: ID!
+  media: String
+  slug: String!
+  tags: [String]
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type BoschForm @aws_api_key @aws_iam {
+  approved: Boolean!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  name: String!
+  title: String!
+  topicFour: Boolean
+  topicOne: Boolean
+  topicThree: Boolean
+  topicTwo: Boolean
+  updatedAt: AWSDateTime!
+}
+
+type CMPMForm @aws_api_key @aws_iam {
+  addressExtra: String
+  areaOfInterest: String
+  background: String
+  birthYear: String
+  cMPMFormUserId: ID
+  city: String
+  cmpmGoals: String
+  companyName: String
+  companyTitle: String
+  country: String
+  createdOn: AWSDateTime!
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  linkedin: String
+  moreAboutYou: String
+  optOut: Boolean
+  payment: String
+  paymentConfirmation: String
+  phone: String
+  referral: String
+  sessionApplying: String
+  state: String
+  status: String
+  streetAddress: String
+  updatedOn: AWSDateTime!
+  user: User
+  whyPackaging: String
+  yearGoals: String
+}
+
+type CMPMSession @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  deadline: String!
+  endDate: String!
+  id: ID!
+  startDate: String!
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type CPSForm @aws_api_key @aws_iam {
+  addressExtra: String
+  areaOfInterest: String
+  background: String
+  birthYear: String
+  cPSFormUserId: ID
+  city: String
+  companyName: String
+  companyTitle: String
+  country: String
+  cpsGoals: String
+  createdOn: AWSDateTime!
+  elective: String
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  linkedin: String
+  moreAboutYou: String
+  optOut: Boolean
+  payment: String
+  paymentConfirmation: String
+  phone: String
+  referral: String
+  sessionApplying: String
+  state: String
+  status: String
+  streetAddress: String
+  updatedOn: AWSDateTime!
+  user: User
+  whyPackaging: String
+  yearGoals: String
+}
+
+type Career @aws_api_key @aws_iam {
+  altName: String
+  apcCopy: String
+  beverageCopy: String
+  cmpmCopy: String
+  coreCopy: String
+  cpsCopy: String
+  createdAt: AWSDateTime!
+  dayInLife(filter: ModelDayInLifeItemFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelDayInLifeItemConnection
+  electiveCopy: String
+  freeCopy: String
+  id: ID!
+  media: String
+  slug: String!
+  subhead: String
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type CertAppStart @aws_api_key @aws_iam {
+  country: String
+  createdAt: String!
+  email: String!
+  firstName: String!
+  id: ID!
+  ipAddress: String
+  lastName: String!
+  phone: String
+  source: String
+  sourceUrl: String
+  type: String!
+  updatedAt: AWSDateTime!
+}
+
+type Certificate @aws_api_key @aws_iam {
+  brochure_link: String
+  ceus_total: Int
+  courses(filter: ModelCertificateCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCertificateCoursesConnection
+  courses_total: Int
+  createdAt: AWSDateTime!
+  demoLink: String
+  hours_total: Int
+  id: ID!
+  lmsLink: String
+  price_features: [String]
+  price_full: Int
+  price_monthly: Int
+  slug: String!
+  title: String!
+  title_button_1_link: String
+  title_button_1_text: String
+  title_button_2_link: String
+  title_button_2_text: String
+  title_callout_1: String
+  title_callout_2: String
+  title_image: String
+  title_text: String
+  updatedAt: AWSDateTime!
+  video: String
+  whoText: String
+}
+
+type CertificateCourses @aws_api_key @aws_iam {
+  certificate: Certificate!
+  certificateId: ID!
+  course: Course!
+  courseId: ID!
+  createdAt: AWSDateTime!
+  id: ID!
+  updatedAt: AWSDateTime!
+}
+
+type CirriculumCourses @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  lMSCirriculum: LMSCirriculum!
+  lMSCirriculumId: ID!
+  lMSCourse: LMSCourse!
+  lMSCourseId: ID!
+  updatedAt: AWSDateTime!
+}
+
+type Click @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  identifier: String
+  ipAddress: String
+  location: String
+  nextPath: String
+  path: String
+  ref: String
+  type: String
+  updatedAt: AWSDateTime!
+}
+
+type Company @aws_api_key @aws_iam {
+  Employees(filter: ModelUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelUserConnection
+  apsID(filter: ModelAPSSponsorFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSSponsorConnection
+  city: String
+  createdAt: AWSDateTime!
+  email: String
+  id: ID!
+  name: String!
+  phone: String
+  state: String
+  street_1: String
+  street_2: String
+  updatedAt: AWSDateTime!
+  website: String
+  zip: String
+}
+
+type Course @aws_api_key @aws_iam {
+  articles(filter: ModelArticleRelatedCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelArticleRelatedCoursesConnection
+  category: CategoryType!
+  certificate(filter: ModelCertificateCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCertificateCoursesConnection
+  createdAt: AWSDateTime!
+  hour: Int
+  id: ID!
+  lessons: Int
+  media: String
+  price: Int
+  slug: String!
+  subhead: String
+  title: String!
+  updatedAt: AWSDateTime!
+  video: String
+  videos: Int
+}
+
+type CourseClick @aws_api_key @aws_iam {
+  country: String
+  courseID: String!
+  createdAt: AWSDateTime!
+  format: String
+  id: ID!
+  ipAddress: String
+  lat: String
+  long: String
+  nextPath: String
+  page: String
+  referrer: String
+  updatedAt: AWSDateTime!
+}
+
+type CourseInstructors @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  instructor: Instructor!
+  instructorId: ID!
+  lMSCourse: LMSCourse!
+  lMSCourseId: ID!
+  updatedAt: AWSDateTime!
+}
+
+type CourseLessons @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  lMSCourse: LMSCourse!
+  lMSCourseId: ID!
+  lMSLesson: LMSLesson!
+  lMSLessonId: ID!
+  updatedAt: AWSDateTime!
+}
+
+type CourseSearch @aws_api_key @aws_iam {
+  country: String
+  createdAt: AWSDateTime!
+  id: ID!
+  ipAddress: String
+  term: String!
+  updatedAt: AWSDateTime!
+}
+
+type Customer @aws_api_key @aws_iam {
+  courses(clicks: ModelIntKeyConditionInput, filter: ModelTrackedCourseFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelTrackedCourseConnection
+  createdAt: AWSDateTime!
+  displayName: String!
+  email: String
+  highlightColor: String
+  id: ID!
+  link: String
+  logo: String
+  offered: [String]
+  offerings: [String]
+  pdf: String
+  primaryColor: String
+  pscourses(filter: ModelIncludedCourseFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelIncludedCourseConnection
+  slide: String
+  status: String
+  updatedAt: AWSDateTime!
+  video: String
+}
+
+type CustomerLibary @aws_api_key @aws_iam {
+  addOns: [String]
+  clientCourses: [String]
+  createdAt: AWSDateTime!
+  description: String
+  displayName: String!
+  email: String
+  highlightColor: String
+  id: ID!
+  link: String
+  logo: String
+  pdf: String
+  primaryColor: String
+  pschoolCourses: [String]
+  slide: String
+  slug: String!
+  status: String
+  updatedAt: AWSDateTime!
+  video: String
+}
+
+type DayInLifeItem @aws_api_key @aws_iam {
+  careerDayInLifeId: ID
+  createdAt: AWSDateTime!
+  desc: String!
+  icon: String
+  id: ID!
+  name: String!
+  updatedAt: AWSDateTime!
+}
+
+type GuardianForm @aws_api_key @aws_iam {
+  approved: Boolean!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  name: String!
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type IncludedCourse @aws_api_key @aws_iam {
+  courseId: String!
+  createdAt: AWSDateTime!
+  customer: Customer
+  customerId: ID!
+  id: ID!
+  updatedAt: AWSDateTime!
+}
+
+type IndexRow @aws_api_key @aws_iam {
+  content: [String]
+  createdAt: AWSDateTime!
+  headline: String
+  id: ID!
+  subhead: String
+  templates(filter: ModelIndexTemplateRowsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelIndexTemplateRowsConnection
+  type: String
+  updatedAt: AWSDateTime!
+}
+
+type IndexTemplate @aws_api_key @aws_iam {
+  authors(filter: ModelAuthorTemplatesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAuthorTemplatesConnection
+  createdAt: AWSDateTime!
+  id: ID!
+  rows(filter: ModelIndexTemplateRowsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelIndexTemplateRowsConnection
+  slug: String!
+  subhead: String
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type IndexTemplateRows @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  indexRow: IndexRow!
+  indexRowId: ID!
+  indexTemplate: IndexTemplate!
+  indexTemplateId: ID!
+  updatedAt: AWSDateTime!
+}
+
+type Instructor @aws_api_key @aws_iam {
+  coursesTaught(filter: ModelCourseInstructorsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseInstructorsConnection
+  createdAt: AWSDateTime!
+  id: ID!
+  instructor: User!
+  updatedAt: AWSDateTime!
+  userId: ID
+}
+
+type LMSCirriculum @aws_api_key @aws_iam {
+  Courses(filter: ModelCirriculumCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCirriculumCoursesConnection
+  createdAt: AWSDateTime!
+  description: String
+  id: ID!
+  shorthand: String
+  slug: String
+  title: String
+  updatedAt: AWSDateTime!
+}
+
+type LMSCollection @aws_api_key @aws_iam {
+  category: CategoryType
+  collectionId: String
+  courses: [String]
+  createdAt: AWSDateTime!
+  description: String
+  hours: String
+  id: ID!
+  instructor: String
+  instructorDescription: String
+  instructorImage: String
+  instructorLink: String
+  lmsLink: String
+  price: Int
+  slug: String!
+  subtitle: String
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type LMSCourse @aws_api_key @aws_iam {
+  altLink: String
+  category: CategoryType
+  categoryArray: [String]
+  cirriculum(filter: ModelCirriculumCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCirriculumCoursesConnection
+  collection: [String]
+  courseId: String
+  createdAt: AWSDateTime!
+  demo: Boolean
+  hours: String
+  id: ID!
+  infoSheet: String
+  instructors(filter: ModelCourseInstructorsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseInstructorsConnection
+  lessons: String
+  link: String
+  lmsLessons(filter: ModelCourseLessonsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseLessonsConnection
+  objectives: [String]
+  partOf: [String]
+  percentComplete: Int
+  preview: String
+  price: String
+  seoImage: String
+  shortDescription: String
+  slug: String!
+  studentCourseEnrolledId: ID
+  subheadline: String
+  title: String
+  trial_link: String
+  type: String
+  updatedAt: AWSDateTime!
+  videos: String
+  what_learned: String
+}
+
+type LMSLesson @aws_api_key @aws_iam {
+  content: String
+  course(filter: ModelCourseLessonsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseLessonsConnection
+  createdAt: AWSDateTime!
+  id: ID!
+  media: String
+  modules(filter: ModelLMSModuleFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLMSModuleConnection
+  objectives: [String]
+  percentComplete: Int
+  slug: String!
+  subheadline: String
+  title: String
+  updatedAt: AWSDateTime!
+}
+
+type LMSModule @aws_api_key @aws_iam {
+  content: String
+  createdAt: AWSDateTime!
+  id: ID!
+  lMSLessonModulesId: ID
+  lMSModuleQuizId: ID
+  lesson: LMSLesson
+  media: String
+  mediaType: MediaType
+  objectives: [String]
+  quiz: LMSQuiz
+  slides(filter: ModelSlideFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelSlideConnection
+  slug: String!
+  subheadline: String
+  title: String
+  updatedAt: AWSDateTime!
+}
+
+type LMSQuiz @aws_api_key @aws_iam {
+  answer1: String
+  answer2: String
+  answer3: String
+  answer4: String
+  correctAnswer: String
+  createdAt: AWSDateTime!
+  id: ID!
+  lMSQuizModuleId: ID
+  module: LMSModule
+  prompt: String
+  updatedAt: AWSDateTime!
+}
+
+type Lesson @aws_api_key @aws_iam {
+  actionCTA: String
+  actionExample: String
+  actionLink: String
+  actionLinkTitle: String
+  actionSubhead: String
+  author: [String]
+  backdate: String
+  content: String
+  createdAt: AWSDateTime!
+  createdBy: String
+  featured: String
+  id: ID!
+  lastEditedBy: String
+  links(filter: ModelLessonLinkFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLessonLinkConnection
+  media: String
+  mediaType: MediaType
+  objectives: [String]
+  related: [String]
+  screengrab: String
+  seoImage: String
+  slides: [String]
+  slug: String!
+  sources(filter: ModelLessonSourceFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLessonSourceConnection
+  status: String
+  subhead: String
+  tags(filter: ModelLessonTagsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLessonTagsConnection
+  title: String!
+  type: ModuleType
+  updatedAt: AWSDateTime!
+  videoLink: String
+}
+
+type LessonClick @aws_api_key @aws_iam {
+  LessonID: String!
+  country: String
+  createdAt: AWSDateTime!
+  format: String
+  id: ID!
+  ipAddress: String
+  lat: String
+  long: String
+  page: String
+  referrer: String
+  updatedAt: AWSDateTime!
+}
+
+type LessonLink @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  lessonLinksId: ID
+  link: String
+  name: String
+  updatedAt: AWSDateTime!
+}
+
+type LessonSource @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  lessonSourcesId: ID
+  link: String
+  name: String
+  position: Int!
+  updatedAt: AWSDateTime!
+}
+
+type LessonTags @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  lesson: Lesson!
+  lessonId: ID!
+  tags: Tags!
+  tagsId: ID!
+  updatedAt: AWSDateTime!
+}
+
+type ModelAPSConnection @aws_api_key @aws_iam {
+  items: [APS]!
+  nextToken: String
+}
+
+type ModelAPSRegistrantConnection @aws_api_key @aws_iam {
+  items: [APSRegistrant]!
+  nextToken: String
+}
+
+type ModelAPSSpeaker2024Connection @aws_api_key @aws_iam {
+  items: [APSSpeaker2024]!
+  nextToken: String
+}
+
+type ModelAPSSpeakerConnection @aws_api_key @aws_iam {
+  items: [APSSpeaker]!
+  nextToken: String
+}
+
+type ModelAPSSponsorConnection @aws_api_key @aws_iam {
+  items: [APSSponsor]!
+  nextToken: String
+}
+
+type ModelAPSTicketConnection @aws_api_key @aws_iam {
+  items: [APSTicket]!
+  nextToken: String
+}
+
+type ModelAPSTicketRegistrantConnection @aws_api_key @aws_iam {
+  items: [APSTicketRegistrant]!
+  nextToken: String
+}
+
+type ModelAPSUserConnection @aws_api_key @aws_iam {
+  items: [APSUser]!
+  nextToken: String
+}
+
+type ModelAddOnRegistrantConnection @aws_api_key @aws_iam {
+  items: [AddOnRegistrant]!
+  nextToken: String
+}
+
+type ModelAppStartConnection @aws_api_key @aws_iam {
+  items: [AppStart]!
+  nextToken: String
+}
+
+type ModelApplicationStartConnection @aws_api_key @aws_iam {
+  items: [ApplicationStart]!
+  nextToken: String
+}
+
+type ModelAristosFormConnection @aws_api_key @aws_iam {
+  items: [AristosForm]!
+  nextToken: String
+}
+
+type ModelArticleConnection @aws_api_key @aws_iam {
+  items: [Article]!
+  nextToken: String
+}
+
+type ModelArticleRelatedCoursesConnection @aws_api_key @aws_iam {
+  items: [ArticleRelatedCourses]!
+  nextToken: String
+}
+
+type ModelAuthorConnection @aws_api_key @aws_iam {
+  items: [Author]!
+  nextToken: String
+}
+
+type ModelAuthorTemplatesConnection @aws_api_key @aws_iam {
+  items: [AuthorTemplates]!
+  nextToken: String
+}
+
+type ModelBlogConnection @aws_api_key @aws_iam {
+  items: [Blog]!
+  nextToken: String
+}
+
+type ModelBoschFormConnection @aws_api_key @aws_iam {
+  items: [BoschForm]!
+  nextToken: String
+}
+
+type ModelCMPMFormConnection @aws_api_key @aws_iam {
+  items: [CMPMForm]!
+  nextToken: String
+}
+
+type ModelCMPMSessionConnection @aws_api_key @aws_iam {
+  items: [CMPMSession]!
+  nextToken: String
+}
+
+type ModelCPSFormConnection @aws_api_key @aws_iam {
+  items: [CPSForm]!
+  nextToken: String
+}
+
+type ModelCareerConnection @aws_api_key @aws_iam {
+  items: [Career]!
+  nextToken: String
+}
+
+type ModelCertAppStartConnection @aws_api_key @aws_iam {
+  items: [CertAppStart]!
+  nextToken: String
+}
+
+type ModelCertificateConnection @aws_api_key @aws_iam {
+  items: [Certificate]!
+  nextToken: String
+}
+
+type ModelCertificateCoursesConnection @aws_api_key @aws_iam {
+  items: [CertificateCourses]!
+  nextToken: String
+}
+
+type ModelCirriculumCoursesConnection @aws_api_key @aws_iam {
+  items: [CirriculumCourses]!
+  nextToken: String
+}
+
+type ModelClickConnection @aws_api_key @aws_iam {
+  items: [Click]!
+  nextToken: String
+}
+
+type ModelCompanyConnection @aws_api_key @aws_iam {
+  items: [Company]!
+  nextToken: String
+}
+
+type ModelCourseClickConnection @aws_api_key @aws_iam {
+  items: [CourseClick]!
+  nextToken: String
+}
+
+type ModelCourseConnection @aws_api_key @aws_iam {
+  items: [Course]!
+  nextToken: String
+}
+
+type ModelCourseInstructorsConnection @aws_api_key @aws_iam {
+  items: [CourseInstructors]!
+  nextToken: String
+}
+
+type ModelCourseLessonsConnection @aws_api_key @aws_iam {
+  items: [CourseLessons]!
+  nextToken: String
+}
+
+type ModelCourseSearchConnection @aws_api_key @aws_iam {
+  items: [CourseSearch]!
+  nextToken: String
+}
+
+type ModelCustomerConnection @aws_api_key @aws_iam {
+  items: [Customer]!
+  nextToken: String
+}
+
+type ModelCustomerLibaryConnection @aws_api_key @aws_iam {
+  items: [CustomerLibary]!
+  nextToken: String
+}
+
+type ModelDayInLifeItemConnection @aws_api_key @aws_iam {
+  items: [DayInLifeItem]!
+  nextToken: String
+}
+
+type ModelGuardianFormConnection @aws_api_key @aws_iam {
+  items: [GuardianForm]!
+  nextToken: String
+}
+
+type ModelIncludedCourseConnection @aws_api_key @aws_iam {
+  items: [IncludedCourse]!
+  nextToken: String
+}
+
+type ModelIndexRowConnection @aws_api_key @aws_iam {
+  items: [IndexRow]!
+  nextToken: String
+}
+
+type ModelIndexTemplateConnection @aws_api_key @aws_iam {
+  items: [IndexTemplate]!
+  nextToken: String
+}
+
+type ModelIndexTemplateRowsConnection @aws_api_key @aws_iam {
+  items: [IndexTemplateRows]!
+  nextToken: String
+}
+
+type ModelInstructorConnection @aws_api_key @aws_iam {
+  items: [Instructor]!
+  nextToken: String
+}
+
+type ModelLMSCirriculumConnection @aws_api_key @aws_iam {
+  items: [LMSCirriculum]!
+  nextToken: String
+}
+
+type ModelLMSCollectionConnection @aws_api_key @aws_iam {
+  items: [LMSCollection]!
+  nextToken: String
+}
+
+type ModelLMSCourseConnection @aws_api_key @aws_iam {
+  items: [LMSCourse]!
+  nextToken: String
+}
+
+type ModelLMSLessonConnection @aws_api_key @aws_iam {
+  items: [LMSLesson]!
+  nextToken: String
+}
+
+type ModelLMSModuleConnection @aws_api_key @aws_iam {
+  items: [LMSModule]!
+  nextToken: String
+}
+
+type ModelLMSQuizConnection @aws_api_key @aws_iam {
+  items: [LMSQuiz]!
+  nextToken: String
+}
+
+type ModelLessonClickConnection @aws_api_key @aws_iam {
+  items: [LessonClick]!
+  nextToken: String
+}
+
+type ModelLessonConnection @aws_api_key @aws_iam {
+  items: [Lesson]!
+  nextToken: String
+}
+
+type ModelLessonLinkConnection @aws_api_key @aws_iam {
+  items: [LessonLink]!
+  nextToken: String
+}
+
+type ModelLessonSourceConnection @aws_api_key @aws_iam {
+  items: [LessonSource]!
+  nextToken: String
+}
+
+type ModelLessonTagsConnection @aws_api_key @aws_iam {
+  items: [LessonTags]!
+  nextToken: String
+}
+
+type ModelMorrisetteFormConnection @aws_api_key @aws_iam {
+  items: [MorrisetteForm]!
+  nextToken: String
+}
+
+type ModelObjectiveConnection @aws_api_key @aws_iam {
+  items: [Objective]!
+  nextToken: String
+}
+
+type ModelSalesBarConnection @aws_api_key @aws_iam {
+  items: [SalesBar]!
+  nextToken: String
+}
+
+type ModelSalesbarClickConnection @aws_api_key @aws_iam {
+  items: [SalesbarClick]!
+  nextToken: String
+}
+
+type ModelSlideConnection @aws_api_key @aws_iam {
+  items: [Slide]!
+  nextToken: String
+}
+
+type ModelStaffConnection @aws_api_key @aws_iam {
+  items: [Staff]!
+  nextToken: String
+}
+
+type ModelStudentConnection @aws_api_key @aws_iam {
+  items: [Student]!
+  nextToken: String
+}
+
+type ModelSurgereFormConnection @aws_api_key @aws_iam {
+  items: [SurgereForm]!
+  nextToken: String
+}
+
+type ModelTagsConnection @aws_api_key @aws_iam {
+  items: [Tags]!
+  nextToken: String
+}
+
+type ModelTestimonialConnection @aws_api_key @aws_iam {
+  items: [Testimonial]!
+  nextToken: String
+}
+
+type ModelTimestampConnection @aws_api_key @aws_iam {
+  items: [Timestamp]!
+  nextToken: String
+}
+
+type ModelTouristConnection @aws_api_key @aws_iam {
+  items: [Tourist]!
+  nextToken: String
+}
+
+type ModelTrackedCourseConnection @aws_api_key @aws_iam {
+  items: [TrackedCourse]!
+  nextToken: String
+}
+
+type ModelUserConnection @aws_api_key @aws_iam {
+  items: [User]!
+  nextToken: String
+}
+
+type ModelWorkshopFormConnection @aws_api_key @aws_iam {
+  items: [WorkshopForm]!
+  nextToken: String
+}
+
+type MorrisetteForm @aws_api_key @aws_iam {
+  approved: Boolean!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  name: String!
+  preference: String!
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type Mutation {
+  createAPS(condition: ModelAPSConditionInput, input: CreateAPSInput!): APS @aws_api_key @aws_iam
+  createAPSRegistrant(condition: ModelAPSRegistrantConditionInput, input: CreateAPSRegistrantInput!): APSRegistrant @aws_api_key @aws_iam
+  createAPSSpeaker(condition: ModelAPSSpeakerConditionInput, input: CreateAPSSpeakerInput!): APSSpeaker @aws_api_key @aws_iam
+  createAPSSpeaker2024(condition: ModelAPSSpeaker2024ConditionInput, input: CreateAPSSpeaker2024Input!): APSSpeaker2024 @aws_api_key @aws_iam
+  createAPSSponsor(condition: ModelAPSSponsorConditionInput, input: CreateAPSSponsorInput!): APSSponsor @aws_api_key @aws_iam
+  createAPSTicket(condition: ModelAPSTicketConditionInput, input: CreateAPSTicketInput!): APSTicket @aws_api_key @aws_iam
+  createAPSTicketRegistrant(condition: ModelAPSTicketRegistrantConditionInput, input: CreateAPSTicketRegistrantInput!): APSTicketRegistrant @aws_api_key @aws_iam
+  createAPSUser(condition: ModelAPSUserConditionInput, input: CreateAPSUserInput!): APSUser @aws_api_key @aws_iam
+  createAddOnRegistrant(condition: ModelAddOnRegistrantConditionInput, input: CreateAddOnRegistrantInput!): AddOnRegistrant @aws_api_key @aws_iam
+  createAppStart(condition: ModelAppStartConditionInput, input: CreateAppStartInput!): AppStart @aws_api_key @aws_iam
+  createApplicationStart(condition: ModelApplicationStartConditionInput, input: CreateApplicationStartInput!): ApplicationStart @aws_api_key @aws_iam
+  createAristosForm(condition: ModelAristosFormConditionInput, input: CreateAristosFormInput!): AristosForm @aws_api_key @aws_iam
+  createArticle(condition: ModelArticleConditionInput, input: CreateArticleInput!): Article @aws_api_key @aws_iam
+  createArticleRelatedCourses(condition: ModelArticleRelatedCoursesConditionInput, input: CreateArticleRelatedCoursesInput!): ArticleRelatedCourses @aws_api_key @aws_iam
+  createAuthor(condition: ModelAuthorConditionInput, input: CreateAuthorInput!): Author @aws_api_key @aws_iam
+  createAuthorTemplates(condition: ModelAuthorTemplatesConditionInput, input: CreateAuthorTemplatesInput!): AuthorTemplates @aws_api_key @aws_iam
+  createBlog(condition: ModelBlogConditionInput, input: CreateBlogInput!): Blog @aws_api_key @aws_iam
+  createBoschForm(condition: ModelBoschFormConditionInput, input: CreateBoschFormInput!): BoschForm @aws_api_key @aws_iam
+  createCMPMForm(condition: ModelCMPMFormConditionInput, input: CreateCMPMFormInput!): CMPMForm @aws_api_key @aws_iam
+  createCMPMSession(condition: ModelCMPMSessionConditionInput, input: CreateCMPMSessionInput!): CMPMSession @aws_api_key @aws_iam
+  createCPSForm(condition: ModelCPSFormConditionInput, input: CreateCPSFormInput!): CPSForm @aws_api_key @aws_iam
+  createCareer(condition: ModelCareerConditionInput, input: CreateCareerInput!): Career @aws_api_key @aws_iam
+  createCertAppStart(condition: ModelCertAppStartConditionInput, input: CreateCertAppStartInput!): CertAppStart @aws_api_key @aws_iam
+  createCertificate(condition: ModelCertificateConditionInput, input: CreateCertificateInput!): Certificate @aws_api_key @aws_iam
+  createCertificateCourses(condition: ModelCertificateCoursesConditionInput, input: CreateCertificateCoursesInput!): CertificateCourses @aws_api_key @aws_iam
+  createCirriculumCourses(condition: ModelCirriculumCoursesConditionInput, input: CreateCirriculumCoursesInput!): CirriculumCourses @aws_api_key @aws_iam
+  createClick(condition: ModelClickConditionInput, input: CreateClickInput!): Click @aws_api_key @aws_iam
+  createCompany(condition: ModelCompanyConditionInput, input: CreateCompanyInput!): Company @aws_api_key @aws_iam
+  createCourse(condition: ModelCourseConditionInput, input: CreateCourseInput!): Course @aws_api_key @aws_iam
+  createCourseClick(condition: ModelCourseClickConditionInput, input: CreateCourseClickInput!): CourseClick @aws_api_key @aws_iam
+  createCourseInstructors(condition: ModelCourseInstructorsConditionInput, input: CreateCourseInstructorsInput!): CourseInstructors @aws_api_key @aws_iam
+  createCourseLessons(condition: ModelCourseLessonsConditionInput, input: CreateCourseLessonsInput!): CourseLessons @aws_api_key @aws_iam
+  createCourseSearch(condition: ModelCourseSearchConditionInput, input: CreateCourseSearchInput!): CourseSearch @aws_api_key @aws_iam
+  createCustomer(condition: ModelCustomerConditionInput, input: CreateCustomerInput!): Customer @aws_api_key @aws_iam
+  createCustomerLibary(condition: ModelCustomerLibaryConditionInput, input: CreateCustomerLibaryInput!): CustomerLibary @aws_api_key @aws_iam
+  createDayInLifeItem(condition: ModelDayInLifeItemConditionInput, input: CreateDayInLifeItemInput!): DayInLifeItem @aws_api_key @aws_iam
+  createGuardianForm(condition: ModelGuardianFormConditionInput, input: CreateGuardianFormInput!): GuardianForm @aws_api_key @aws_iam
+  createIncludedCourse(condition: ModelIncludedCourseConditionInput, input: CreateIncludedCourseInput!): IncludedCourse @aws_api_key @aws_iam
+  createIndexRow(condition: ModelIndexRowConditionInput, input: CreateIndexRowInput!): IndexRow @aws_api_key @aws_iam
+  createIndexTemplate(condition: ModelIndexTemplateConditionInput, input: CreateIndexTemplateInput!): IndexTemplate @aws_api_key @aws_iam
+  createIndexTemplateRows(condition: ModelIndexTemplateRowsConditionInput, input: CreateIndexTemplateRowsInput!): IndexTemplateRows @aws_api_key @aws_iam
+  createInstructor(condition: ModelInstructorConditionInput, input: CreateInstructorInput!): Instructor @aws_api_key @aws_iam
+  createLMSCirriculum(condition: ModelLMSCirriculumConditionInput, input: CreateLMSCirriculumInput!): LMSCirriculum @aws_api_key @aws_iam
+  createLMSCollection(condition: ModelLMSCollectionConditionInput, input: CreateLMSCollectionInput!): LMSCollection @aws_api_key @aws_iam
+  createLMSCourse(condition: ModelLMSCourseConditionInput, input: CreateLMSCourseInput!): LMSCourse @aws_api_key @aws_iam
+  createLMSLesson(condition: ModelLMSLessonConditionInput, input: CreateLMSLessonInput!): LMSLesson @aws_api_key @aws_iam
+  createLMSModule(condition: ModelLMSModuleConditionInput, input: CreateLMSModuleInput!): LMSModule @aws_api_key @aws_iam
+  createLMSQuiz(condition: ModelLMSQuizConditionInput, input: CreateLMSQuizInput!): LMSQuiz @aws_api_key @aws_iam
+  createLesson(condition: ModelLessonConditionInput, input: CreateLessonInput!): Lesson @aws_api_key @aws_iam
+  createLessonClick(condition: ModelLessonClickConditionInput, input: CreateLessonClickInput!): LessonClick @aws_api_key @aws_iam
+  createLessonLink(condition: ModelLessonLinkConditionInput, input: CreateLessonLinkInput!): LessonLink @aws_api_key @aws_iam
+  createLessonSource(condition: ModelLessonSourceConditionInput, input: CreateLessonSourceInput!): LessonSource @aws_api_key @aws_iam
+  createLessonTags(condition: ModelLessonTagsConditionInput, input: CreateLessonTagsInput!): LessonTags @aws_api_key @aws_iam
+  createMorrisetteForm(condition: ModelMorrisetteFormConditionInput, input: CreateMorrisetteFormInput!): MorrisetteForm @aws_api_key @aws_iam
+  createObjective(condition: ModelObjectiveConditionInput, input: CreateObjectiveInput!): Objective @aws_api_key @aws_iam
+  createSalesBar(condition: ModelSalesBarConditionInput, input: CreateSalesBarInput!): SalesBar @aws_api_key @aws_iam
+  createSalesbarClick(condition: ModelSalesbarClickConditionInput, input: CreateSalesbarClickInput!): SalesbarClick @aws_api_key @aws_iam
+  createSlide(condition: ModelSlideConditionInput, input: CreateSlideInput!): Slide @aws_api_key @aws_iam
+  createStaff(condition: ModelStaffConditionInput, input: CreateStaffInput!): Staff @aws_api_key @aws_iam
+  createStudent(condition: ModelStudentConditionInput, input: CreateStudentInput!): Student @aws_api_key @aws_iam
+  createSurgereForm(condition: ModelSurgereFormConditionInput, input: CreateSurgereFormInput!): SurgereForm @aws_api_key @aws_iam
+  createTags(condition: ModelTagsConditionInput, input: CreateTagsInput!): Tags @aws_api_key @aws_iam
+  createTestimonial(condition: ModelTestimonialConditionInput, input: CreateTestimonialInput!): Testimonial @aws_api_key @aws_iam
+  createTimestamp(condition: ModelTimestampConditionInput, input: CreateTimestampInput!): Timestamp @aws_api_key @aws_iam
+  createTourist(condition: ModelTouristConditionInput, input: CreateTouristInput!): Tourist @aws_api_key @aws_iam
+  createTrackedCourse(condition: ModelTrackedCourseConditionInput, input: CreateTrackedCourseInput!): TrackedCourse @aws_api_key @aws_iam
+  createUser(condition: ModelUserConditionInput, input: CreateUserInput!): User @aws_api_key @aws_iam
+  createWorkshopForm(condition: ModelWorkshopFormConditionInput, input: CreateWorkshopFormInput!): WorkshopForm @aws_api_key @aws_iam
+  deleteAPS(condition: ModelAPSConditionInput, input: DeleteAPSInput!): APS @aws_api_key @aws_iam
+  deleteAPSRegistrant(condition: ModelAPSRegistrantConditionInput, input: DeleteAPSRegistrantInput!): APSRegistrant @aws_api_key @aws_iam
+  deleteAPSSpeaker(condition: ModelAPSSpeakerConditionInput, input: DeleteAPSSpeakerInput!): APSSpeaker @aws_api_key @aws_iam
+  deleteAPSSpeaker2024(condition: ModelAPSSpeaker2024ConditionInput, input: DeleteAPSSpeaker2024Input!): APSSpeaker2024 @aws_api_key @aws_iam
+  deleteAPSSponsor(condition: ModelAPSSponsorConditionInput, input: DeleteAPSSponsorInput!): APSSponsor @aws_api_key @aws_iam
+  deleteAPSTicket(condition: ModelAPSTicketConditionInput, input: DeleteAPSTicketInput!): APSTicket @aws_api_key @aws_iam
+  deleteAPSTicketRegistrant(condition: ModelAPSTicketRegistrantConditionInput, input: DeleteAPSTicketRegistrantInput!): APSTicketRegistrant @aws_api_key @aws_iam
+  deleteAPSUser(condition: ModelAPSUserConditionInput, input: DeleteAPSUserInput!): APSUser @aws_api_key @aws_iam
+  deleteAddOnRegistrant(condition: ModelAddOnRegistrantConditionInput, input: DeleteAddOnRegistrantInput!): AddOnRegistrant @aws_api_key @aws_iam
+  deleteAppStart(condition: ModelAppStartConditionInput, input: DeleteAppStartInput!): AppStart @aws_api_key @aws_iam
+  deleteApplicationStart(condition: ModelApplicationStartConditionInput, input: DeleteApplicationStartInput!): ApplicationStart @aws_api_key @aws_iam
+  deleteAristosForm(condition: ModelAristosFormConditionInput, input: DeleteAristosFormInput!): AristosForm @aws_api_key @aws_iam
+  deleteArticle(condition: ModelArticleConditionInput, input: DeleteArticleInput!): Article @aws_api_key @aws_iam
+  deleteArticleRelatedCourses(condition: ModelArticleRelatedCoursesConditionInput, input: DeleteArticleRelatedCoursesInput!): ArticleRelatedCourses @aws_api_key @aws_iam
+  deleteAuthor(condition: ModelAuthorConditionInput, input: DeleteAuthorInput!): Author @aws_api_key @aws_iam
+  deleteAuthorTemplates(condition: ModelAuthorTemplatesConditionInput, input: DeleteAuthorTemplatesInput!): AuthorTemplates @aws_api_key @aws_iam
+  deleteBlog(condition: ModelBlogConditionInput, input: DeleteBlogInput!): Blog @aws_api_key @aws_iam
+  deleteBoschForm(condition: ModelBoschFormConditionInput, input: DeleteBoschFormInput!): BoschForm @aws_api_key @aws_iam
+  deleteCMPMForm(condition: ModelCMPMFormConditionInput, input: DeleteCMPMFormInput!): CMPMForm @aws_api_key @aws_iam
+  deleteCMPMSession(condition: ModelCMPMSessionConditionInput, input: DeleteCMPMSessionInput!): CMPMSession @aws_api_key @aws_iam
+  deleteCPSForm(condition: ModelCPSFormConditionInput, input: DeleteCPSFormInput!): CPSForm @aws_api_key @aws_iam
+  deleteCareer(condition: ModelCareerConditionInput, input: DeleteCareerInput!): Career @aws_api_key @aws_iam
+  deleteCertAppStart(condition: ModelCertAppStartConditionInput, input: DeleteCertAppStartInput!): CertAppStart @aws_api_key @aws_iam
+  deleteCertificate(condition: ModelCertificateConditionInput, input: DeleteCertificateInput!): Certificate @aws_api_key @aws_iam
+  deleteCertificateCourses(condition: ModelCertificateCoursesConditionInput, input: DeleteCertificateCoursesInput!): CertificateCourses @aws_api_key @aws_iam
+  deleteCirriculumCourses(condition: ModelCirriculumCoursesConditionInput, input: DeleteCirriculumCoursesInput!): CirriculumCourses @aws_api_key @aws_iam
+  deleteClick(condition: ModelClickConditionInput, input: DeleteClickInput!): Click @aws_api_key @aws_iam
+  deleteCompany(condition: ModelCompanyConditionInput, input: DeleteCompanyInput!): Company @aws_api_key @aws_iam
+  deleteCourse(condition: ModelCourseConditionInput, input: DeleteCourseInput!): Course @aws_api_key @aws_iam
+  deleteCourseClick(condition: ModelCourseClickConditionInput, input: DeleteCourseClickInput!): CourseClick @aws_api_key @aws_iam
+  deleteCourseInstructors(condition: ModelCourseInstructorsConditionInput, input: DeleteCourseInstructorsInput!): CourseInstructors @aws_api_key @aws_iam
+  deleteCourseLessons(condition: ModelCourseLessonsConditionInput, input: DeleteCourseLessonsInput!): CourseLessons @aws_api_key @aws_iam
+  deleteCourseSearch(condition: ModelCourseSearchConditionInput, input: DeleteCourseSearchInput!): CourseSearch @aws_api_key @aws_iam
+  deleteCustomer(condition: ModelCustomerConditionInput, input: DeleteCustomerInput!): Customer @aws_api_key @aws_iam
+  deleteCustomerLibary(condition: ModelCustomerLibaryConditionInput, input: DeleteCustomerLibaryInput!): CustomerLibary @aws_api_key @aws_iam
+  deleteDayInLifeItem(condition: ModelDayInLifeItemConditionInput, input: DeleteDayInLifeItemInput!): DayInLifeItem @aws_api_key @aws_iam
+  deleteGuardianForm(condition: ModelGuardianFormConditionInput, input: DeleteGuardianFormInput!): GuardianForm @aws_api_key @aws_iam
+  deleteIncludedCourse(condition: ModelIncludedCourseConditionInput, input: DeleteIncludedCourseInput!): IncludedCourse @aws_api_key @aws_iam
+  deleteIndexRow(condition: ModelIndexRowConditionInput, input: DeleteIndexRowInput!): IndexRow @aws_api_key @aws_iam
+  deleteIndexTemplate(condition: ModelIndexTemplateConditionInput, input: DeleteIndexTemplateInput!): IndexTemplate @aws_api_key @aws_iam
+  deleteIndexTemplateRows(condition: ModelIndexTemplateRowsConditionInput, input: DeleteIndexTemplateRowsInput!): IndexTemplateRows @aws_api_key @aws_iam
+  deleteInstructor(condition: ModelInstructorConditionInput, input: DeleteInstructorInput!): Instructor @aws_api_key @aws_iam
+  deleteLMSCirriculum(condition: ModelLMSCirriculumConditionInput, input: DeleteLMSCirriculumInput!): LMSCirriculum @aws_api_key @aws_iam
+  deleteLMSCollection(condition: ModelLMSCollectionConditionInput, input: DeleteLMSCollectionInput!): LMSCollection @aws_api_key @aws_iam
+  deleteLMSCourse(condition: ModelLMSCourseConditionInput, input: DeleteLMSCourseInput!): LMSCourse @aws_api_key @aws_iam
+  deleteLMSLesson(condition: ModelLMSLessonConditionInput, input: DeleteLMSLessonInput!): LMSLesson @aws_api_key @aws_iam
+  deleteLMSModule(condition: ModelLMSModuleConditionInput, input: DeleteLMSModuleInput!): LMSModule @aws_api_key @aws_iam
+  deleteLMSQuiz(condition: ModelLMSQuizConditionInput, input: DeleteLMSQuizInput!): LMSQuiz @aws_api_key @aws_iam
+  deleteLesson(condition: ModelLessonConditionInput, input: DeleteLessonInput!): Lesson @aws_api_key @aws_iam
+  deleteLessonClick(condition: ModelLessonClickConditionInput, input: DeleteLessonClickInput!): LessonClick @aws_api_key @aws_iam
+  deleteLessonLink(condition: ModelLessonLinkConditionInput, input: DeleteLessonLinkInput!): LessonLink @aws_api_key @aws_iam
+  deleteLessonSource(condition: ModelLessonSourceConditionInput, input: DeleteLessonSourceInput!): LessonSource @aws_api_key @aws_iam
+  deleteLessonTags(condition: ModelLessonTagsConditionInput, input: DeleteLessonTagsInput!): LessonTags @aws_api_key @aws_iam
+  deleteMorrisetteForm(condition: ModelMorrisetteFormConditionInput, input: DeleteMorrisetteFormInput!): MorrisetteForm @aws_api_key @aws_iam
+  deleteObjective(condition: ModelObjectiveConditionInput, input: DeleteObjectiveInput!): Objective @aws_api_key @aws_iam
+  deleteSalesBar(condition: ModelSalesBarConditionInput, input: DeleteSalesBarInput!): SalesBar @aws_api_key @aws_iam
+  deleteSalesbarClick(condition: ModelSalesbarClickConditionInput, input: DeleteSalesbarClickInput!): SalesbarClick @aws_api_key @aws_iam
+  deleteSlide(condition: ModelSlideConditionInput, input: DeleteSlideInput!): Slide @aws_api_key @aws_iam
+  deleteStaff(condition: ModelStaffConditionInput, input: DeleteStaffInput!): Staff @aws_api_key @aws_iam
+  deleteStudent(condition: ModelStudentConditionInput, input: DeleteStudentInput!): Student @aws_api_key @aws_iam
+  deleteSurgereForm(condition: ModelSurgereFormConditionInput, input: DeleteSurgereFormInput!): SurgereForm @aws_api_key @aws_iam
+  deleteTags(condition: ModelTagsConditionInput, input: DeleteTagsInput!): Tags @aws_api_key @aws_iam
+  deleteTestimonial(condition: ModelTestimonialConditionInput, input: DeleteTestimonialInput!): Testimonial @aws_api_key @aws_iam
+  deleteTimestamp(condition: ModelTimestampConditionInput, input: DeleteTimestampInput!): Timestamp @aws_api_key @aws_iam
+  deleteTourist(condition: ModelTouristConditionInput, input: DeleteTouristInput!): Tourist @aws_api_key @aws_iam
+  deleteTrackedCourse(condition: ModelTrackedCourseConditionInput, input: DeleteTrackedCourseInput!): TrackedCourse @aws_api_key @aws_iam
+  deleteUser(condition: ModelUserConditionInput, input: DeleteUserInput!): User @aws_api_key @aws_iam
+  deleteWorkshopForm(condition: ModelWorkshopFormConditionInput, input: DeleteWorkshopFormInput!): WorkshopForm @aws_api_key @aws_iam
+  updateAPS(condition: ModelAPSConditionInput, input: UpdateAPSInput!): APS @aws_api_key @aws_iam
+  updateAPSRegistrant(condition: ModelAPSRegistrantConditionInput, input: UpdateAPSRegistrantInput!): APSRegistrant @aws_api_key @aws_iam
+  updateAPSSpeaker(condition: ModelAPSSpeakerConditionInput, input: UpdateAPSSpeakerInput!): APSSpeaker @aws_api_key @aws_iam
+  updateAPSSpeaker2024(condition: ModelAPSSpeaker2024ConditionInput, input: UpdateAPSSpeaker2024Input!): APSSpeaker2024 @aws_api_key @aws_iam
+  updateAPSSponsor(condition: ModelAPSSponsorConditionInput, input: UpdateAPSSponsorInput!): APSSponsor @aws_api_key @aws_iam
+  updateAPSTicket(condition: ModelAPSTicketConditionInput, input: UpdateAPSTicketInput!): APSTicket @aws_api_key @aws_iam
+  updateAPSTicketRegistrant(condition: ModelAPSTicketRegistrantConditionInput, input: UpdateAPSTicketRegistrantInput!): APSTicketRegistrant @aws_api_key @aws_iam
+  updateAPSUser(condition: ModelAPSUserConditionInput, input: UpdateAPSUserInput!): APSUser @aws_api_key @aws_iam
+  updateAddOnRegistrant(condition: ModelAddOnRegistrantConditionInput, input: UpdateAddOnRegistrantInput!): AddOnRegistrant @aws_api_key @aws_iam
+  updateAppStart(condition: ModelAppStartConditionInput, input: UpdateAppStartInput!): AppStart @aws_api_key @aws_iam
+  updateApplicationStart(condition: ModelApplicationStartConditionInput, input: UpdateApplicationStartInput!): ApplicationStart @aws_api_key @aws_iam
+  updateAristosForm(condition: ModelAristosFormConditionInput, input: UpdateAristosFormInput!): AristosForm @aws_api_key @aws_iam
+  updateArticle(condition: ModelArticleConditionInput, input: UpdateArticleInput!): Article @aws_api_key @aws_iam
+  updateArticleRelatedCourses(condition: ModelArticleRelatedCoursesConditionInput, input: UpdateArticleRelatedCoursesInput!): ArticleRelatedCourses @aws_api_key @aws_iam
+  updateAuthor(condition: ModelAuthorConditionInput, input: UpdateAuthorInput!): Author @aws_api_key @aws_iam
+  updateAuthorTemplates(condition: ModelAuthorTemplatesConditionInput, input: UpdateAuthorTemplatesInput!): AuthorTemplates @aws_api_key @aws_iam
+  updateBlog(condition: ModelBlogConditionInput, input: UpdateBlogInput!): Blog @aws_api_key @aws_iam
+  updateBoschForm(condition: ModelBoschFormConditionInput, input: UpdateBoschFormInput!): BoschForm @aws_api_key @aws_iam
+  updateCMPMForm(condition: ModelCMPMFormConditionInput, input: UpdateCMPMFormInput!): CMPMForm @aws_api_key @aws_iam
+  updateCMPMSession(condition: ModelCMPMSessionConditionInput, input: UpdateCMPMSessionInput!): CMPMSession @aws_api_key @aws_iam
+  updateCPSForm(condition: ModelCPSFormConditionInput, input: UpdateCPSFormInput!): CPSForm @aws_api_key @aws_iam
+  updateCareer(condition: ModelCareerConditionInput, input: UpdateCareerInput!): Career @aws_api_key @aws_iam
+  updateCertAppStart(condition: ModelCertAppStartConditionInput, input: UpdateCertAppStartInput!): CertAppStart @aws_api_key @aws_iam
+  updateCertificate(condition: ModelCertificateConditionInput, input: UpdateCertificateInput!): Certificate @aws_api_key @aws_iam
+  updateCertificateCourses(condition: ModelCertificateCoursesConditionInput, input: UpdateCertificateCoursesInput!): CertificateCourses @aws_api_key @aws_iam
+  updateCirriculumCourses(condition: ModelCirriculumCoursesConditionInput, input: UpdateCirriculumCoursesInput!): CirriculumCourses @aws_api_key @aws_iam
+  updateClick(condition: ModelClickConditionInput, input: UpdateClickInput!): Click @aws_api_key @aws_iam
+  updateCompany(condition: ModelCompanyConditionInput, input: UpdateCompanyInput!): Company @aws_api_key @aws_iam
+  updateCourse(condition: ModelCourseConditionInput, input: UpdateCourseInput!): Course @aws_api_key @aws_iam
+  updateCourseClick(condition: ModelCourseClickConditionInput, input: UpdateCourseClickInput!): CourseClick @aws_api_key @aws_iam
+  updateCourseInstructors(condition: ModelCourseInstructorsConditionInput, input: UpdateCourseInstructorsInput!): CourseInstructors @aws_api_key @aws_iam
+  updateCourseLessons(condition: ModelCourseLessonsConditionInput, input: UpdateCourseLessonsInput!): CourseLessons @aws_api_key @aws_iam
+  updateCourseSearch(condition: ModelCourseSearchConditionInput, input: UpdateCourseSearchInput!): CourseSearch @aws_api_key @aws_iam
+  updateCustomer(condition: ModelCustomerConditionInput, input: UpdateCustomerInput!): Customer @aws_api_key @aws_iam
+  updateCustomerLibary(condition: ModelCustomerLibaryConditionInput, input: UpdateCustomerLibaryInput!): CustomerLibary @aws_api_key @aws_iam
+  updateDayInLifeItem(condition: ModelDayInLifeItemConditionInput, input: UpdateDayInLifeItemInput!): DayInLifeItem @aws_api_key @aws_iam
+  updateGuardianForm(condition: ModelGuardianFormConditionInput, input: UpdateGuardianFormInput!): GuardianForm @aws_api_key @aws_iam
+  updateIncludedCourse(condition: ModelIncludedCourseConditionInput, input: UpdateIncludedCourseInput!): IncludedCourse @aws_api_key @aws_iam
+  updateIndexRow(condition: ModelIndexRowConditionInput, input: UpdateIndexRowInput!): IndexRow @aws_api_key @aws_iam
+  updateIndexTemplate(condition: ModelIndexTemplateConditionInput, input: UpdateIndexTemplateInput!): IndexTemplate @aws_api_key @aws_iam
+  updateIndexTemplateRows(condition: ModelIndexTemplateRowsConditionInput, input: UpdateIndexTemplateRowsInput!): IndexTemplateRows @aws_api_key @aws_iam
+  updateInstructor(condition: ModelInstructorConditionInput, input: UpdateInstructorInput!): Instructor @aws_api_key @aws_iam
+  updateLMSCirriculum(condition: ModelLMSCirriculumConditionInput, input: UpdateLMSCirriculumInput!): LMSCirriculum @aws_api_key @aws_iam
+  updateLMSCollection(condition: ModelLMSCollectionConditionInput, input: UpdateLMSCollectionInput!): LMSCollection @aws_api_key @aws_iam
+  updateLMSCourse(condition: ModelLMSCourseConditionInput, input: UpdateLMSCourseInput!): LMSCourse @aws_api_key @aws_iam
+  updateLMSLesson(condition: ModelLMSLessonConditionInput, input: UpdateLMSLessonInput!): LMSLesson @aws_api_key @aws_iam
+  updateLMSModule(condition: ModelLMSModuleConditionInput, input: UpdateLMSModuleInput!): LMSModule @aws_api_key @aws_iam
+  updateLMSQuiz(condition: ModelLMSQuizConditionInput, input: UpdateLMSQuizInput!): LMSQuiz @aws_api_key @aws_iam
+  updateLesson(condition: ModelLessonConditionInput, input: UpdateLessonInput!): Lesson @aws_api_key @aws_iam
+  updateLessonClick(condition: ModelLessonClickConditionInput, input: UpdateLessonClickInput!): LessonClick @aws_api_key @aws_iam
+  updateLessonLink(condition: ModelLessonLinkConditionInput, input: UpdateLessonLinkInput!): LessonLink @aws_api_key @aws_iam
+  updateLessonSource(condition: ModelLessonSourceConditionInput, input: UpdateLessonSourceInput!): LessonSource @aws_api_key @aws_iam
+  updateLessonTags(condition: ModelLessonTagsConditionInput, input: UpdateLessonTagsInput!): LessonTags @aws_api_key @aws_iam
+  updateMorrisetteForm(condition: ModelMorrisetteFormConditionInput, input: UpdateMorrisetteFormInput!): MorrisetteForm @aws_api_key @aws_iam
+  updateObjective(condition: ModelObjectiveConditionInput, input: UpdateObjectiveInput!): Objective @aws_api_key @aws_iam
+  updateSalesBar(condition: ModelSalesBarConditionInput, input: UpdateSalesBarInput!): SalesBar @aws_api_key @aws_iam
+  updateSalesbarClick(condition: ModelSalesbarClickConditionInput, input: UpdateSalesbarClickInput!): SalesbarClick @aws_api_key @aws_iam
+  updateSlide(condition: ModelSlideConditionInput, input: UpdateSlideInput!): Slide @aws_api_key @aws_iam
+  updateStaff(condition: ModelStaffConditionInput, input: UpdateStaffInput!): Staff @aws_api_key @aws_iam
+  updateStudent(condition: ModelStudentConditionInput, input: UpdateStudentInput!): Student @aws_api_key @aws_iam
+  updateSurgereForm(condition: ModelSurgereFormConditionInput, input: UpdateSurgereFormInput!): SurgereForm @aws_api_key @aws_iam
+  updateTags(condition: ModelTagsConditionInput, input: UpdateTagsInput!): Tags @aws_api_key @aws_iam
+  updateTestimonial(condition: ModelTestimonialConditionInput, input: UpdateTestimonialInput!): Testimonial @aws_api_key @aws_iam
+  updateTimestamp(condition: ModelTimestampConditionInput, input: UpdateTimestampInput!): Timestamp @aws_api_key @aws_iam
+  updateTourist(condition: ModelTouristConditionInput, input: UpdateTouristInput!): Tourist @aws_api_key @aws_iam
+  updateTrackedCourse(condition: ModelTrackedCourseConditionInput, input: UpdateTrackedCourseInput!): TrackedCourse @aws_api_key @aws_iam
+  updateUser(condition: ModelUserConditionInput, input: UpdateUserInput!): User @aws_api_key @aws_iam
+  updateWorkshopForm(condition: ModelWorkshopFormConditionInput, input: UpdateWorkshopFormInput!): WorkshopForm @aws_api_key @aws_iam
+}
+
+type Objective @aws_api_key @aws_iam {
+  completed: Boolean
+  createdAt: AWSDateTime!
+  id: ID!
+  objective: String!
+  updatedAt: AWSDateTime!
+}
+
+type Query {
+  aPSRegistrantsByEmail(email: String!, filter: ModelAPSRegistrantFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSRegistrantConnection @aws_api_key @aws_iam
+  aPSSponsorsByAPSId(aPSId: ID!, filter: ModelAPSSponsorFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSSponsorConnection @aws_api_key @aws_iam
+  aPSSponsorsByCompanyId(companyId: ID!, filter: ModelAPSSponsorFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSSponsorConnection @aws_api_key @aws_iam
+  aPSTicketRegistrantsByEmail(email: String!, filter: ModelAPSTicketRegistrantFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSTicketRegistrantConnection @aws_api_key @aws_iam
+  aPSUsersByAPSId(aPSId: ID!, filter: ModelAPSUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSUserConnection @aws_api_key @aws_iam
+  aPSUsersByUserId(filter: ModelAPSUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection, userId: ID!): ModelAPSUserConnection @aws_api_key @aws_iam
+  addOnRegistrantsByEmail(email: String!, filter: ModelAddOnRegistrantFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAddOnRegistrantConnection @aws_api_key @aws_iam
+  appStartsByEmail(email: String!, filter: ModelAppStartFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAppStartConnection @aws_api_key @aws_iam
+  applicationStartsByEmail(email: String!, filter: ModelApplicationStartFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelApplicationStartConnection @aws_api_key @aws_iam
+  articleRelatedCoursesByArticleId(articleId: ID!, filter: ModelArticleRelatedCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelArticleRelatedCoursesConnection @aws_api_key @aws_iam
+  articleRelatedCoursesByCourseId(courseId: ID!, filter: ModelArticleRelatedCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelArticleRelatedCoursesConnection @aws_api_key @aws_iam
+  articlesBySlug(filter: ModelArticleFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelArticleConnection @aws_api_key @aws_iam
+  authorTemplatesByAuthorId(authorId: ID!, filter: ModelAuthorTemplatesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAuthorTemplatesConnection @aws_api_key @aws_iam
+  authorTemplatesByIndexTemplateId(filter: ModelAuthorTemplatesFilterInput, indexTemplateId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAuthorTemplatesConnection @aws_api_key @aws_iam
+  blogsBySlug(filter: ModelBlogFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelBlogConnection @aws_api_key @aws_iam
+  cMPMSessionsByDeadline(deadline: String!, filter: ModelCMPMSessionFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCMPMSessionConnection @aws_api_key @aws_iam
+  cMPMSessionsByEndDate(endDate: String!, filter: ModelCMPMSessionFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCMPMSessionConnection @aws_api_key @aws_iam
+  careersBySlug(filter: ModelCareerFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelCareerConnection @aws_api_key @aws_iam
+  certAppStartsByEmail(email: String!, filter: ModelCertAppStartFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCertAppStartConnection @aws_api_key @aws_iam
+  certAppStartsByTypeAndCreatedAt(createdAt: ModelStringKeyConditionInput, filter: ModelCertAppStartFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection, type: String!): ModelCertAppStartConnection @aws_api_key @aws_iam
+  certificateCoursesByCertificateId(certificateId: ID!, filter: ModelCertificateCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCertificateCoursesConnection @aws_api_key @aws_iam
+  certificateCoursesByCourseId(courseId: ID!, filter: ModelCertificateCoursesFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCertificateCoursesConnection @aws_api_key @aws_iam
+  certificatesBySlug(filter: ModelCertificateFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelCertificateConnection @aws_api_key @aws_iam
+  cirriculumCoursesByLMSCirriculumId(filter: ModelCirriculumCoursesFilterInput, lMSCirriculumId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCirriculumCoursesConnection @aws_api_key @aws_iam
+  cirriculumCoursesByLMSCourseId(filter: ModelCirriculumCoursesFilterInput, lMSCourseId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCirriculumCoursesConnection @aws_api_key @aws_iam
+  courseClicksByCourseID(courseID: String!, filter: ModelCourseClickFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseClickConnection @aws_api_key @aws_iam
+  courseInstructorsByInstructorId(filter: ModelCourseInstructorsFilterInput, instructorId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseInstructorsConnection @aws_api_key @aws_iam
+  courseInstructorsByLMSCourseId(filter: ModelCourseInstructorsFilterInput, lMSCourseId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseInstructorsConnection @aws_api_key @aws_iam
+  courseLessonsByLMSCourseId(filter: ModelCourseLessonsFilterInput, lMSCourseId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseLessonsConnection @aws_api_key @aws_iam
+  courseLessonsByLMSLessonId(filter: ModelCourseLessonsFilterInput, lMSLessonId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelCourseLessonsConnection @aws_api_key @aws_iam
+  courseSearchesByTerm(filter: ModelCourseSearchFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection, term: String!): ModelCourseSearchConnection @aws_api_key @aws_iam
+  coursesBySlug(filter: ModelCourseFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelCourseConnection @aws_api_key @aws_iam
+  customerLibariesBySlug(filter: ModelCustomerLibaryFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelCustomerLibaryConnection @aws_api_key @aws_iam
+  getAPS(id: ID!): APS @aws_api_key @aws_iam
+  getAPSRegistrant(id: ID!): APSRegistrant @aws_api_key @aws_iam
+  getAPSSpeaker(id: ID!): APSSpeaker @aws_api_key @aws_iam
+  getAPSSpeaker2024(id: ID!): APSSpeaker2024 @aws_api_key @aws_iam
+  getAPSSponsor(id: ID!): APSSponsor @aws_api_key @aws_iam
+  getAPSTicket(id: ID!): APSTicket @aws_api_key @aws_iam
+  getAPSTicketRegistrant(id: ID!): APSTicketRegistrant @aws_api_key @aws_iam
+  getAPSUser(id: ID!): APSUser @aws_api_key @aws_iam
+  getAddOnRegistrant(id: ID!): AddOnRegistrant @aws_api_key @aws_iam
+  getAppStart(id: ID!): AppStart @aws_api_key @aws_iam
+  getApplicationStart(createdAt: String!, id: ID!): ApplicationStart @aws_api_key @aws_iam
+  getAristosForm(id: ID!): AristosForm @aws_api_key @aws_iam
+  getArticle(id: ID!): Article @aws_api_key @aws_iam
+  getArticleRelatedCourses(id: ID!): ArticleRelatedCourses @aws_api_key @aws_iam
+  getAuthor(id: ID!): Author @aws_api_key @aws_iam
+  getAuthorTemplates(id: ID!): AuthorTemplates @aws_api_key @aws_iam
+  getBlog(id: ID!): Blog @aws_api_key @aws_iam
+  getBoschForm(id: ID!): BoschForm @aws_api_key @aws_iam
+  getCMPMForm(id: ID!): CMPMForm @aws_api_key @aws_iam
+  getCMPMSession(id: ID!): CMPMSession @aws_api_key @aws_iam
+  getCPSForm(id: ID!): CPSForm @aws_api_key @aws_iam
+  getCareer(id: ID!): Career @aws_api_key @aws_iam
+  getCertAppStart(id: ID!): CertAppStart @aws_api_key @aws_iam
+  getCertificate(id: ID!): Certificate @aws_api_key @aws_iam
+  getCertificateCourses(id: ID!): CertificateCourses @aws_api_key @aws_iam
+  getCirriculumCourses(id: ID!): CirriculumCourses @aws_api_key @aws_iam
+  getClick(id: ID!): Click @aws_api_key @aws_iam
+  getCompany(id: ID!): Company @aws_api_key @aws_iam
+  getCourse(id: ID!): Course @aws_api_key @aws_iam
+  getCourseClick(id: ID!): CourseClick @aws_api_key @aws_iam
+  getCourseInstructors(id: ID!): CourseInstructors @aws_api_key @aws_iam
+  getCourseLessons(id: ID!): CourseLessons @aws_api_key @aws_iam
+  getCourseSearch(id: ID!): CourseSearch @aws_api_key @aws_iam
+  getCustomer(id: ID!): Customer @aws_api_key @aws_iam
+  getCustomerLibary(id: ID!): CustomerLibary @aws_api_key @aws_iam
+  getDayInLifeItem(id: ID!): DayInLifeItem @aws_api_key @aws_iam
+  getGuardianForm(id: ID!): GuardianForm @aws_api_key @aws_iam
+  getIncludedCourse(id: ID!): IncludedCourse @aws_api_key @aws_iam
+  getIndexRow(id: ID!): IndexRow @aws_api_key @aws_iam
+  getIndexTemplate(id: ID!): IndexTemplate @aws_api_key @aws_iam
+  getIndexTemplateRows(id: ID!): IndexTemplateRows @aws_api_key @aws_iam
+  getInstructor(id: ID!): Instructor @aws_api_key @aws_iam
+  getLMSCirriculum(id: ID!): LMSCirriculum @aws_api_key @aws_iam
+  getLMSCollection(id: ID!): LMSCollection @aws_api_key @aws_iam
+  getLMSCourse(id: ID!): LMSCourse @aws_api_key @aws_iam
+  getLMSLesson(id: ID!): LMSLesson @aws_api_key @aws_iam
+  getLMSModule(id: ID!): LMSModule @aws_api_key @aws_iam
+  getLMSQuiz(id: ID!): LMSQuiz @aws_api_key @aws_iam
+  getLesson(id: ID!): Lesson @aws_api_key @aws_iam
+  getLessonClick(id: ID!): LessonClick @aws_api_key @aws_iam
+  getLessonLink(id: ID!): LessonLink @aws_api_key @aws_iam
+  getLessonSource(id: ID!): LessonSource @aws_api_key @aws_iam
+  getLessonTags(id: ID!): LessonTags @aws_api_key @aws_iam
+  getMorrisetteForm(id: ID!): MorrisetteForm @aws_api_key @aws_iam
+  getObjective(id: ID!): Objective @aws_api_key @aws_iam
+  getSalesBar(id: ID!): SalesBar @aws_api_key @aws_iam
+  getSalesbarClick(id: ID!): SalesbarClick @aws_api_key @aws_iam
+  getSlide(id: ID!): Slide @aws_api_key @aws_iam
+  getStaff(id: ID!): Staff @aws_api_key @aws_iam
+  getStudent(id: ID!): Student @aws_api_key @aws_iam
+  getSurgereForm(id: ID!): SurgereForm @aws_api_key @aws_iam
+  getTags(id: ID!): Tags @aws_api_key @aws_iam
+  getTestimonial(id: ID!): Testimonial @aws_api_key @aws_iam
+  getTimestamp(id: ID!): Timestamp @aws_api_key @aws_iam
+  getTourist(id: ID!): Tourist @aws_api_key @aws_iam
+  getTrackedCourse(id: ID!): TrackedCourse @aws_api_key @aws_iam
+  getUser(id: ID!): User @aws_api_key @aws_iam
+  getWorkshopForm(id: ID!): WorkshopForm @aws_api_key @aws_iam
+  includedCoursesByCustomerId(customerId: ID!, filter: ModelIncludedCourseFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelIncludedCourseConnection @aws_api_key @aws_iam
+  indexTemplateRowsByIndexRowId(filter: ModelIndexTemplateRowsFilterInput, indexRowId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelIndexTemplateRowsConnection @aws_api_key @aws_iam
+  indexTemplateRowsByIndexTemplateId(filter: ModelIndexTemplateRowsFilterInput, indexTemplateId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelIndexTemplateRowsConnection @aws_api_key @aws_iam
+  indexTemplatesBySlug(filter: ModelIndexTemplateFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelIndexTemplateConnection @aws_api_key @aws_iam
+  lMSCollectionsBySlug(filter: ModelLMSCollectionFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelLMSCollectionConnection @aws_api_key @aws_iam
+  lMSCoursesBySlug(filter: ModelLMSCourseFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelLMSCourseConnection @aws_api_key @aws_iam
+  lMSLessonsBySlug(filter: ModelLMSLessonFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelLMSLessonConnection @aws_api_key @aws_iam
+  lMSModulesBySlug(filter: ModelLMSModuleFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelLMSModuleConnection @aws_api_key @aws_iam
+  lessonClicksByLessonID(LessonID: String!, filter: ModelLessonClickFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLessonClickConnection @aws_api_key @aws_iam
+  lessonTagsByLessonId(filter: ModelLessonTagsFilterInput, lessonId: ID!, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLessonTagsConnection @aws_api_key @aws_iam
+  lessonTagsByTagsId(filter: ModelLessonTagsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection, tagsId: ID!): ModelLessonTagsConnection @aws_api_key @aws_iam
+  lessonsBySlug(filter: ModelLessonFilterInput, limit: Int, nextToken: String, slug: String!, sortDirection: ModelSortDirection): ModelLessonConnection @aws_api_key @aws_iam
+  listAPS(filter: ModelAPSFilterInput, limit: Int, nextToken: String): ModelAPSConnection @aws_api_key @aws_iam
+  listAPSRegistrants(filter: ModelAPSRegistrantFilterInput, limit: Int, nextToken: String): ModelAPSRegistrantConnection @aws_api_key @aws_iam
+  listAPSSpeaker2024s(filter: ModelAPSSpeaker2024FilterInput, limit: Int, nextToken: String): ModelAPSSpeaker2024Connection @aws_api_key @aws_iam
+  listAPSSpeakers(filter: ModelAPSSpeakerFilterInput, limit: Int, nextToken: String): ModelAPSSpeakerConnection @aws_api_key @aws_iam
+  listAPSSponsors(filter: ModelAPSSponsorFilterInput, limit: Int, nextToken: String): ModelAPSSponsorConnection @aws_api_key @aws_iam
+  listAPSTicketRegistrants(filter: ModelAPSTicketRegistrantFilterInput, limit: Int, nextToken: String): ModelAPSTicketRegistrantConnection @aws_api_key @aws_iam
+  listAPSTickets(filter: ModelAPSTicketFilterInput, limit: Int, nextToken: String): ModelAPSTicketConnection @aws_api_key @aws_iam
+  listAPSUsers(filter: ModelAPSUserFilterInput, limit: Int, nextToken: String): ModelAPSUserConnection @aws_api_key @aws_iam
+  listAddOnRegistrants(filter: ModelAddOnRegistrantFilterInput, limit: Int, nextToken: String): ModelAddOnRegistrantConnection @aws_api_key @aws_iam
+  listAppStarts(filter: ModelAppStartFilterInput, limit: Int, nextToken: String): ModelAppStartConnection @aws_api_key @aws_iam
+  listApplicationStarts(createdAt: ModelStringKeyConditionInput, filter: ModelApplicationStartFilterInput, id: ID, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelApplicationStartConnection @aws_api_key @aws_iam
+  listAristosForms(filter: ModelAristosFormFilterInput, limit: Int, nextToken: String): ModelAristosFormConnection @aws_api_key @aws_iam
+  listArticleRelatedCourses(filter: ModelArticleRelatedCoursesFilterInput, limit: Int, nextToken: String): ModelArticleRelatedCoursesConnection @aws_api_key @aws_iam
+  listArticles(filter: ModelArticleFilterInput, limit: Int, nextToken: String): ModelArticleConnection @aws_api_key @aws_iam
+  listAuthorTemplates(filter: ModelAuthorTemplatesFilterInput, limit: Int, nextToken: String): ModelAuthorTemplatesConnection @aws_api_key @aws_iam
+  listAuthors(filter: ModelAuthorFilterInput, limit: Int, nextToken: String): ModelAuthorConnection @aws_api_key @aws_iam
+  listBlogs(filter: ModelBlogFilterInput, limit: Int, nextToken: String): ModelBlogConnection @aws_api_key @aws_iam
+  listBoschForms(filter: ModelBoschFormFilterInput, limit: Int, nextToken: String): ModelBoschFormConnection @aws_api_key @aws_iam
+  listCMPMForms(filter: ModelCMPMFormFilterInput, limit: Int, nextToken: String): ModelCMPMFormConnection @aws_api_key @aws_iam
+  listCMPMSessions(filter: ModelCMPMSessionFilterInput, limit: Int, nextToken: String): ModelCMPMSessionConnection @aws_api_key @aws_iam
+  listCPSForms(filter: ModelCPSFormFilterInput, limit: Int, nextToken: String): ModelCPSFormConnection @aws_api_key @aws_iam
+  listCareers(filter: ModelCareerFilterInput, limit: Int, nextToken: String): ModelCareerConnection @aws_api_key @aws_iam
+  listCertAppStarts(filter: ModelCertAppStartFilterInput, limit: Int, nextToken: String): ModelCertAppStartConnection @aws_api_key @aws_iam
+  listCertificateCourses(filter: ModelCertificateCoursesFilterInput, limit: Int, nextToken: String): ModelCertificateCoursesConnection @aws_api_key @aws_iam
+  listCertificates(filter: ModelCertificateFilterInput, limit: Int, nextToken: String): ModelCertificateConnection @aws_api_key @aws_iam
+  listCirriculumCourses(filter: ModelCirriculumCoursesFilterInput, limit: Int, nextToken: String): ModelCirriculumCoursesConnection @aws_api_key @aws_iam
+  listClicks(filter: ModelClickFilterInput, limit: Int, nextToken: String): ModelClickConnection @aws_api_key @aws_iam
+  listCompanies(filter: ModelCompanyFilterInput, limit: Int, nextToken: String): ModelCompanyConnection @aws_api_key @aws_iam
+  listCourseClicks(filter: ModelCourseClickFilterInput, limit: Int, nextToken: String): ModelCourseClickConnection @aws_api_key @aws_iam
+  listCourseInstructors(filter: ModelCourseInstructorsFilterInput, limit: Int, nextToken: String): ModelCourseInstructorsConnection @aws_api_key @aws_iam
+  listCourseLessons(filter: ModelCourseLessonsFilterInput, limit: Int, nextToken: String): ModelCourseLessonsConnection @aws_api_key @aws_iam
+  listCourseSearches(filter: ModelCourseSearchFilterInput, limit: Int, nextToken: String): ModelCourseSearchConnection @aws_api_key @aws_iam
+  listCourses(filter: ModelCourseFilterInput, limit: Int, nextToken: String): ModelCourseConnection @aws_api_key @aws_iam
+  listCustomerLibaries(filter: ModelCustomerLibaryFilterInput, limit: Int, nextToken: String): ModelCustomerLibaryConnection @aws_api_key @aws_iam
+  listCustomers(filter: ModelCustomerFilterInput, limit: Int, nextToken: String): ModelCustomerConnection @aws_api_key @aws_iam
+  listDayInLifeItems(filter: ModelDayInLifeItemFilterInput, limit: Int, nextToken: String): ModelDayInLifeItemConnection @aws_api_key @aws_iam
+  listGuardianForms(filter: ModelGuardianFormFilterInput, limit: Int, nextToken: String): ModelGuardianFormConnection @aws_api_key @aws_iam
+  listIncludedCourses(filter: ModelIncludedCourseFilterInput, limit: Int, nextToken: String): ModelIncludedCourseConnection @aws_api_key @aws_iam
+  listIndexRows(filter: ModelIndexRowFilterInput, limit: Int, nextToken: String): ModelIndexRowConnection @aws_api_key @aws_iam
+  listIndexTemplateRows(filter: ModelIndexTemplateRowsFilterInput, limit: Int, nextToken: String): ModelIndexTemplateRowsConnection @aws_api_key @aws_iam
+  listIndexTemplates(filter: ModelIndexTemplateFilterInput, limit: Int, nextToken: String): ModelIndexTemplateConnection @aws_api_key @aws_iam
+  listInstructors(filter: ModelInstructorFilterInput, limit: Int, nextToken: String): ModelInstructorConnection @aws_api_key @aws_iam
+  listLMSCirriculums(filter: ModelLMSCirriculumFilterInput, limit: Int, nextToken: String): ModelLMSCirriculumConnection @aws_api_key @aws_iam
+  listLMSCollections(filter: ModelLMSCollectionFilterInput, limit: Int, nextToken: String): ModelLMSCollectionConnection @aws_api_key @aws_iam
+  listLMSCourses(filter: ModelLMSCourseFilterInput, limit: Int, nextToken: String): ModelLMSCourseConnection @aws_api_key @aws_iam
+  listLMSLessons(filter: ModelLMSLessonFilterInput, limit: Int, nextToken: String): ModelLMSLessonConnection @aws_api_key @aws_iam
+  listLMSModules(filter: ModelLMSModuleFilterInput, limit: Int, nextToken: String): ModelLMSModuleConnection @aws_api_key @aws_iam
+  listLMSQuizs(filter: ModelLMSQuizFilterInput, limit: Int, nextToken: String): ModelLMSQuizConnection @aws_api_key @aws_iam
+  listLessonClicks(filter: ModelLessonClickFilterInput, limit: Int, nextToken: String): ModelLessonClickConnection @aws_api_key @aws_iam
+  listLessonLinks(filter: ModelLessonLinkFilterInput, limit: Int, nextToken: String): ModelLessonLinkConnection @aws_api_key @aws_iam
+  listLessonSources(filter: ModelLessonSourceFilterInput, limit: Int, nextToken: String): ModelLessonSourceConnection @aws_api_key @aws_iam
+  listLessonTags(filter: ModelLessonTagsFilterInput, limit: Int, nextToken: String): ModelLessonTagsConnection @aws_api_key @aws_iam
+  listLessons(filter: ModelLessonFilterInput, limit: Int, nextToken: String): ModelLessonConnection @aws_api_key @aws_iam
+  listMorrisetteForms(filter: ModelMorrisetteFormFilterInput, limit: Int, nextToken: String): ModelMorrisetteFormConnection @aws_api_key @aws_iam
+  listObjectives(filter: ModelObjectiveFilterInput, limit: Int, nextToken: String): ModelObjectiveConnection @aws_api_key @aws_iam
+  listSalesBars(filter: ModelSalesBarFilterInput, limit: Int, nextToken: String): ModelSalesBarConnection @aws_api_key @aws_iam
+  listSalesbarClicks(filter: ModelSalesbarClickFilterInput, limit: Int, nextToken: String): ModelSalesbarClickConnection @aws_api_key @aws_iam
+  listSlides(filter: ModelSlideFilterInput, limit: Int, nextToken: String): ModelSlideConnection @aws_api_key @aws_iam
+  listStaff(filter: ModelStaffFilterInput, limit: Int, nextToken: String): ModelStaffConnection @aws_api_key @aws_iam
+  listStudents(filter: ModelStudentFilterInput, limit: Int, nextToken: String): ModelStudentConnection @aws_api_key @aws_iam
+  listSurgereForms(filter: ModelSurgereFormFilterInput, limit: Int, nextToken: String): ModelSurgereFormConnection @aws_api_key @aws_iam
+  listTags(filter: ModelTagsFilterInput, limit: Int, nextToken: String): ModelTagsConnection @aws_api_key @aws_iam
+  listTestimonials(filter: ModelTestimonialFilterInput, limit: Int, nextToken: String): ModelTestimonialConnection @aws_api_key @aws_iam
+  listTimestamps(filter: ModelTimestampFilterInput, limit: Int, nextToken: String): ModelTimestampConnection @aws_api_key @aws_iam
+  listTourists(filter: ModelTouristFilterInput, limit: Int, nextToken: String): ModelTouristConnection @aws_api_key @aws_iam
+  listTrackedCourses(filter: ModelTrackedCourseFilterInput, limit: Int, nextToken: String): ModelTrackedCourseConnection @aws_api_key @aws_iam
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection @aws_api_key @aws_iam
+  listWorkshopForms(filter: ModelWorkshopFormFilterInput, limit: Int, nextToken: String): ModelWorkshopFormConnection @aws_api_key @aws_iam
+  tagsByTag(filter: ModelTagsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection, tag: String!): ModelTagsConnection @aws_api_key @aws_iam
+  touristsByEmail(email: String!, filter: ModelTouristFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelTouristConnection @aws_api_key @aws_iam
+  trackedCoursesByCustomerIdAndClicks(clicks: ModelIntKeyConditionInput, customerId: ID!, filter: ModelTrackedCourseFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelTrackedCourseConnection @aws_api_key @aws_iam
+  usersByCompanyID(companyID: ID!, filter: ModelUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelUserConnection @aws_api_key @aws_iam
+  usersByEmail(email: String!, filter: ModelUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelUserConnection @aws_api_key @aws_iam
+  usersByName(filter: ModelUserFilterInput, limit: Int, name: String!, nextToken: String, sortDirection: ModelSortDirection): ModelUserConnection @aws_api_key @aws_iam
+  workshopFormsByEmail(email: String!, filter: ModelWorkshopFormFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelWorkshopFormConnection @aws_api_key @aws_iam
+}
+
+type RegistrationCode @aws_api_key @aws_iam {
+  code: String
+}
+
+type SalesBar @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  icon: String
+  id: ID!
+  link: String!
+  text: String!
+  type: String
+  updatedAt: AWSDateTime!
+}
+
+type SalesbarClick @aws_api_key @aws_iam {
+  country: String
+  createdAt: AWSDateTime!
+  id: ID!
+  ipAddress: String
+  link: String
+  page: String
+  updatedAt: AWSDateTime!
+}
+
+type Slide @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  description: String
+  id: ID!
+  lMSModuleSlidesId: ID
+  slideSource: String!
+  updatedAt: AWSDateTime!
+}
+
+type Staff @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  fullName: String!
+  id: ID!
+  image: String!
+  linkedIn: String
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type Student @aws_api_key @aws_iam {
+  courseEnrolled(filter: ModelLMSCourseFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLMSCourseConnection
+  createdAt: AWSDateTime!
+  id: ID!
+  student: User
+  studentId: ID
+  updatedAt: AWSDateTime!
+}
+
+type Subscription {
+  onCreateAPS: APS @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPS"])
+  onCreateAPSRegistrant: APSRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSRegistrant"])
+  onCreateAPSSpeaker: APSSpeaker @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSSpeaker"])
+  onCreateAPSSpeaker2024: APSSpeaker2024 @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSSpeaker2024"])
+  onCreateAPSSponsor: APSSponsor @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSSponsor"])
+  onCreateAPSTicket: APSTicket @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSTicket"])
+  onCreateAPSTicketRegistrant: APSTicketRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSTicketRegistrant"])
+  onCreateAPSUser: APSUser @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAPSUser"])
+  onCreateAddOnRegistrant: AddOnRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAddOnRegistrant"])
+  onCreateAppStart: AppStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAppStart"])
+  onCreateApplicationStart: ApplicationStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["createApplicationStart"])
+  onCreateAristosForm: AristosForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAristosForm"])
+  onCreateArticle: Article @aws_api_key @aws_iam @aws_subscribe(mutations : ["createArticle"])
+  onCreateArticleRelatedCourses: ArticleRelatedCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["createArticleRelatedCourses"])
+  onCreateAuthor: Author @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAuthor"])
+  onCreateAuthorTemplates: AuthorTemplates @aws_api_key @aws_iam @aws_subscribe(mutations : ["createAuthorTemplates"])
+  onCreateBlog: Blog @aws_api_key @aws_iam @aws_subscribe(mutations : ["createBlog"])
+  onCreateBoschForm: BoschForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createBoschForm"])
+  onCreateCMPMForm: CMPMForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCMPMForm"])
+  onCreateCMPMSession: CMPMSession @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCMPMSession"])
+  onCreateCPSForm: CPSForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCPSForm"])
+  onCreateCareer: Career @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCareer"])
+  onCreateCertAppStart: CertAppStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCertAppStart"])
+  onCreateCertificate: Certificate @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCertificate"])
+  onCreateCertificateCourses: CertificateCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCertificateCourses"])
+  onCreateCirriculumCourses: CirriculumCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCirriculumCourses"])
+  onCreateClick: Click @aws_api_key @aws_iam @aws_subscribe(mutations : ["createClick"])
+  onCreateCompany: Company @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCompany"])
+  onCreateCourse: Course @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCourse"])
+  onCreateCourseClick: CourseClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCourseClick"])
+  onCreateCourseInstructors: CourseInstructors @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCourseInstructors"])
+  onCreateCourseLessons: CourseLessons @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCourseLessons"])
+  onCreateCourseSearch: CourseSearch @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCourseSearch"])
+  onCreateCustomer: Customer @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCustomer"])
+  onCreateCustomerLibary: CustomerLibary @aws_api_key @aws_iam @aws_subscribe(mutations : ["createCustomerLibary"])
+  onCreateDayInLifeItem: DayInLifeItem @aws_api_key @aws_iam @aws_subscribe(mutations : ["createDayInLifeItem"])
+  onCreateGuardianForm: GuardianForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createGuardianForm"])
+  onCreateIncludedCourse: IncludedCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["createIncludedCourse"])
+  onCreateIndexRow: IndexRow @aws_api_key @aws_iam @aws_subscribe(mutations : ["createIndexRow"])
+  onCreateIndexTemplate: IndexTemplate @aws_api_key @aws_iam @aws_subscribe(mutations : ["createIndexTemplate"])
+  onCreateIndexTemplateRows: IndexTemplateRows @aws_api_key @aws_iam @aws_subscribe(mutations : ["createIndexTemplateRows"])
+  onCreateInstructor: Instructor @aws_api_key @aws_iam @aws_subscribe(mutations : ["createInstructor"])
+  onCreateLMSCirriculum: LMSCirriculum @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLMSCirriculum"])
+  onCreateLMSCollection: LMSCollection @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLMSCollection"])
+  onCreateLMSCourse: LMSCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLMSCourse"])
+  onCreateLMSLesson: LMSLesson @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLMSLesson"])
+  onCreateLMSModule: LMSModule @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLMSModule"])
+  onCreateLMSQuiz: LMSQuiz @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLMSQuiz"])
+  onCreateLesson: Lesson @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLesson"])
+  onCreateLessonClick: LessonClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLessonClick"])
+  onCreateLessonLink: LessonLink @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLessonLink"])
+  onCreateLessonSource: LessonSource @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLessonSource"])
+  onCreateLessonTags: LessonTags @aws_api_key @aws_iam @aws_subscribe(mutations : ["createLessonTags"])
+  onCreateMorrisetteForm: MorrisetteForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createMorrisetteForm"])
+  onCreateObjective: Objective @aws_api_key @aws_iam @aws_subscribe(mutations : ["createObjective"])
+  onCreateSalesBar: SalesBar @aws_api_key @aws_iam @aws_subscribe(mutations : ["createSalesBar"])
+  onCreateSalesbarClick: SalesbarClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["createSalesbarClick"])
+  onCreateSlide: Slide @aws_api_key @aws_iam @aws_subscribe(mutations : ["createSlide"])
+  onCreateStaff: Staff @aws_api_key @aws_iam @aws_subscribe(mutations : ["createStaff"])
+  onCreateStudent: Student @aws_api_key @aws_iam @aws_subscribe(mutations : ["createStudent"])
+  onCreateSurgereForm: SurgereForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createSurgereForm"])
+  onCreateTags: Tags @aws_api_key @aws_iam @aws_subscribe(mutations : ["createTags"])
+  onCreateTestimonial: Testimonial @aws_api_key @aws_iam @aws_subscribe(mutations : ["createTestimonial"])
+  onCreateTimestamp: Timestamp @aws_api_key @aws_iam @aws_subscribe(mutations : ["createTimestamp"])
+  onCreateTourist: Tourist @aws_api_key @aws_iam @aws_subscribe(mutations : ["createTourist"])
+  onCreateTrackedCourse: TrackedCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["createTrackedCourse"])
+  onCreateUser: User @aws_api_key @aws_iam @aws_subscribe(mutations : ["createUser"])
+  onCreateWorkshopForm: WorkshopForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["createWorkshopForm"])
+  onDeleteAPS: APS @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPS"])
+  onDeleteAPSRegistrant: APSRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSRegistrant"])
+  onDeleteAPSSpeaker: APSSpeaker @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSSpeaker"])
+  onDeleteAPSSpeaker2024: APSSpeaker2024 @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSSpeaker2024"])
+  onDeleteAPSSponsor: APSSponsor @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSSponsor"])
+  onDeleteAPSTicket: APSTicket @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSTicket"])
+  onDeleteAPSTicketRegistrant: APSTicketRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSTicketRegistrant"])
+  onDeleteAPSUser: APSUser @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAPSUser"])
+  onDeleteAddOnRegistrant: AddOnRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAddOnRegistrant"])
+  onDeleteAppStart: AppStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAppStart"])
+  onDeleteApplicationStart: ApplicationStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteApplicationStart"])
+  onDeleteAristosForm: AristosForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAristosForm"])
+  onDeleteArticle: Article @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteArticle"])
+  onDeleteArticleRelatedCourses: ArticleRelatedCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteArticleRelatedCourses"])
+  onDeleteAuthor: Author @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAuthor"])
+  onDeleteAuthorTemplates: AuthorTemplates @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteAuthorTemplates"])
+  onDeleteBlog: Blog @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteBlog"])
+  onDeleteBoschForm: BoschForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteBoschForm"])
+  onDeleteCMPMForm: CMPMForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCMPMForm"])
+  onDeleteCMPMSession: CMPMSession @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCMPMSession"])
+  onDeleteCPSForm: CPSForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCPSForm"])
+  onDeleteCareer: Career @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCareer"])
+  onDeleteCertAppStart: CertAppStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCertAppStart"])
+  onDeleteCertificate: Certificate @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCertificate"])
+  onDeleteCertificateCourses: CertificateCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCertificateCourses"])
+  onDeleteCirriculumCourses: CirriculumCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCirriculumCourses"])
+  onDeleteClick: Click @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteClick"])
+  onDeleteCompany: Company @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCompany"])
+  onDeleteCourse: Course @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCourse"])
+  onDeleteCourseClick: CourseClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCourseClick"])
+  onDeleteCourseInstructors: CourseInstructors @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCourseInstructors"])
+  onDeleteCourseLessons: CourseLessons @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCourseLessons"])
+  onDeleteCourseSearch: CourseSearch @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCourseSearch"])
+  onDeleteCustomer: Customer @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCustomer"])
+  onDeleteCustomerLibary: CustomerLibary @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteCustomerLibary"])
+  onDeleteDayInLifeItem: DayInLifeItem @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteDayInLifeItem"])
+  onDeleteGuardianForm: GuardianForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteGuardianForm"])
+  onDeleteIncludedCourse: IncludedCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteIncludedCourse"])
+  onDeleteIndexRow: IndexRow @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteIndexRow"])
+  onDeleteIndexTemplate: IndexTemplate @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteIndexTemplate"])
+  onDeleteIndexTemplateRows: IndexTemplateRows @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteIndexTemplateRows"])
+  onDeleteInstructor: Instructor @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteInstructor"])
+  onDeleteLMSCirriculum: LMSCirriculum @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLMSCirriculum"])
+  onDeleteLMSCollection: LMSCollection @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLMSCollection"])
+  onDeleteLMSCourse: LMSCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLMSCourse"])
+  onDeleteLMSLesson: LMSLesson @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLMSLesson"])
+  onDeleteLMSModule: LMSModule @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLMSModule"])
+  onDeleteLMSQuiz: LMSQuiz @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLMSQuiz"])
+  onDeleteLesson: Lesson @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLesson"])
+  onDeleteLessonClick: LessonClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLessonClick"])
+  onDeleteLessonLink: LessonLink @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLessonLink"])
+  onDeleteLessonSource: LessonSource @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLessonSource"])
+  onDeleteLessonTags: LessonTags @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteLessonTags"])
+  onDeleteMorrisetteForm: MorrisetteForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteMorrisetteForm"])
+  onDeleteObjective: Objective @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteObjective"])
+  onDeleteSalesBar: SalesBar @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteSalesBar"])
+  onDeleteSalesbarClick: SalesbarClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteSalesbarClick"])
+  onDeleteSlide: Slide @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteSlide"])
+  onDeleteStaff: Staff @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteStaff"])
+  onDeleteStudent: Student @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteStudent"])
+  onDeleteSurgereForm: SurgereForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteSurgereForm"])
+  onDeleteTags: Tags @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteTags"])
+  onDeleteTestimonial: Testimonial @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteTestimonial"])
+  onDeleteTimestamp: Timestamp @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteTimestamp"])
+  onDeleteTourist: Tourist @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteTourist"])
+  onDeleteTrackedCourse: TrackedCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteTrackedCourse"])
+  onDeleteUser: User @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteUser"])
+  onDeleteWorkshopForm: WorkshopForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["deleteWorkshopForm"])
+  onUpdateAPS: APS @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPS"])
+  onUpdateAPSRegistrant: APSRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSRegistrant"])
+  onUpdateAPSSpeaker: APSSpeaker @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSSpeaker"])
+  onUpdateAPSSpeaker2024: APSSpeaker2024 @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSSpeaker2024"])
+  onUpdateAPSSponsor: APSSponsor @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSSponsor"])
+  onUpdateAPSTicket: APSTicket @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSTicket"])
+  onUpdateAPSTicketRegistrant: APSTicketRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSTicketRegistrant"])
+  onUpdateAPSUser: APSUser @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAPSUser"])
+  onUpdateAddOnRegistrant: AddOnRegistrant @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAddOnRegistrant"])
+  onUpdateAppStart: AppStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAppStart"])
+  onUpdateApplicationStart: ApplicationStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateApplicationStart"])
+  onUpdateAristosForm: AristosForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAristosForm"])
+  onUpdateArticle: Article @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateArticle"])
+  onUpdateArticleRelatedCourses: ArticleRelatedCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateArticleRelatedCourses"])
+  onUpdateAuthor: Author @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAuthor"])
+  onUpdateAuthorTemplates: AuthorTemplates @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateAuthorTemplates"])
+  onUpdateBlog: Blog @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateBlog"])
+  onUpdateBoschForm: BoschForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateBoschForm"])
+  onUpdateCMPMForm: CMPMForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCMPMForm"])
+  onUpdateCMPMSession: CMPMSession @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCMPMSession"])
+  onUpdateCPSForm: CPSForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCPSForm"])
+  onUpdateCareer: Career @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCareer"])
+  onUpdateCertAppStart: CertAppStart @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCertAppStart"])
+  onUpdateCertificate: Certificate @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCertificate"])
+  onUpdateCertificateCourses: CertificateCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCertificateCourses"])
+  onUpdateCirriculumCourses: CirriculumCourses @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCirriculumCourses"])
+  onUpdateClick: Click @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateClick"])
+  onUpdateCompany: Company @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCompany"])
+  onUpdateCourse: Course @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCourse"])
+  onUpdateCourseClick: CourseClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCourseClick"])
+  onUpdateCourseInstructors: CourseInstructors @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCourseInstructors"])
+  onUpdateCourseLessons: CourseLessons @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCourseLessons"])
+  onUpdateCourseSearch: CourseSearch @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCourseSearch"])
+  onUpdateCustomer: Customer @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCustomer"])
+  onUpdateCustomerLibary: CustomerLibary @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateCustomerLibary"])
+  onUpdateDayInLifeItem: DayInLifeItem @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateDayInLifeItem"])
+  onUpdateGuardianForm: GuardianForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateGuardianForm"])
+  onUpdateIncludedCourse: IncludedCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateIncludedCourse"])
+  onUpdateIndexRow: IndexRow @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateIndexRow"])
+  onUpdateIndexTemplate: IndexTemplate @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateIndexTemplate"])
+  onUpdateIndexTemplateRows: IndexTemplateRows @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateIndexTemplateRows"])
+  onUpdateInstructor: Instructor @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateInstructor"])
+  onUpdateLMSCirriculum: LMSCirriculum @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLMSCirriculum"])
+  onUpdateLMSCollection: LMSCollection @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLMSCollection"])
+  onUpdateLMSCourse: LMSCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLMSCourse"])
+  onUpdateLMSLesson: LMSLesson @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLMSLesson"])
+  onUpdateLMSModule: LMSModule @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLMSModule"])
+  onUpdateLMSQuiz: LMSQuiz @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLMSQuiz"])
+  onUpdateLesson: Lesson @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLesson"])
+  onUpdateLessonClick: LessonClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLessonClick"])
+  onUpdateLessonLink: LessonLink @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLessonLink"])
+  onUpdateLessonSource: LessonSource @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLessonSource"])
+  onUpdateLessonTags: LessonTags @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateLessonTags"])
+  onUpdateMorrisetteForm: MorrisetteForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateMorrisetteForm"])
+  onUpdateObjective: Objective @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateObjective"])
+  onUpdateSalesBar: SalesBar @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateSalesBar"])
+  onUpdateSalesbarClick: SalesbarClick @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateSalesbarClick"])
+  onUpdateSlide: Slide @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateSlide"])
+  onUpdateStaff: Staff @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateStaff"])
+  onUpdateStudent: Student @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateStudent"])
+  onUpdateSurgereForm: SurgereForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateSurgereForm"])
+  onUpdateTags: Tags @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateTags"])
+  onUpdateTestimonial: Testimonial @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateTestimonial"])
+  onUpdateTimestamp: Timestamp @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateTimestamp"])
+  onUpdateTourist: Tourist @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateTourist"])
+  onUpdateTrackedCourse: TrackedCourse @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateTrackedCourse"])
+  onUpdateUser: User @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateUser"])
+  onUpdateWorkshopForm: WorkshopForm @aws_api_key @aws_iam @aws_subscribe(mutations : ["updateWorkshopForm"])
+}
+
+type SurgereForm @aws_api_key @aws_iam {
+  approved: Boolean!
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  name: String!
+  title: String!
+  updatedAt: AWSDateTime!
+}
+
+type Tags @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  id: ID!
+  lesson(filter: ModelLessonTagsFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelLessonTagsConnection
+  tag: String!
+  updatedAt: AWSDateTime!
+}
+
+type Testimonial @aws_api_key @aws_iam {
+  affiliation: String
+  author: String
+  company: String
+  content: String!
+  createdAt: AWSDateTime!
+  date: String
+  featured: Boolean
+  headshot: String
+  id: ID!
+  linkedin: String
+  tags: [String]
+  title: String
+  updatedAt: AWSDateTime!
+  video: String
+}
+
+type Timestamp @aws_api_key @aws_iam {
+  createdAt: AWSDateTime!
+  description: String
+  id: ID!
+  time: String!
+  updatedAt: AWSDateTime!
+}
+
+type Tourist @aws_api_key @aws_iam {
+  company: String!
+  createdAt: AWSDateTime!
+  email: String!
+  fullName: String!
+  id: ID!
+  phone: String!
+  tour: String!
+  updatedAt: AWSDateTime!
+}
+
+type TrackedCourse @aws_api_key @aws_iam {
+  clicks: Int!
+  courseId: String!
+  createdAt: AWSDateTime!
+  customer: Customer
+  customerId: ID!
+  id: ID!
+  updatedAt: AWSDateTime!
+}
+
+type User @aws_api_key @aws_iam {
+  apss(filter: ModelAPSUserFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelAPSUserConnection
+  bio: String
+  cell: String
+  cmpmForm: CMPMForm
+  cmpmFormID: ID
+  company: String
+  companyID: ID
+  cpsForm: CPSForm
+  cpsFormID: ID
+  createdAt: AWSDateTime!
+  email: String!
+  id: ID!
+  instructorId: Instructor
+  linkedin: String
+  name: String!
+  office: String
+  picture: String
+  savedArticles: [String]
+  savedCourses: [String]
+  savedLessons: [String]
+  source: String
+  studentId: Student
+  title: String
+  updatedAt: AWSDateTime!
+  userInstructorIdId: ID
+  userStudentIdId: ID
+}
+
+type WorkshopForm @aws_api_key @aws_iam {
+  audienceSize: String
+  companyName: String
+  createdOn: AWSDateTime!
+  email: String!
+  eventDate: String
+  eventDescription: String
+  eventLocation: String
+  firstName: String!
+  id: ID!
+  lastName: String!
+  phone: String
+  updatedOn: AWSDateTime!
+}
+
+enum CategoryType {
+  AUTO
+  BUSINESS
+  DESIGN
+  FOODANDBEVERAGE
+  INDUSTRY
+  MATERIALS
+  SUPPLYCHAIN
+}
+
+enum MediaType {
+  IMAGE
+  SLIDES
+  VIDEO
+}
+
+enum ModelAttributeTypes {
+  _null
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+enum ModuleType {
+  ARTICLE
+  LESSON
+  LOTM
+  MICROLESSON
+  REGULATORY
+}
+
+input CreateAPSInput {
+  codes: [RegistrationCodeInput]
+  id: ID
+  year: Int!
+}
+
+input CreateAPSRegistrantInput {
+  code: String
+  codeRequested: Boolean
+  codeSent: Boolean
+  company: String!
+  email: String!
+  id: ID
+  innovationWorkshop: String
+  name: String!
+  phone: String!
+  plantTour: String
+  registrationReceived: Boolean
+  speedNetworking: String
+  title: String!
+  welcomeEmailSent: Boolean
+  worksWith: String
+  year: String
+}
+
+input CreateAPSSpeaker2024Input {
+  bio: String!
+  company: String!
+  email: String!
+  firstName: String!
+  headshot: String!
+  id: ID
+  lastName: String!
+  linkedin: String
+  mediaConsent: Boolean
+  phone: String
+  presentationSummary: String
+  presentationTitle: String
+  privacyConsent: Boolean
+  title: String!
+}
+
+input CreateAPSSpeakerInput {
+  aPSSpeakersId: ID
+  bio: String!
+  company: String!
+  email: String!
+  firstName: String!
+  headshot: String!
+  id: ID
+  lastName: String!
+  linkedin: String
+  mediaConsent: Boolean
+  phone: String
+  presentationSummary: String
+  presentationTitle: String
+  privacyConsent: Boolean
+  title: String!
+}
+
+input CreateAPSSponsorInput {
+  aPSId: ID!
+  companyId: ID!
+  id: ID
+}
+
+input CreateAPSTicketInput {
+  company: String!
+  email: String!
+  id: ID
+  name: String!
+  paymentConfirmation: String
+  phone: String!
+  title: String!
+}
+
+input CreateAPSTicketRegistrantInput {
+  code: String
+  company: String!
+  email: String!
+  id: ID
+  innovationWorkshop: String
+  name: String!
+  phone: String!
+  plantTour: String
+  registrationReceived: Boolean
+  speedNetworking: String
+  title: String!
+  welcomeEmailSent: Boolean
+  worksWith: String
+  year: String
+}
+
+input CreateAPSUserInput {
+  aPSId: ID!
+  id: ID
+  userId: ID!
+}
+
+input CreateAddOnRegistrantInput {
+  company: String!
+  email: String!
+  fullName: String!
+  id: ID
+  tour: String!
+}
+
+input CreateAppStartInput {
+  email: String!
+  firstName: String!
+  id: ID
+  lastName: String!
+  phone: String
+  source: String
+  sourceUrl: String
+}
+
+input CreateApplicationStartInput {
+  createdAt: String
+  email: String!
+  firstName: String!
+  id: ID
+  lastName: String!
+  phone: String
+  source: String
+  sourceUrl: String
+}
+
+input CreateAristosFormInput {
+  approved: Boolean!
+  company: String!
+  email: String!
+  id: ID
+  name: String!
+  title: String!
+}
+
+input CreateArticleInput {
+  content: String
+  id: ID
+  media: String
+  seoImage: String
+  slug: String!
+  subhead: String
+  tags: [String]
+  title: String!
+}
+
+input CreateArticleRelatedCoursesInput {
+  articleId: ID!
+  courseId: ID!
+  id: ID
+}
+
+input CreateAuthorInput {
+  company: String
+  headshot: String
+  id: ID
+  linkedIn: String
+  name: String!
+  title: String
+}
+
+input CreateAuthorTemplatesInput {
+  authorId: ID!
+  id: ID
+  indexTemplateId: ID!
+}
+
+input CreateBlogInput {
+  author: String
+  content: String!
+  date: String
+  id: ID
+  media: String
+  slug: String!
+  tags: [String]
+  title: String!
+}
+
+input CreateBoschFormInput {
+  approved: Boolean!
+  company: String!
+  email: String!
+  id: ID
+  name: String!
+  title: String!
+  topicFour: Boolean
+  topicOne: Boolean
+  topicThree: Boolean
+  topicTwo: Boolean
+}
+
+input CreateCMPMFormInput {
+  addressExtra: String
+  areaOfInterest: String
+  background: String
+  birthYear: String
+  cMPMFormUserId: ID
+  city: String
+  cmpmGoals: String
+  companyName: String
+  companyTitle: String
+  country: String
+  email: String
+  firstName: String
+  id: ID
+  lastName: String
+  linkedin: String
+  moreAboutYou: String
+  optOut: Boolean
+  payment: String
+  paymentConfirmation: String
+  phone: String
+  referral: String
+  sessionApplying: String
+  state: String
+  status: String
+  streetAddress: String
+  whyPackaging: String
+  yearGoals: String
+}
+
+input CreateCMPMSessionInput {
+  deadline: String!
+  endDate: String!
+  id: ID
+  startDate: String!
+  title: String!
+}
+
+input CreateCPSFormInput {
+  addressExtra: String
+  areaOfInterest: String
+  background: String
+  birthYear: String
+  cPSFormUserId: ID
+  city: String
+  companyName: String
+  companyTitle: String
+  country: String
+  cpsGoals: String
+  elective: String
+  email: String
+  firstName: String
+  id: ID
+  lastName: String
+  linkedin: String
+  moreAboutYou: String
+  optOut: Boolean
+  payment: String
+  paymentConfirmation: String
+  phone: String
+  referral: String
+  sessionApplying: String
+  state: String
+  status: String
+  streetAddress: String
+  whyPackaging: String
+  yearGoals: String
+}
+
+input CreateCareerInput {
+  altName: String
+  apcCopy: String
+  beverageCopy: String
+  cmpmCopy: String
+  coreCopy: String
+  cpsCopy: String
+  electiveCopy: String
+  freeCopy: String
+  id: ID
+  media: String
+  slug: String!
+  subhead: String
+  title: String!
+}
+
+input CreateCertAppStartInput {
+  country: String
+  createdAt: String
+  email: String!
+  firstName: String!
+  id: ID
+  ipAddress: String
+  lastName: String!
+  phone: String
+  source: String
+  sourceUrl: String
+  type: String!
+}
+
+input CreateCertificateCoursesInput {
+  certificateId: ID!
+  courseId: ID!
+  id: ID
+}
+
+input CreateCertificateInput {
+  brochure_link: String
+  ceus_total: Int
+  courses_total: Int
+  demoLink: String
+  hours_total: Int
+  id: ID
+  lmsLink: String
+  price_features: [String]
+  price_full: Int
+  price_monthly: Int
+  slug: String!
+  title: String!
+  title_button_1_link: String
+  title_button_1_text: String
+  title_button_2_link: String
+  title_button_2_text: String
+  title_callout_1: String
+  title_callout_2: String
+  title_image: String
+  title_text: String
+  video: String
+  whoText: String
+}
+
+input CreateCirriculumCoursesInput {
+  id: ID
+  lMSCirriculumId: ID!
+  lMSCourseId: ID!
+}
+
+input CreateClickInput {
+  id: ID
+  identifier: String
+  ipAddress: String
+  location: String
+  nextPath: String
+  path: String
+  ref: String
+  type: String
+}
+
+input CreateCompanyInput {
+  city: String
+  email: String
+  id: ID
+  name: String!
+  phone: String
+  state: String
+  street_1: String
+  street_2: String
+  website: String
+  zip: String
+}
+
+input CreateCourseClickInput {
+  country: String
+  courseID: String!
+  format: String
+  id: ID
+  ipAddress: String
+  lat: String
+  long: String
+  nextPath: String
+  page: String
+  referrer: String
+}
+
+input CreateCourseInput {
+  category: CategoryType!
+  hour: Int
+  id: ID
+  lessons: Int
+  media: String
+  price: Int
+  slug: String!
+  subhead: String
+  title: String!
+  video: String
+  videos: Int
+}
+
+input CreateCourseInstructorsInput {
+  id: ID
+  instructorId: ID!
+  lMSCourseId: ID!
+}
+
+input CreateCourseLessonsInput {
+  id: ID
+  lMSCourseId: ID!
+  lMSLessonId: ID!
+}
+
+input CreateCourseSearchInput {
+  country: String
+  id: ID
+  ipAddress: String
+  term: String!
+}
+
+input CreateCustomerInput {
+  displayName: String!
+  email: String
+  highlightColor: String
+  id: ID
+  link: String
+  logo: String
+  offered: [String]
+  offerings: [String]
+  pdf: String
+  primaryColor: String
+  slide: String
+  status: String
+  video: String
+}
+
+input CreateCustomerLibaryInput {
+  addOns: [String]
+  clientCourses: [String]
+  description: String
+  displayName: String!
+  email: String
+  highlightColor: String
+  id: ID
+  link: String
+  logo: String
+  pdf: String
+  primaryColor: String
+  pschoolCourses: [String]
+  slide: String
+  slug: String!
+  status: String
+  video: String
+}
+
+input CreateDayInLifeItemInput {
+  careerDayInLifeId: ID
+  desc: String!
+  icon: String
+  id: ID
+  name: String!
+}
+
+input CreateGuardianFormInput {
+  approved: Boolean!
+  company: String!
+  email: String!
+  id: ID
+  name: String!
+  title: String!
+}
+
+input CreateIncludedCourseInput {
+  courseId: String!
+  customerId: ID!
+  id: ID
+}
+
+input CreateIndexRowInput {
+  content: [String]
+  headline: String
+  id: ID
+  subhead: String
+  type: String
+}
+
+input CreateIndexTemplateInput {
+  id: ID
+  slug: String!
+  subhead: String
+  title: String!
+}
+
+input CreateIndexTemplateRowsInput {
+  id: ID
+  indexRowId: ID!
+  indexTemplateId: ID!
+}
+
+input CreateInstructorInput {
+  id: ID
+  userId: ID
+}
+
+input CreateLMSCirriculumInput {
+  description: String
+  id: ID
+  shorthand: String
+  slug: String
+  title: String
+}
+
+input CreateLMSCollectionInput {
+  category: CategoryType
+  collectionId: String
+  courses: [String]
+  description: String
+  hours: String
+  id: ID
+  instructor: String
+  instructorDescription: String
+  instructorImage: String
+  instructorLink: String
+  lmsLink: String
+  price: Int
+  slug: String!
+  subtitle: String
+  title: String!
+}
+
+input CreateLMSCourseInput {
+  altLink: String
+  category: CategoryType
+  categoryArray: [String]
+  collection: [String]
+  courseId: String
+  demo: Boolean
+  hours: String
+  id: ID
+  infoSheet: String
+  lessons: String
+  link: String
+  objectives: [String]
+  partOf: [String]
+  percentComplete: Int
+  preview: String
+  price: String
+  seoImage: String
+  shortDescription: String
+  slug: String!
+  studentCourseEnrolledId: ID
+  subheadline: String
+  title: String
+  trial_link: String
+  type: String
+  videos: String
+  what_learned: String
+}
+
+input CreateLMSLessonInput {
+  content: String
+  id: ID
+  media: String
+  objectives: [String]
+  percentComplete: Int
+  slug: String!
+  subheadline: String
+  title: String
+}
+
+input CreateLMSModuleInput {
+  content: String
+  id: ID
+  lMSLessonModulesId: ID
+  lMSModuleQuizId: ID
+  media: String
+  mediaType: MediaType
+  objectives: [String]
+  slug: String!
+  subheadline: String
+  title: String
+}
+
+input CreateLMSQuizInput {
+  answer1: String
+  answer2: String
+  answer3: String
+  answer4: String
+  correctAnswer: String
+  id: ID
+  lMSQuizModuleId: ID
+  prompt: String
+}
+
+input CreateLessonClickInput {
+  LessonID: String!
+  country: String
+  format: String
+  id: ID
+  ipAddress: String
+  lat: String
+  long: String
+  page: String
+  referrer: String
+}
+
+input CreateLessonInput {
+  actionCTA: String
+  actionExample: String
+  actionLink: String
+  actionLinkTitle: String
+  actionSubhead: String
+  author: [String]
+  backdate: String
+  content: String
+  createdBy: String
+  featured: String
+  id: ID
+  lastEditedBy: String
+  media: String
+  mediaType: MediaType
+  objectives: [String]
+  related: [String]
+  screengrab: String
+  seoImage: String
+  slides: [String]
+  slug: String!
+  status: String
+  subhead: String
+  title: String!
+  type: ModuleType
+  videoLink: String
+}
+
+input CreateLessonLinkInput {
+  id: ID
+  lessonLinksId: ID
+  link: String
+  name: String
+}
+
+input CreateLessonSourceInput {
+  id: ID
+  lessonSourcesId: ID
+  link: String
+  name: String
+  position: Int!
+}
+
+input CreateLessonTagsInput {
+  id: ID
+  lessonId: ID!
+  tagsId: ID!
+}
+
+input CreateMorrisetteFormInput {
+  approved: Boolean!
+  company: String!
+  email: String!
+  id: ID
+  name: String!
+  preference: String!
+  title: String!
+}
+
+input CreateObjectiveInput {
+  completed: Boolean
+  id: ID
+  objective: String!
+}
+
+input CreateSalesBarInput {
+  icon: String
+  id: ID
+  link: String!
+  text: String!
+  type: String
+}
+
+input CreateSalesbarClickInput {
+  country: String
+  id: ID
+  ipAddress: String
+  link: String
+  page: String
+}
+
+input CreateSlideInput {
+  description: String
+  id: ID
+  lMSModuleSlidesId: ID
+  slideSource: String!
+}
+
+input CreateStaffInput {
+  fullName: String!
+  id: ID
+  image: String!
+  linkedIn: String
+  title: String!
+}
+
+input CreateStudentInput {
+  id: ID
+  studentId: ID
+}
+
+input CreateSurgereFormInput {
+  approved: Boolean!
+  company: String!
+  email: String!
+  id: ID
+  name: String!
+  title: String!
+}
+
+input CreateTagsInput {
+  id: ID
+  tag: String!
+}
+
+input CreateTestimonialInput {
+  affiliation: String
+  author: String
+  company: String
+  content: String!
+  date: String
+  featured: Boolean
+  headshot: String
+  id: ID
+  linkedin: String
+  tags: [String]
+  title: String
+  video: String
+}
+
+input CreateTimestampInput {
+  description: String
+  id: ID
+  time: String!
+}
+
+input CreateTouristInput {
+  company: String!
+  email: String!
+  fullName: String!
+  id: ID
+  phone: String!
+  tour: String!
+}
+
+input CreateTrackedCourseInput {
+  clicks: Int!
+  courseId: String!
+  customerId: ID!
+  id: ID
+}
+
+input CreateUserInput {
+  bio: String
+  cell: String
+  cmpmFormID: ID
+  company: String
+  companyID: ID
+  cpsFormID: ID
+  email: String!
+  id: ID
+  linkedin: String
+  name: String!
+  office: String
+  picture: String
+  savedArticles: [String]
+  savedCourses: [String]
+  savedLessons: [String]
+  source: String
+  title: String
+  userInstructorIdId: ID
+  userStudentIdId: ID
+}
+
+input CreateWorkshopFormInput {
+  audienceSize: String
+  companyName: String
+  email: String!
+  eventDate: String
+  eventDescription: String
+  eventLocation: String
+  firstName: String!
+  id: ID
+  lastName: String!
+  phone: String
+}
+
+input DeleteAPSInput {
+  id: ID!
+}
+
+input DeleteAPSRegistrantInput {
+  id: ID!
+}
+
+input DeleteAPSSpeaker2024Input {
+  id: ID!
+}
+
+input DeleteAPSSpeakerInput {
+  id: ID!
+}
+
+input DeleteAPSSponsorInput {
+  id: ID!
+}
+
+input DeleteAPSTicketInput {
+  id: ID!
+}
+
+input DeleteAPSTicketRegistrantInput {
+  id: ID!
+}
+
+input DeleteAPSUserInput {
+  id: ID!
+}
+
+input DeleteAddOnRegistrantInput {
+  id: ID!
+}
+
+input DeleteAppStartInput {
+  id: ID!
+}
+
+input DeleteApplicationStartInput {
+  createdAt: String!
+  id: ID!
+}
+
+input DeleteAristosFormInput {
+  id: ID!
+}
+
+input DeleteArticleInput {
+  id: ID!
+}
+
+input DeleteArticleRelatedCoursesInput {
+  id: ID!
+}
+
+input DeleteAuthorInput {
+  id: ID!
+}
+
+input DeleteAuthorTemplatesInput {
+  id: ID!
+}
+
+input DeleteBlogInput {
+  id: ID!
+}
+
+input DeleteBoschFormInput {
+  id: ID!
+}
+
+input DeleteCMPMFormInput {
+  id: ID!
+}
+
+input DeleteCMPMSessionInput {
+  id: ID!
+}
+
+input DeleteCPSFormInput {
+  id: ID!
+}
+
+input DeleteCareerInput {
+  id: ID!
+}
+
+input DeleteCertAppStartInput {
+  id: ID!
+}
+
+input DeleteCertificateCoursesInput {
+  id: ID!
+}
+
+input DeleteCertificateInput {
+  id: ID!
+}
+
+input DeleteCirriculumCoursesInput {
+  id: ID!
+}
+
+input DeleteClickInput {
+  id: ID!
+}
+
+input DeleteCompanyInput {
+  id: ID!
+}
+
+input DeleteCourseClickInput {
+  id: ID!
+}
+
+input DeleteCourseInput {
+  id: ID!
+}
+
+input DeleteCourseInstructorsInput {
+  id: ID!
+}
+
+input DeleteCourseLessonsInput {
+  id: ID!
+}
+
+input DeleteCourseSearchInput {
+  id: ID!
+}
+
+input DeleteCustomerInput {
+  id: ID!
+}
+
+input DeleteCustomerLibaryInput {
+  id: ID!
+}
+
+input DeleteDayInLifeItemInput {
+  id: ID!
+}
+
+input DeleteGuardianFormInput {
+  id: ID!
+}
+
+input DeleteIncludedCourseInput {
+  id: ID!
+}
+
+input DeleteIndexRowInput {
+  id: ID!
+}
+
+input DeleteIndexTemplateInput {
+  id: ID!
+}
+
+input DeleteIndexTemplateRowsInput {
+  id: ID!
+}
+
+input DeleteInstructorInput {
+  id: ID!
+}
+
+input DeleteLMSCirriculumInput {
+  id: ID!
+}
+
+input DeleteLMSCollectionInput {
+  id: ID!
+}
+
+input DeleteLMSCourseInput {
+  id: ID!
+}
+
+input DeleteLMSLessonInput {
+  id: ID!
+}
+
+input DeleteLMSModuleInput {
+  id: ID!
+}
+
+input DeleteLMSQuizInput {
+  id: ID!
+}
+
+input DeleteLessonClickInput {
+  id: ID!
+}
+
+input DeleteLessonInput {
+  id: ID!
+}
+
+input DeleteLessonLinkInput {
+  id: ID!
+}
+
+input DeleteLessonSourceInput {
+  id: ID!
+}
+
+input DeleteLessonTagsInput {
+  id: ID!
+}
+
+input DeleteMorrisetteFormInput {
+  id: ID!
+}
+
+input DeleteObjectiveInput {
+  id: ID!
+}
+
+input DeleteSalesBarInput {
+  id: ID!
+}
+
+input DeleteSalesbarClickInput {
+  id: ID!
+}
+
+input DeleteSlideInput {
+  id: ID!
+}
+
+input DeleteStaffInput {
+  id: ID!
+}
+
+input DeleteStudentInput {
+  id: ID!
+}
+
+input DeleteSurgereFormInput {
+  id: ID!
+}
+
+input DeleteTagsInput {
+  id: ID!
+}
+
+input DeleteTestimonialInput {
+  id: ID!
+}
+
+input DeleteTimestampInput {
+  id: ID!
+}
+
+input DeleteTouristInput {
+  id: ID!
+}
+
+input DeleteTrackedCourseInput {
+  id: ID!
+}
+
+input DeleteUserInput {
+  id: ID!
+}
+
+input DeleteWorkshopFormInput {
+  id: ID!
+}
+
+input ModelAPSConditionInput {
+  and: [ModelAPSConditionInput]
+  not: ModelAPSConditionInput
+  or: [ModelAPSConditionInput]
+  year: ModelIntInput
+}
+
+input ModelAPSFilterInput {
+  and: [ModelAPSFilterInput]
+  id: ModelIDInput
+  not: ModelAPSFilterInput
+  or: [ModelAPSFilterInput]
+  year: ModelIntInput
+}
+
+input ModelAPSRegistrantConditionInput {
+  and: [ModelAPSRegistrantConditionInput]
+  code: ModelStringInput
+  codeRequested: ModelBooleanInput
+  codeSent: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  innovationWorkshop: ModelStringInput
+  name: ModelStringInput
+  not: ModelAPSRegistrantConditionInput
+  or: [ModelAPSRegistrantConditionInput]
+  phone: ModelStringInput
+  plantTour: ModelStringInput
+  registrationReceived: ModelBooleanInput
+  speedNetworking: ModelStringInput
+  title: ModelStringInput
+  welcomeEmailSent: ModelBooleanInput
+  worksWith: ModelStringInput
+  year: ModelStringInput
+}
+
+input ModelAPSRegistrantFilterInput {
+  and: [ModelAPSRegistrantFilterInput]
+  code: ModelStringInput
+  codeRequested: ModelBooleanInput
+  codeSent: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  id: ModelIDInput
+  innovationWorkshop: ModelStringInput
+  name: ModelStringInput
+  not: ModelAPSRegistrantFilterInput
+  or: [ModelAPSRegistrantFilterInput]
+  phone: ModelStringInput
+  plantTour: ModelStringInput
+  registrationReceived: ModelBooleanInput
+  speedNetworking: ModelStringInput
+  title: ModelStringInput
+  welcomeEmailSent: ModelBooleanInput
+  worksWith: ModelStringInput
+  year: ModelStringInput
+}
+
+input ModelAPSSpeaker2024ConditionInput {
+  and: [ModelAPSSpeaker2024ConditionInput]
+  bio: ModelStringInput
+  company: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  headshot: ModelStringInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  mediaConsent: ModelBooleanInput
+  not: ModelAPSSpeaker2024ConditionInput
+  or: [ModelAPSSpeaker2024ConditionInput]
+  phone: ModelStringInput
+  presentationSummary: ModelStringInput
+  presentationTitle: ModelStringInput
+  privacyConsent: ModelBooleanInput
+  title: ModelStringInput
+}
+
+input ModelAPSSpeaker2024FilterInput {
+  and: [ModelAPSSpeaker2024FilterInput]
+  bio: ModelStringInput
+  company: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  headshot: ModelStringInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  mediaConsent: ModelBooleanInput
+  not: ModelAPSSpeaker2024FilterInput
+  or: [ModelAPSSpeaker2024FilterInput]
+  phone: ModelStringInput
+  presentationSummary: ModelStringInput
+  presentationTitle: ModelStringInput
+  privacyConsent: ModelBooleanInput
+  title: ModelStringInput
+}
+
+input ModelAPSSpeakerConditionInput {
+  aPSSpeakersId: ModelIDInput
+  and: [ModelAPSSpeakerConditionInput]
+  bio: ModelStringInput
+  company: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  headshot: ModelStringInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  mediaConsent: ModelBooleanInput
+  not: ModelAPSSpeakerConditionInput
+  or: [ModelAPSSpeakerConditionInput]
+  phone: ModelStringInput
+  presentationSummary: ModelStringInput
+  presentationTitle: ModelStringInput
+  privacyConsent: ModelBooleanInput
+  title: ModelStringInput
+}
+
+input ModelAPSSpeakerFilterInput {
+  aPSSpeakersId: ModelIDInput
+  and: [ModelAPSSpeakerFilterInput]
+  bio: ModelStringInput
+  company: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  headshot: ModelStringInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  mediaConsent: ModelBooleanInput
+  not: ModelAPSSpeakerFilterInput
+  or: [ModelAPSSpeakerFilterInput]
+  phone: ModelStringInput
+  presentationSummary: ModelStringInput
+  presentationTitle: ModelStringInput
+  privacyConsent: ModelBooleanInput
+  title: ModelStringInput
+}
+
+input ModelAPSSponsorConditionInput {
+  aPSId: ModelIDInput
+  and: [ModelAPSSponsorConditionInput]
+  companyId: ModelIDInput
+  not: ModelAPSSponsorConditionInput
+  or: [ModelAPSSponsorConditionInput]
+}
+
+input ModelAPSSponsorFilterInput {
+  aPSId: ModelIDInput
+  and: [ModelAPSSponsorFilterInput]
+  companyId: ModelIDInput
+  id: ModelIDInput
+  not: ModelAPSSponsorFilterInput
+  or: [ModelAPSSponsorFilterInput]
+}
+
+input ModelAPSTicketConditionInput {
+  and: [ModelAPSTicketConditionInput]
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelAPSTicketConditionInput
+  or: [ModelAPSTicketConditionInput]
+  paymentConfirmation: ModelStringInput
+  phone: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelAPSTicketFilterInput {
+  and: [ModelAPSTicketFilterInput]
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelAPSTicketFilterInput
+  or: [ModelAPSTicketFilterInput]
+  paymentConfirmation: ModelStringInput
+  phone: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelAPSTicketRegistrantConditionInput {
+  and: [ModelAPSTicketRegistrantConditionInput]
+  code: ModelStringInput
+  company: ModelStringInput
+  email: ModelStringInput
+  innovationWorkshop: ModelStringInput
+  name: ModelStringInput
+  not: ModelAPSTicketRegistrantConditionInput
+  or: [ModelAPSTicketRegistrantConditionInput]
+  phone: ModelStringInput
+  plantTour: ModelStringInput
+  registrationReceived: ModelBooleanInput
+  speedNetworking: ModelStringInput
+  title: ModelStringInput
+  welcomeEmailSent: ModelBooleanInput
+  worksWith: ModelStringInput
+  year: ModelStringInput
+}
+
+input ModelAPSTicketRegistrantFilterInput {
+  and: [ModelAPSTicketRegistrantFilterInput]
+  code: ModelStringInput
+  company: ModelStringInput
+  email: ModelStringInput
+  id: ModelIDInput
+  innovationWorkshop: ModelStringInput
+  name: ModelStringInput
+  not: ModelAPSTicketRegistrantFilterInput
+  or: [ModelAPSTicketRegistrantFilterInput]
+  phone: ModelStringInput
+  plantTour: ModelStringInput
+  registrationReceived: ModelBooleanInput
+  speedNetworking: ModelStringInput
+  title: ModelStringInput
+  welcomeEmailSent: ModelBooleanInput
+  worksWith: ModelStringInput
+  year: ModelStringInput
+}
+
+input ModelAPSUserConditionInput {
+  aPSId: ModelIDInput
+  and: [ModelAPSUserConditionInput]
+  not: ModelAPSUserConditionInput
+  or: [ModelAPSUserConditionInput]
+  userId: ModelIDInput
+}
+
+input ModelAPSUserFilterInput {
+  aPSId: ModelIDInput
+  and: [ModelAPSUserFilterInput]
+  id: ModelIDInput
+  not: ModelAPSUserFilterInput
+  or: [ModelAPSUserFilterInput]
+  userId: ModelIDInput
+}
+
+input ModelAddOnRegistrantConditionInput {
+  and: [ModelAddOnRegistrantConditionInput]
+  company: ModelStringInput
+  email: ModelStringInput
+  fullName: ModelStringInput
+  not: ModelAddOnRegistrantConditionInput
+  or: [ModelAddOnRegistrantConditionInput]
+  tour: ModelStringInput
+}
+
+input ModelAddOnRegistrantFilterInput {
+  and: [ModelAddOnRegistrantFilterInput]
+  company: ModelStringInput
+  email: ModelStringInput
+  fullName: ModelStringInput
+  id: ModelIDInput
+  not: ModelAddOnRegistrantFilterInput
+  or: [ModelAddOnRegistrantFilterInput]
+  tour: ModelStringInput
+}
+
+input ModelAppStartConditionInput {
+  and: [ModelAppStartConditionInput]
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelAppStartConditionInput
+  or: [ModelAppStartConditionInput]
+  phone: ModelStringInput
+  source: ModelStringInput
+  sourceUrl: ModelStringInput
+}
+
+input ModelAppStartFilterInput {
+  and: [ModelAppStartFilterInput]
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelAppStartFilterInput
+  or: [ModelAppStartFilterInput]
+  phone: ModelStringInput
+  source: ModelStringInput
+  sourceUrl: ModelStringInput
+}
+
+input ModelApplicationStartConditionInput {
+  and: [ModelApplicationStartConditionInput]
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelApplicationStartConditionInput
+  or: [ModelApplicationStartConditionInput]
+  phone: ModelStringInput
+  source: ModelStringInput
+  sourceUrl: ModelStringInput
+}
+
+input ModelApplicationStartFilterInput {
+  and: [ModelApplicationStartFilterInput]
+  createdAt: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  id: ModelIDInput
+  lastName: ModelStringInput
+  not: ModelApplicationStartFilterInput
+  or: [ModelApplicationStartFilterInput]
+  phone: ModelStringInput
+  source: ModelStringInput
+  sourceUrl: ModelStringInput
+}
+
+input ModelAristosFormConditionInput {
+  and: [ModelAristosFormConditionInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelAristosFormConditionInput
+  or: [ModelAristosFormConditionInput]
+  title: ModelStringInput
+}
+
+input ModelAristosFormFilterInput {
+  and: [ModelAristosFormFilterInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelAristosFormFilterInput
+  or: [ModelAristosFormFilterInput]
+  title: ModelStringInput
+}
+
+input ModelArticleConditionInput {
+  and: [ModelArticleConditionInput]
+  content: ModelStringInput
+  media: ModelStringInput
+  not: ModelArticleConditionInput
+  or: [ModelArticleConditionInput]
+  seoImage: ModelStringInput
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  tags: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelArticleFilterInput {
+  and: [ModelArticleFilterInput]
+  content: ModelStringInput
+  id: ModelIDInput
+  media: ModelStringInput
+  not: ModelArticleFilterInput
+  or: [ModelArticleFilterInput]
+  seoImage: ModelStringInput
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  tags: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelArticleRelatedCoursesConditionInput {
+  and: [ModelArticleRelatedCoursesConditionInput]
+  articleId: ModelIDInput
+  courseId: ModelIDInput
+  not: ModelArticleRelatedCoursesConditionInput
+  or: [ModelArticleRelatedCoursesConditionInput]
+}
+
+input ModelArticleRelatedCoursesFilterInput {
+  and: [ModelArticleRelatedCoursesFilterInput]
+  articleId: ModelIDInput
+  courseId: ModelIDInput
+  id: ModelIDInput
+  not: ModelArticleRelatedCoursesFilterInput
+  or: [ModelArticleRelatedCoursesFilterInput]
+}
+
+input ModelAuthorConditionInput {
+  and: [ModelAuthorConditionInput]
+  company: ModelStringInput
+  headshot: ModelStringInput
+  linkedIn: ModelStringInput
+  name: ModelStringInput
+  not: ModelAuthorConditionInput
+  or: [ModelAuthorConditionInput]
+  title: ModelStringInput
+}
+
+input ModelAuthorFilterInput {
+  and: [ModelAuthorFilterInput]
+  company: ModelStringInput
+  headshot: ModelStringInput
+  id: ModelIDInput
+  linkedIn: ModelStringInput
+  name: ModelStringInput
+  not: ModelAuthorFilterInput
+  or: [ModelAuthorFilterInput]
+  title: ModelStringInput
+}
+
+input ModelAuthorTemplatesConditionInput {
+  and: [ModelAuthorTemplatesConditionInput]
+  authorId: ModelIDInput
+  indexTemplateId: ModelIDInput
+  not: ModelAuthorTemplatesConditionInput
+  or: [ModelAuthorTemplatesConditionInput]
+}
+
+input ModelAuthorTemplatesFilterInput {
+  and: [ModelAuthorTemplatesFilterInput]
+  authorId: ModelIDInput
+  id: ModelIDInput
+  indexTemplateId: ModelIDInput
+  not: ModelAuthorTemplatesFilterInput
+  or: [ModelAuthorTemplatesFilterInput]
+}
+
+input ModelBlogConditionInput {
+  and: [ModelBlogConditionInput]
+  author: ModelStringInput
+  content: ModelStringInput
+  date: ModelStringInput
+  media: ModelStringInput
+  not: ModelBlogConditionInput
+  or: [ModelBlogConditionInput]
+  slug: ModelStringInput
+  tags: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelBlogFilterInput {
+  and: [ModelBlogFilterInput]
+  author: ModelStringInput
+  content: ModelStringInput
+  date: ModelStringInput
+  id: ModelIDInput
+  media: ModelStringInput
+  not: ModelBlogFilterInput
+  or: [ModelBlogFilterInput]
+  slug: ModelStringInput
+  tags: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelBooleanInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelBoschFormConditionInput {
+  and: [ModelBoschFormConditionInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelBoschFormConditionInput
+  or: [ModelBoschFormConditionInput]
+  title: ModelStringInput
+  topicFour: ModelBooleanInput
+  topicOne: ModelBooleanInput
+  topicThree: ModelBooleanInput
+  topicTwo: ModelBooleanInput
+}
+
+input ModelBoschFormFilterInput {
+  and: [ModelBoschFormFilterInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelBoschFormFilterInput
+  or: [ModelBoschFormFilterInput]
+  title: ModelStringInput
+  topicFour: ModelBooleanInput
+  topicOne: ModelBooleanInput
+  topicThree: ModelBooleanInput
+  topicTwo: ModelBooleanInput
+}
+
+input ModelCMPMFormConditionInput {
+  addressExtra: ModelStringInput
+  and: [ModelCMPMFormConditionInput]
+  areaOfInterest: ModelStringInput
+  background: ModelStringInput
+  birthYear: ModelStringInput
+  cMPMFormUserId: ModelIDInput
+  city: ModelStringInput
+  cmpmGoals: ModelStringInput
+  companyName: ModelStringInput
+  companyTitle: ModelStringInput
+  country: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  moreAboutYou: ModelStringInput
+  not: ModelCMPMFormConditionInput
+  optOut: ModelBooleanInput
+  or: [ModelCMPMFormConditionInput]
+  payment: ModelStringInput
+  paymentConfirmation: ModelStringInput
+  phone: ModelStringInput
+  referral: ModelStringInput
+  sessionApplying: ModelStringInput
+  state: ModelStringInput
+  status: ModelStringInput
+  streetAddress: ModelStringInput
+  whyPackaging: ModelStringInput
+  yearGoals: ModelStringInput
+}
+
+input ModelCMPMFormFilterInput {
+  addressExtra: ModelStringInput
+  and: [ModelCMPMFormFilterInput]
+  areaOfInterest: ModelStringInput
+  background: ModelStringInput
+  birthYear: ModelStringInput
+  cMPMFormUserId: ModelIDInput
+  city: ModelStringInput
+  cmpmGoals: ModelStringInput
+  companyName: ModelStringInput
+  companyTitle: ModelStringInput
+  country: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  id: ModelIDInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  moreAboutYou: ModelStringInput
+  not: ModelCMPMFormFilterInput
+  optOut: ModelBooleanInput
+  or: [ModelCMPMFormFilterInput]
+  payment: ModelStringInput
+  paymentConfirmation: ModelStringInput
+  phone: ModelStringInput
+  referral: ModelStringInput
+  sessionApplying: ModelStringInput
+  state: ModelStringInput
+  status: ModelStringInput
+  streetAddress: ModelStringInput
+  whyPackaging: ModelStringInput
+  yearGoals: ModelStringInput
+}
+
+input ModelCMPMSessionConditionInput {
+  and: [ModelCMPMSessionConditionInput]
+  deadline: ModelStringInput
+  endDate: ModelStringInput
+  not: ModelCMPMSessionConditionInput
+  or: [ModelCMPMSessionConditionInput]
+  startDate: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelCMPMSessionFilterInput {
+  and: [ModelCMPMSessionFilterInput]
+  deadline: ModelStringInput
+  endDate: ModelStringInput
+  not: ModelCMPMSessionFilterInput
+  or: [ModelCMPMSessionFilterInput]
+  startDate: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelCPSFormConditionInput {
+  addressExtra: ModelStringInput
+  and: [ModelCPSFormConditionInput]
+  areaOfInterest: ModelStringInput
+  background: ModelStringInput
+  birthYear: ModelStringInput
+  cPSFormUserId: ModelIDInput
+  city: ModelStringInput
+  companyName: ModelStringInput
+  companyTitle: ModelStringInput
+  country: ModelStringInput
+  cpsGoals: ModelStringInput
+  elective: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  moreAboutYou: ModelStringInput
+  not: ModelCPSFormConditionInput
+  optOut: ModelBooleanInput
+  or: [ModelCPSFormConditionInput]
+  payment: ModelStringInput
+  paymentConfirmation: ModelStringInput
+  phone: ModelStringInput
+  referral: ModelStringInput
+  sessionApplying: ModelStringInput
+  state: ModelStringInput
+  status: ModelStringInput
+  streetAddress: ModelStringInput
+  whyPackaging: ModelStringInput
+  yearGoals: ModelStringInput
+}
+
+input ModelCPSFormFilterInput {
+  addressExtra: ModelStringInput
+  and: [ModelCPSFormFilterInput]
+  areaOfInterest: ModelStringInput
+  background: ModelStringInput
+  birthYear: ModelStringInput
+  cPSFormUserId: ModelIDInput
+  city: ModelStringInput
+  companyName: ModelStringInput
+  companyTitle: ModelStringInput
+  country: ModelStringInput
+  cpsGoals: ModelStringInput
+  elective: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  id: ModelIDInput
+  lastName: ModelStringInput
+  linkedin: ModelStringInput
+  moreAboutYou: ModelStringInput
+  not: ModelCPSFormFilterInput
+  optOut: ModelBooleanInput
+  or: [ModelCPSFormFilterInput]
+  payment: ModelStringInput
+  paymentConfirmation: ModelStringInput
+  phone: ModelStringInput
+  referral: ModelStringInput
+  sessionApplying: ModelStringInput
+  state: ModelStringInput
+  status: ModelStringInput
+  streetAddress: ModelStringInput
+  whyPackaging: ModelStringInput
+  yearGoals: ModelStringInput
+}
+
+input ModelCareerConditionInput {
+  altName: ModelStringInput
+  and: [ModelCareerConditionInput]
+  apcCopy: ModelStringInput
+  beverageCopy: ModelStringInput
+  cmpmCopy: ModelStringInput
+  coreCopy: ModelStringInput
+  cpsCopy: ModelStringInput
+  electiveCopy: ModelStringInput
+  freeCopy: ModelStringInput
+  media: ModelStringInput
+  not: ModelCareerConditionInput
+  or: [ModelCareerConditionInput]
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelCareerFilterInput {
+  altName: ModelStringInput
+  and: [ModelCareerFilterInput]
+  apcCopy: ModelStringInput
+  beverageCopy: ModelStringInput
+  cmpmCopy: ModelStringInput
+  coreCopy: ModelStringInput
+  cpsCopy: ModelStringInput
+  electiveCopy: ModelStringInput
+  freeCopy: ModelStringInput
+  id: ModelIDInput
+  media: ModelStringInput
+  not: ModelCareerFilterInput
+  or: [ModelCareerFilterInput]
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelCategoryTypeInput {
+  eq: CategoryType
+  ne: CategoryType
+}
+
+input ModelCertAppStartConditionInput {
+  and: [ModelCertAppStartConditionInput]
+  country: ModelStringInput
+  createdAt: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  ipAddress: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelCertAppStartConditionInput
+  or: [ModelCertAppStartConditionInput]
+  phone: ModelStringInput
+  source: ModelStringInput
+  sourceUrl: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelCertAppStartFilterInput {
+  and: [ModelCertAppStartFilterInput]
+  country: ModelStringInput
+  createdAt: ModelStringInput
+  email: ModelStringInput
+  firstName: ModelStringInput
+  id: ModelIDInput
+  ipAddress: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelCertAppStartFilterInput
+  or: [ModelCertAppStartFilterInput]
+  phone: ModelStringInput
+  source: ModelStringInput
+  sourceUrl: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelCertificateConditionInput {
+  and: [ModelCertificateConditionInput]
+  brochure_link: ModelStringInput
+  ceus_total: ModelIntInput
+  courses_total: ModelIntInput
+  demoLink: ModelStringInput
+  hours_total: ModelIntInput
+  lmsLink: ModelStringInput
+  not: ModelCertificateConditionInput
+  or: [ModelCertificateConditionInput]
+  price_features: ModelStringInput
+  price_full: ModelIntInput
+  price_monthly: ModelIntInput
+  slug: ModelStringInput
+  title: ModelStringInput
+  title_button_1_link: ModelStringInput
+  title_button_1_text: ModelStringInput
+  title_button_2_link: ModelStringInput
+  title_button_2_text: ModelStringInput
+  title_callout_1: ModelStringInput
+  title_callout_2: ModelStringInput
+  title_image: ModelStringInput
+  title_text: ModelStringInput
+  video: ModelStringInput
+  whoText: ModelStringInput
+}
+
+input ModelCertificateCoursesConditionInput {
+  and: [ModelCertificateCoursesConditionInput]
+  certificateId: ModelIDInput
+  courseId: ModelIDInput
+  not: ModelCertificateCoursesConditionInput
+  or: [ModelCertificateCoursesConditionInput]
+}
+
+input ModelCertificateCoursesFilterInput {
+  and: [ModelCertificateCoursesFilterInput]
+  certificateId: ModelIDInput
+  courseId: ModelIDInput
+  id: ModelIDInput
+  not: ModelCertificateCoursesFilterInput
+  or: [ModelCertificateCoursesFilterInput]
+}
+
+input ModelCertificateFilterInput {
+  and: [ModelCertificateFilterInput]
+  brochure_link: ModelStringInput
+  ceus_total: ModelIntInput
+  courses_total: ModelIntInput
+  demoLink: ModelStringInput
+  hours_total: ModelIntInput
+  id: ModelIDInput
+  lmsLink: ModelStringInput
+  not: ModelCertificateFilterInput
+  or: [ModelCertificateFilterInput]
+  price_features: ModelStringInput
+  price_full: ModelIntInput
+  price_monthly: ModelIntInput
+  slug: ModelStringInput
+  title: ModelStringInput
+  title_button_1_link: ModelStringInput
+  title_button_1_text: ModelStringInput
+  title_button_2_link: ModelStringInput
+  title_button_2_text: ModelStringInput
+  title_callout_1: ModelStringInput
+  title_callout_2: ModelStringInput
+  title_image: ModelStringInput
+  title_text: ModelStringInput
+  video: ModelStringInput
+  whoText: ModelStringInput
+}
+
+input ModelCirriculumCoursesConditionInput {
+  and: [ModelCirriculumCoursesConditionInput]
+  lMSCirriculumId: ModelIDInput
+  lMSCourseId: ModelIDInput
+  not: ModelCirriculumCoursesConditionInput
+  or: [ModelCirriculumCoursesConditionInput]
+}
+
+input ModelCirriculumCoursesFilterInput {
+  and: [ModelCirriculumCoursesFilterInput]
+  id: ModelIDInput
+  lMSCirriculumId: ModelIDInput
+  lMSCourseId: ModelIDInput
+  not: ModelCirriculumCoursesFilterInput
+  or: [ModelCirriculumCoursesFilterInput]
+}
+
+input ModelClickConditionInput {
+  and: [ModelClickConditionInput]
+  identifier: ModelStringInput
+  ipAddress: ModelStringInput
+  location: ModelStringInput
+  nextPath: ModelStringInput
+  not: ModelClickConditionInput
+  or: [ModelClickConditionInput]
+  path: ModelStringInput
+  ref: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelClickFilterInput {
+  and: [ModelClickFilterInput]
+  id: ModelIDInput
+  identifier: ModelStringInput
+  ipAddress: ModelStringInput
+  location: ModelStringInput
+  nextPath: ModelStringInput
+  not: ModelClickFilterInput
+  or: [ModelClickFilterInput]
+  path: ModelStringInput
+  ref: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelCompanyConditionInput {
+  and: [ModelCompanyConditionInput]
+  city: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelCompanyConditionInput
+  or: [ModelCompanyConditionInput]
+  phone: ModelStringInput
+  state: ModelStringInput
+  street_1: ModelStringInput
+  street_2: ModelStringInput
+  website: ModelStringInput
+  zip: ModelStringInput
+}
+
+input ModelCompanyFilterInput {
+  and: [ModelCompanyFilterInput]
+  city: ModelStringInput
+  email: ModelStringInput
+  id: ModelIDInput
+  name: ModelStringInput
+  not: ModelCompanyFilterInput
+  or: [ModelCompanyFilterInput]
+  phone: ModelStringInput
+  state: ModelStringInput
+  street_1: ModelStringInput
+  street_2: ModelStringInput
+  website: ModelStringInput
+  zip: ModelStringInput
+}
+
+input ModelCourseClickConditionInput {
+  and: [ModelCourseClickConditionInput]
+  country: ModelStringInput
+  courseID: ModelStringInput
+  format: ModelStringInput
+  ipAddress: ModelStringInput
+  lat: ModelStringInput
+  long: ModelStringInput
+  nextPath: ModelStringInput
+  not: ModelCourseClickConditionInput
+  or: [ModelCourseClickConditionInput]
+  page: ModelStringInput
+  referrer: ModelStringInput
+}
+
+input ModelCourseClickFilterInput {
+  and: [ModelCourseClickFilterInput]
+  country: ModelStringInput
+  courseID: ModelStringInput
+  format: ModelStringInput
+  id: ModelIDInput
+  ipAddress: ModelStringInput
+  lat: ModelStringInput
+  long: ModelStringInput
+  nextPath: ModelStringInput
+  not: ModelCourseClickFilterInput
+  or: [ModelCourseClickFilterInput]
+  page: ModelStringInput
+  referrer: ModelStringInput
+}
+
+input ModelCourseConditionInput {
+  and: [ModelCourseConditionInput]
+  category: ModelCategoryTypeInput
+  hour: ModelIntInput
+  lessons: ModelIntInput
+  media: ModelStringInput
+  not: ModelCourseConditionInput
+  or: [ModelCourseConditionInput]
+  price: ModelIntInput
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+  video: ModelStringInput
+  videos: ModelIntInput
+}
+
+input ModelCourseFilterInput {
+  and: [ModelCourseFilterInput]
+  category: ModelCategoryTypeInput
+  hour: ModelIntInput
+  id: ModelIDInput
+  lessons: ModelIntInput
+  media: ModelStringInput
+  not: ModelCourseFilterInput
+  or: [ModelCourseFilterInput]
+  price: ModelIntInput
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+  video: ModelStringInput
+  videos: ModelIntInput
+}
+
+input ModelCourseInstructorsConditionInput {
+  and: [ModelCourseInstructorsConditionInput]
+  instructorId: ModelIDInput
+  lMSCourseId: ModelIDInput
+  not: ModelCourseInstructorsConditionInput
+  or: [ModelCourseInstructorsConditionInput]
+}
+
+input ModelCourseInstructorsFilterInput {
+  and: [ModelCourseInstructorsFilterInput]
+  id: ModelIDInput
+  instructorId: ModelIDInput
+  lMSCourseId: ModelIDInput
+  not: ModelCourseInstructorsFilterInput
+  or: [ModelCourseInstructorsFilterInput]
+}
+
+input ModelCourseLessonsConditionInput {
+  and: [ModelCourseLessonsConditionInput]
+  lMSCourseId: ModelIDInput
+  lMSLessonId: ModelIDInput
+  not: ModelCourseLessonsConditionInput
+  or: [ModelCourseLessonsConditionInput]
+}
+
+input ModelCourseLessonsFilterInput {
+  and: [ModelCourseLessonsFilterInput]
+  id: ModelIDInput
+  lMSCourseId: ModelIDInput
+  lMSLessonId: ModelIDInput
+  not: ModelCourseLessonsFilterInput
+  or: [ModelCourseLessonsFilterInput]
+}
+
+input ModelCourseSearchConditionInput {
+  and: [ModelCourseSearchConditionInput]
+  country: ModelStringInput
+  ipAddress: ModelStringInput
+  not: ModelCourseSearchConditionInput
+  or: [ModelCourseSearchConditionInput]
+  term: ModelStringInput
+}
+
+input ModelCourseSearchFilterInput {
+  and: [ModelCourseSearchFilterInput]
+  country: ModelStringInput
+  id: ModelIDInput
+  ipAddress: ModelStringInput
+  not: ModelCourseSearchFilterInput
+  or: [ModelCourseSearchFilterInput]
+  term: ModelStringInput
+}
+
+input ModelCustomerConditionInput {
+  and: [ModelCustomerConditionInput]
+  displayName: ModelStringInput
+  email: ModelStringInput
+  highlightColor: ModelStringInput
+  link: ModelStringInput
+  logo: ModelStringInput
+  not: ModelCustomerConditionInput
+  offered: ModelStringInput
+  offerings: ModelStringInput
+  or: [ModelCustomerConditionInput]
+  pdf: ModelStringInput
+  primaryColor: ModelStringInput
+  slide: ModelStringInput
+  status: ModelStringInput
+  video: ModelStringInput
+}
+
+input ModelCustomerFilterInput {
+  and: [ModelCustomerFilterInput]
+  displayName: ModelStringInput
+  email: ModelStringInput
+  highlightColor: ModelStringInput
+  id: ModelIDInput
+  link: ModelStringInput
+  logo: ModelStringInput
+  not: ModelCustomerFilterInput
+  offered: ModelStringInput
+  offerings: ModelStringInput
+  or: [ModelCustomerFilterInput]
+  pdf: ModelStringInput
+  primaryColor: ModelStringInput
+  slide: ModelStringInput
+  status: ModelStringInput
+  video: ModelStringInput
+}
+
+input ModelCustomerLibaryConditionInput {
+  addOns: ModelStringInput
+  and: [ModelCustomerLibaryConditionInput]
+  clientCourses: ModelStringInput
+  description: ModelStringInput
+  displayName: ModelStringInput
+  email: ModelStringInput
+  highlightColor: ModelStringInput
+  link: ModelStringInput
+  logo: ModelStringInput
+  not: ModelCustomerLibaryConditionInput
+  or: [ModelCustomerLibaryConditionInput]
+  pdf: ModelStringInput
+  primaryColor: ModelStringInput
+  pschoolCourses: ModelStringInput
+  slide: ModelStringInput
+  slug: ModelStringInput
+  status: ModelStringInput
+  video: ModelStringInput
+}
+
+input ModelCustomerLibaryFilterInput {
+  addOns: ModelStringInput
+  and: [ModelCustomerLibaryFilterInput]
+  clientCourses: ModelStringInput
+  description: ModelStringInput
+  displayName: ModelStringInput
+  email: ModelStringInput
+  highlightColor: ModelStringInput
+  id: ModelIDInput
+  link: ModelStringInput
+  logo: ModelStringInput
+  not: ModelCustomerLibaryFilterInput
+  or: [ModelCustomerLibaryFilterInput]
+  pdf: ModelStringInput
+  primaryColor: ModelStringInput
+  pschoolCourses: ModelStringInput
+  slide: ModelStringInput
+  slug: ModelStringInput
+  status: ModelStringInput
+  video: ModelStringInput
+}
+
+input ModelDayInLifeItemConditionInput {
+  and: [ModelDayInLifeItemConditionInput]
+  careerDayInLifeId: ModelIDInput
+  desc: ModelStringInput
+  icon: ModelStringInput
+  name: ModelStringInput
+  not: ModelDayInLifeItemConditionInput
+  or: [ModelDayInLifeItemConditionInput]
+}
+
+input ModelDayInLifeItemFilterInput {
+  and: [ModelDayInLifeItemFilterInput]
+  careerDayInLifeId: ModelIDInput
+  desc: ModelStringInput
+  icon: ModelStringInput
+  id: ModelIDInput
+  name: ModelStringInput
+  not: ModelDayInLifeItemFilterInput
+  or: [ModelDayInLifeItemFilterInput]
+}
+
+input ModelFloatInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  le: Float
+  lt: Float
+  ne: Float
+}
+
+input ModelGuardianFormConditionInput {
+  and: [ModelGuardianFormConditionInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelGuardianFormConditionInput
+  or: [ModelGuardianFormConditionInput]
+  title: ModelStringInput
+}
+
+input ModelGuardianFormFilterInput {
+  and: [ModelGuardianFormFilterInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelGuardianFormFilterInput
+  or: [ModelGuardianFormFilterInput]
+  title: ModelStringInput
+}
+
+input ModelIDInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  size: ModelSizeInput
+}
+
+input ModelIncludedCourseConditionInput {
+  and: [ModelIncludedCourseConditionInput]
+  courseId: ModelStringInput
+  customerId: ModelIDInput
+  not: ModelIncludedCourseConditionInput
+  or: [ModelIncludedCourseConditionInput]
+}
+
+input ModelIncludedCourseFilterInput {
+  and: [ModelIncludedCourseFilterInput]
+  courseId: ModelStringInput
+  customerId: ModelIDInput
+  id: ModelIDInput
+  not: ModelIncludedCourseFilterInput
+  or: [ModelIncludedCourseFilterInput]
+}
+
+input ModelIndexRowConditionInput {
+  and: [ModelIndexRowConditionInput]
+  content: ModelStringInput
+  headline: ModelStringInput
+  not: ModelIndexRowConditionInput
+  or: [ModelIndexRowConditionInput]
+  subhead: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelIndexRowFilterInput {
+  and: [ModelIndexRowFilterInput]
+  content: ModelStringInput
+  headline: ModelStringInput
+  id: ModelIDInput
+  not: ModelIndexRowFilterInput
+  or: [ModelIndexRowFilterInput]
+  subhead: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelIndexTemplateConditionInput {
+  and: [ModelIndexTemplateConditionInput]
+  not: ModelIndexTemplateConditionInput
+  or: [ModelIndexTemplateConditionInput]
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelIndexTemplateFilterInput {
+  and: [ModelIndexTemplateFilterInput]
+  id: ModelIDInput
+  not: ModelIndexTemplateFilterInput
+  or: [ModelIndexTemplateFilterInput]
+  slug: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelIndexTemplateRowsConditionInput {
+  and: [ModelIndexTemplateRowsConditionInput]
+  indexRowId: ModelIDInput
+  indexTemplateId: ModelIDInput
+  not: ModelIndexTemplateRowsConditionInput
+  or: [ModelIndexTemplateRowsConditionInput]
+}
+
+input ModelIndexTemplateRowsFilterInput {
+  and: [ModelIndexTemplateRowsFilterInput]
+  id: ModelIDInput
+  indexRowId: ModelIDInput
+  indexTemplateId: ModelIDInput
+  not: ModelIndexTemplateRowsFilterInput
+  or: [ModelIndexTemplateRowsFilterInput]
+}
+
+input ModelInstructorConditionInput {
+  and: [ModelInstructorConditionInput]
+  not: ModelInstructorConditionInput
+  or: [ModelInstructorConditionInput]
+  userId: ModelIDInput
+}
+
+input ModelInstructorFilterInput {
+  and: [ModelInstructorFilterInput]
+  id: ModelIDInput
+  not: ModelInstructorFilterInput
+  or: [ModelInstructorFilterInput]
+  userId: ModelIDInput
+}
+
+input ModelIntInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelIntKeyConditionInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+}
+
+input ModelLMSCirriculumConditionInput {
+  and: [ModelLMSCirriculumConditionInput]
+  description: ModelStringInput
+  not: ModelLMSCirriculumConditionInput
+  or: [ModelLMSCirriculumConditionInput]
+  shorthand: ModelStringInput
+  slug: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSCirriculumFilterInput {
+  and: [ModelLMSCirriculumFilterInput]
+  description: ModelStringInput
+  id: ModelIDInput
+  not: ModelLMSCirriculumFilterInput
+  or: [ModelLMSCirriculumFilterInput]
+  shorthand: ModelStringInput
+  slug: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSCollectionConditionInput {
+  and: [ModelLMSCollectionConditionInput]
+  category: ModelCategoryTypeInput
+  collectionId: ModelStringInput
+  courses: ModelStringInput
+  description: ModelStringInput
+  hours: ModelStringInput
+  instructor: ModelStringInput
+  instructorDescription: ModelStringInput
+  instructorImage: ModelStringInput
+  instructorLink: ModelStringInput
+  lmsLink: ModelStringInput
+  not: ModelLMSCollectionConditionInput
+  or: [ModelLMSCollectionConditionInput]
+  price: ModelIntInput
+  slug: ModelStringInput
+  subtitle: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSCollectionFilterInput {
+  and: [ModelLMSCollectionFilterInput]
+  category: ModelCategoryTypeInput
+  collectionId: ModelStringInput
+  courses: ModelStringInput
+  description: ModelStringInput
+  hours: ModelStringInput
+  id: ModelIDInput
+  instructor: ModelStringInput
+  instructorDescription: ModelStringInput
+  instructorImage: ModelStringInput
+  instructorLink: ModelStringInput
+  lmsLink: ModelStringInput
+  not: ModelLMSCollectionFilterInput
+  or: [ModelLMSCollectionFilterInput]
+  price: ModelIntInput
+  slug: ModelStringInput
+  subtitle: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSCourseConditionInput {
+  altLink: ModelStringInput
+  and: [ModelLMSCourseConditionInput]
+  category: ModelCategoryTypeInput
+  categoryArray: ModelStringInput
+  collection: ModelStringInput
+  courseId: ModelStringInput
+  demo: ModelBooleanInput
+  hours: ModelStringInput
+  infoSheet: ModelStringInput
+  lessons: ModelStringInput
+  link: ModelStringInput
+  not: ModelLMSCourseConditionInput
+  objectives: ModelStringInput
+  or: [ModelLMSCourseConditionInput]
+  partOf: ModelStringInput
+  percentComplete: ModelIntInput
+  preview: ModelStringInput
+  price: ModelStringInput
+  seoImage: ModelStringInput
+  shortDescription: ModelStringInput
+  slug: ModelStringInput
+  studentCourseEnrolledId: ModelIDInput
+  subheadline: ModelStringInput
+  title: ModelStringInput
+  trial_link: ModelStringInput
+  type: ModelStringInput
+  videos: ModelStringInput
+  what_learned: ModelStringInput
+}
+
+input ModelLMSCourseFilterInput {
+  altLink: ModelStringInput
+  and: [ModelLMSCourseFilterInput]
+  category: ModelCategoryTypeInput
+  categoryArray: ModelStringInput
+  collection: ModelStringInput
+  courseId: ModelStringInput
+  demo: ModelBooleanInput
+  hours: ModelStringInput
+  id: ModelIDInput
+  infoSheet: ModelStringInput
+  lessons: ModelStringInput
+  link: ModelStringInput
+  not: ModelLMSCourseFilterInput
+  objectives: ModelStringInput
+  or: [ModelLMSCourseFilterInput]
+  partOf: ModelStringInput
+  percentComplete: ModelIntInput
+  preview: ModelStringInput
+  price: ModelStringInput
+  seoImage: ModelStringInput
+  shortDescription: ModelStringInput
+  slug: ModelStringInput
+  studentCourseEnrolledId: ModelIDInput
+  subheadline: ModelStringInput
+  title: ModelStringInput
+  trial_link: ModelStringInput
+  type: ModelStringInput
+  videos: ModelStringInput
+  what_learned: ModelStringInput
+}
+
+input ModelLMSLessonConditionInput {
+  and: [ModelLMSLessonConditionInput]
+  content: ModelStringInput
+  media: ModelStringInput
+  not: ModelLMSLessonConditionInput
+  objectives: ModelStringInput
+  or: [ModelLMSLessonConditionInput]
+  percentComplete: ModelIntInput
+  slug: ModelStringInput
+  subheadline: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSLessonFilterInput {
+  and: [ModelLMSLessonFilterInput]
+  content: ModelStringInput
+  id: ModelIDInput
+  media: ModelStringInput
+  not: ModelLMSLessonFilterInput
+  objectives: ModelStringInput
+  or: [ModelLMSLessonFilterInput]
+  percentComplete: ModelIntInput
+  slug: ModelStringInput
+  subheadline: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSModuleConditionInput {
+  and: [ModelLMSModuleConditionInput]
+  content: ModelStringInput
+  lMSLessonModulesId: ModelIDInput
+  lMSModuleQuizId: ModelIDInput
+  media: ModelStringInput
+  mediaType: ModelMediaTypeInput
+  not: ModelLMSModuleConditionInput
+  objectives: ModelStringInput
+  or: [ModelLMSModuleConditionInput]
+  slug: ModelStringInput
+  subheadline: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSModuleFilterInput {
+  and: [ModelLMSModuleFilterInput]
+  content: ModelStringInput
+  id: ModelIDInput
+  lMSLessonModulesId: ModelIDInput
+  lMSModuleQuizId: ModelIDInput
+  media: ModelStringInput
+  mediaType: ModelMediaTypeInput
+  not: ModelLMSModuleFilterInput
+  objectives: ModelStringInput
+  or: [ModelLMSModuleFilterInput]
+  slug: ModelStringInput
+  subheadline: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelLMSQuizConditionInput {
+  and: [ModelLMSQuizConditionInput]
+  answer1: ModelStringInput
+  answer2: ModelStringInput
+  answer3: ModelStringInput
+  answer4: ModelStringInput
+  correctAnswer: ModelStringInput
+  lMSQuizModuleId: ModelIDInput
+  not: ModelLMSQuizConditionInput
+  or: [ModelLMSQuizConditionInput]
+  prompt: ModelStringInput
+}
+
+input ModelLMSQuizFilterInput {
+  and: [ModelLMSQuizFilterInput]
+  answer1: ModelStringInput
+  answer2: ModelStringInput
+  answer3: ModelStringInput
+  answer4: ModelStringInput
+  correctAnswer: ModelStringInput
+  id: ModelIDInput
+  lMSQuizModuleId: ModelIDInput
+  not: ModelLMSQuizFilterInput
+  or: [ModelLMSQuizFilterInput]
+  prompt: ModelStringInput
+}
+
+input ModelLessonClickConditionInput {
+  LessonID: ModelStringInput
+  and: [ModelLessonClickConditionInput]
+  country: ModelStringInput
+  format: ModelStringInput
+  ipAddress: ModelStringInput
+  lat: ModelStringInput
+  long: ModelStringInput
+  not: ModelLessonClickConditionInput
+  or: [ModelLessonClickConditionInput]
+  page: ModelStringInput
+  referrer: ModelStringInput
+}
+
+input ModelLessonClickFilterInput {
+  LessonID: ModelStringInput
+  and: [ModelLessonClickFilterInput]
+  country: ModelStringInput
+  format: ModelStringInput
+  id: ModelIDInput
+  ipAddress: ModelStringInput
+  lat: ModelStringInput
+  long: ModelStringInput
+  not: ModelLessonClickFilterInput
+  or: [ModelLessonClickFilterInput]
+  page: ModelStringInput
+  referrer: ModelStringInput
+}
+
+input ModelLessonConditionInput {
+  actionCTA: ModelStringInput
+  actionExample: ModelStringInput
+  actionLink: ModelStringInput
+  actionLinkTitle: ModelStringInput
+  actionSubhead: ModelStringInput
+  and: [ModelLessonConditionInput]
+  author: ModelStringInput
+  backdate: ModelStringInput
+  content: ModelStringInput
+  createdBy: ModelStringInput
+  featured: ModelStringInput
+  lastEditedBy: ModelStringInput
+  media: ModelStringInput
+  mediaType: ModelMediaTypeInput
+  not: ModelLessonConditionInput
+  objectives: ModelStringInput
+  or: [ModelLessonConditionInput]
+  related: ModelStringInput
+  screengrab: ModelStringInput
+  seoImage: ModelStringInput
+  slides: ModelStringInput
+  slug: ModelStringInput
+  status: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+  type: ModelModuleTypeInput
+  videoLink: ModelStringInput
+}
+
+input ModelLessonFilterInput {
+  actionCTA: ModelStringInput
+  actionExample: ModelStringInput
+  actionLink: ModelStringInput
+  actionLinkTitle: ModelStringInput
+  actionSubhead: ModelStringInput
+  and: [ModelLessonFilterInput]
+  author: ModelStringInput
+  backdate: ModelStringInput
+  content: ModelStringInput
+  createdBy: ModelStringInput
+  featured: ModelStringInput
+  id: ModelIDInput
+  lastEditedBy: ModelStringInput
+  media: ModelStringInput
+  mediaType: ModelMediaTypeInput
+  not: ModelLessonFilterInput
+  objectives: ModelStringInput
+  or: [ModelLessonFilterInput]
+  related: ModelStringInput
+  screengrab: ModelStringInput
+  seoImage: ModelStringInput
+  slides: ModelStringInput
+  slug: ModelStringInput
+  status: ModelStringInput
+  subhead: ModelStringInput
+  title: ModelStringInput
+  type: ModelModuleTypeInput
+  videoLink: ModelStringInput
+}
+
+input ModelLessonLinkConditionInput {
+  and: [ModelLessonLinkConditionInput]
+  lessonLinksId: ModelIDInput
+  link: ModelStringInput
+  name: ModelStringInput
+  not: ModelLessonLinkConditionInput
+  or: [ModelLessonLinkConditionInput]
+}
+
+input ModelLessonLinkFilterInput {
+  and: [ModelLessonLinkFilterInput]
+  id: ModelIDInput
+  lessonLinksId: ModelIDInput
+  link: ModelStringInput
+  name: ModelStringInput
+  not: ModelLessonLinkFilterInput
+  or: [ModelLessonLinkFilterInput]
+}
+
+input ModelLessonSourceConditionInput {
+  and: [ModelLessonSourceConditionInput]
+  lessonSourcesId: ModelIDInput
+  link: ModelStringInput
+  name: ModelStringInput
+  not: ModelLessonSourceConditionInput
+  or: [ModelLessonSourceConditionInput]
+  position: ModelIntInput
+}
+
+input ModelLessonSourceFilterInput {
+  and: [ModelLessonSourceFilterInput]
+  id: ModelIDInput
+  lessonSourcesId: ModelIDInput
+  link: ModelStringInput
+  name: ModelStringInput
+  not: ModelLessonSourceFilterInput
+  or: [ModelLessonSourceFilterInput]
+  position: ModelIntInput
+}
+
+input ModelLessonTagsConditionInput {
+  and: [ModelLessonTagsConditionInput]
+  lessonId: ModelIDInput
+  not: ModelLessonTagsConditionInput
+  or: [ModelLessonTagsConditionInput]
+  tagsId: ModelIDInput
+}
+
+input ModelLessonTagsFilterInput {
+  and: [ModelLessonTagsFilterInput]
+  id: ModelIDInput
+  lessonId: ModelIDInput
+  not: ModelLessonTagsFilterInput
+  or: [ModelLessonTagsFilterInput]
+  tagsId: ModelIDInput
+}
+
+input ModelMediaTypeInput {
+  eq: MediaType
+  ne: MediaType
+}
+
+input ModelModuleTypeInput {
+  eq: ModuleType
+  ne: ModuleType
+}
+
+input ModelMorrisetteFormConditionInput {
+  and: [ModelMorrisetteFormConditionInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelMorrisetteFormConditionInput
+  or: [ModelMorrisetteFormConditionInput]
+  preference: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelMorrisetteFormFilterInput {
+  and: [ModelMorrisetteFormFilterInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelMorrisetteFormFilterInput
+  or: [ModelMorrisetteFormFilterInput]
+  preference: ModelStringInput
+  title: ModelStringInput
+}
+
+input ModelObjectiveConditionInput {
+  and: [ModelObjectiveConditionInput]
+  completed: ModelBooleanInput
+  not: ModelObjectiveConditionInput
+  objective: ModelStringInput
+  or: [ModelObjectiveConditionInput]
+}
+
+input ModelObjectiveFilterInput {
+  and: [ModelObjectiveFilterInput]
+  completed: ModelBooleanInput
+  id: ModelIDInput
+  not: ModelObjectiveFilterInput
+  objective: ModelStringInput
+  or: [ModelObjectiveFilterInput]
+}
+
+input ModelSalesBarConditionInput {
+  and: [ModelSalesBarConditionInput]
+  icon: ModelStringInput
+  link: ModelStringInput
+  not: ModelSalesBarConditionInput
+  or: [ModelSalesBarConditionInput]
+  text: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelSalesBarFilterInput {
+  and: [ModelSalesBarFilterInput]
+  icon: ModelStringInput
+  id: ModelIDInput
+  link: ModelStringInput
+  not: ModelSalesBarFilterInput
+  or: [ModelSalesBarFilterInput]
+  text: ModelStringInput
+  type: ModelStringInput
+}
+
+input ModelSalesbarClickConditionInput {
+  and: [ModelSalesbarClickConditionInput]
+  country: ModelStringInput
+  ipAddress: ModelStringInput
+  link: ModelStringInput
+  not: ModelSalesbarClickConditionInput
+  or: [ModelSalesbarClickConditionInput]
+  page: ModelStringInput
+}
+
+input ModelSalesbarClickFilterInput {
+  and: [ModelSalesbarClickFilterInput]
+  country: ModelStringInput
+  id: ModelIDInput
+  ipAddress: ModelStringInput
+  link: ModelStringInput
+  not: ModelSalesbarClickFilterInput
+  or: [ModelSalesbarClickFilterInput]
+  page: ModelStringInput
+}
+
+input ModelSizeInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  le: Int
+  lt: Int
+  ne: Int
+}
+
+input ModelSlideConditionInput {
+  and: [ModelSlideConditionInput]
+  description: ModelStringInput
+  lMSModuleSlidesId: ModelIDInput
+  not: ModelSlideConditionInput
+  or: [ModelSlideConditionInput]
+  slideSource: ModelStringInput
+}
+
+input ModelSlideFilterInput {
+  and: [ModelSlideFilterInput]
+  description: ModelStringInput
+  id: ModelIDInput
+  lMSModuleSlidesId: ModelIDInput
+  not: ModelSlideFilterInput
+  or: [ModelSlideFilterInput]
+  slideSource: ModelStringInput
+}
+
+input ModelStaffConditionInput {
+  and: [ModelStaffConditionInput]
+  fullName: ModelStringInput
+  image: ModelStringInput
+  linkedIn: ModelStringInput
+  not: ModelStaffConditionInput
+  or: [ModelStaffConditionInput]
+  title: ModelStringInput
+}
+
+input ModelStaffFilterInput {
+  and: [ModelStaffFilterInput]
+  fullName: ModelStringInput
+  id: ModelIDInput
+  image: ModelStringInput
+  linkedIn: ModelStringInput
+  not: ModelStaffFilterInput
+  or: [ModelStaffFilterInput]
+  title: ModelStringInput
+}
+
+input ModelStringInput {
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  size: ModelSizeInput
+}
+
+input ModelStringKeyConditionInput {
+  beginsWith: String
+  between: [String]
+  eq: String
+  ge: String
+  gt: String
+  le: String
+  lt: String
+}
+
+input ModelStudentConditionInput {
+  and: [ModelStudentConditionInput]
+  not: ModelStudentConditionInput
+  or: [ModelStudentConditionInput]
+  studentId: ModelIDInput
+}
+
+input ModelStudentFilterInput {
+  and: [ModelStudentFilterInput]
+  id: ModelIDInput
+  not: ModelStudentFilterInput
+  or: [ModelStudentFilterInput]
+  studentId: ModelIDInput
+}
+
+input ModelSubscriptionBooleanInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input ModelSubscriptionFloatInput {
+  between: [Float]
+  eq: Float
+  ge: Float
+  gt: Float
+  in: [Float]
+  le: Float
+  lt: Float
+  ne: Float
+  notIn: [Float]
+}
+
+input ModelSubscriptionIDInput {
+  beginsWith: ID
+  between: [ID]
+  contains: ID
+  eq: ID
+  ge: ID
+  gt: ID
+  in: [ID]
+  le: ID
+  lt: ID
+  ne: ID
+  notContains: ID
+  notIn: [ID]
+}
+
+input ModelSubscriptionIntInput {
+  between: [Int]
+  eq: Int
+  ge: Int
+  gt: Int
+  in: [Int]
+  le: Int
+  lt: Int
+  ne: Int
+  notIn: [Int]
+}
+
+input ModelSubscriptionStringInput {
+  beginsWith: String
+  between: [String]
+  contains: String
+  eq: String
+  ge: String
+  gt: String
+  in: [String]
+  le: String
+  lt: String
+  ne: String
+  notContains: String
+  notIn: [String]
+}
+
+input ModelSurgereFormConditionInput {
+  and: [ModelSurgereFormConditionInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelSurgereFormConditionInput
+  or: [ModelSurgereFormConditionInput]
+  title: ModelStringInput
+}
+
+input ModelSurgereFormFilterInput {
+  and: [ModelSurgereFormFilterInput]
+  approved: ModelBooleanInput
+  company: ModelStringInput
+  email: ModelStringInput
+  name: ModelStringInput
+  not: ModelSurgereFormFilterInput
+  or: [ModelSurgereFormFilterInput]
+  title: ModelStringInput
+}
+
+input ModelTagsConditionInput {
+  and: [ModelTagsConditionInput]
+  not: ModelTagsConditionInput
+  or: [ModelTagsConditionInput]
+  tag: ModelStringInput
+}
+
+input ModelTagsFilterInput {
+  and: [ModelTagsFilterInput]
+  id: ModelIDInput
+  not: ModelTagsFilterInput
+  or: [ModelTagsFilterInput]
+  tag: ModelStringInput
+}
+
+input ModelTestimonialConditionInput {
+  affiliation: ModelStringInput
+  and: [ModelTestimonialConditionInput]
+  author: ModelStringInput
+  company: ModelStringInput
+  content: ModelStringInput
+  date: ModelStringInput
+  featured: ModelBooleanInput
+  headshot: ModelStringInput
+  linkedin: ModelStringInput
+  not: ModelTestimonialConditionInput
+  or: [ModelTestimonialConditionInput]
+  tags: ModelStringInput
+  title: ModelStringInput
+  video: ModelStringInput
+}
+
+input ModelTestimonialFilterInput {
+  affiliation: ModelStringInput
+  and: [ModelTestimonialFilterInput]
+  author: ModelStringInput
+  company: ModelStringInput
+  content: ModelStringInput
+  date: ModelStringInput
+  featured: ModelBooleanInput
+  headshot: ModelStringInput
+  id: ModelIDInput
+  linkedin: ModelStringInput
+  not: ModelTestimonialFilterInput
+  or: [ModelTestimonialFilterInput]
+  tags: ModelStringInput
+  title: ModelStringInput
+  video: ModelStringInput
+}
+
+input ModelTimestampConditionInput {
+  and: [ModelTimestampConditionInput]
+  description: ModelStringInput
+  not: ModelTimestampConditionInput
+  or: [ModelTimestampConditionInput]
+  time: ModelStringInput
+}
+
+input ModelTimestampFilterInput {
+  and: [ModelTimestampFilterInput]
+  description: ModelStringInput
+  id: ModelIDInput
+  not: ModelTimestampFilterInput
+  or: [ModelTimestampFilterInput]
+  time: ModelStringInput
+}
+
+input ModelTouristConditionInput {
+  and: [ModelTouristConditionInput]
+  company: ModelStringInput
+  email: ModelStringInput
+  fullName: ModelStringInput
+  not: ModelTouristConditionInput
+  or: [ModelTouristConditionInput]
+  phone: ModelStringInput
+  tour: ModelStringInput
+}
+
+input ModelTouristFilterInput {
+  and: [ModelTouristFilterInput]
+  company: ModelStringInput
+  email: ModelStringInput
+  fullName: ModelStringInput
+  id: ModelIDInput
+  not: ModelTouristFilterInput
+  or: [ModelTouristFilterInput]
+  phone: ModelStringInput
+  tour: ModelStringInput
+}
+
+input ModelTrackedCourseConditionInput {
+  and: [ModelTrackedCourseConditionInput]
+  clicks: ModelIntInput
+  courseId: ModelStringInput
+  customerId: ModelIDInput
+  not: ModelTrackedCourseConditionInput
+  or: [ModelTrackedCourseConditionInput]
+}
+
+input ModelTrackedCourseFilterInput {
+  and: [ModelTrackedCourseFilterInput]
+  clicks: ModelIntInput
+  courseId: ModelStringInput
+  customerId: ModelIDInput
+  id: ModelIDInput
+  not: ModelTrackedCourseFilterInput
+  or: [ModelTrackedCourseFilterInput]
+}
+
+input ModelUserConditionInput {
+  and: [ModelUserConditionInput]
+  bio: ModelStringInput
+  cell: ModelStringInput
+  cmpmFormID: ModelIDInput
+  company: ModelStringInput
+  companyID: ModelIDInput
+  cpsFormID: ModelIDInput
+  email: ModelStringInput
+  linkedin: ModelStringInput
+  name: ModelStringInput
+  not: ModelUserConditionInput
+  office: ModelStringInput
+  or: [ModelUserConditionInput]
+  picture: ModelStringInput
+  savedArticles: ModelStringInput
+  savedCourses: ModelStringInput
+  savedLessons: ModelStringInput
+  source: ModelStringInput
+  title: ModelStringInput
+  userInstructorIdId: ModelIDInput
+  userStudentIdId: ModelIDInput
+}
+
+input ModelUserFilterInput {
+  and: [ModelUserFilterInput]
+  bio: ModelStringInput
+  cell: ModelStringInput
+  cmpmFormID: ModelIDInput
+  company: ModelStringInput
+  companyID: ModelIDInput
+  cpsFormID: ModelIDInput
+  email: ModelStringInput
+  id: ModelIDInput
+  linkedin: ModelStringInput
+  name: ModelStringInput
+  not: ModelUserFilterInput
+  office: ModelStringInput
+  or: [ModelUserFilterInput]
+  picture: ModelStringInput
+  savedArticles: ModelStringInput
+  savedCourses: ModelStringInput
+  savedLessons: ModelStringInput
+  source: ModelStringInput
+  title: ModelStringInput
+  userInstructorIdId: ModelIDInput
+  userStudentIdId: ModelIDInput
+}
+
+input ModelWorkshopFormConditionInput {
+  and: [ModelWorkshopFormConditionInput]
+  audienceSize: ModelStringInput
+  companyName: ModelStringInput
+  email: ModelStringInput
+  eventDate: ModelStringInput
+  eventDescription: ModelStringInput
+  eventLocation: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelWorkshopFormConditionInput
+  or: [ModelWorkshopFormConditionInput]
+  phone: ModelStringInput
+}
+
+input ModelWorkshopFormFilterInput {
+  and: [ModelWorkshopFormFilterInput]
+  audienceSize: ModelStringInput
+  companyName: ModelStringInput
+  email: ModelStringInput
+  eventDate: ModelStringInput
+  eventDescription: ModelStringInput
+  eventLocation: ModelStringInput
+  firstName: ModelStringInput
+  lastName: ModelStringInput
+  not: ModelWorkshopFormFilterInput
+  or: [ModelWorkshopFormFilterInput]
+  phone: ModelStringInput
+}
+
+input RegistrationCodeInput {
+  code: String
+}
+
+input UpdateAPSInput {
+  codes: [RegistrationCodeInput]
+  id: ID!
+  year: Int
+}
+
+input UpdateAPSRegistrantInput {
+  code: String
+  codeRequested: Boolean
+  codeSent: Boolean
+  company: String
+  email: String
+  id: ID!
+  innovationWorkshop: String
+  name: String
+  phone: String
+  plantTour: String
+  registrationReceived: Boolean
+  speedNetworking: String
+  title: String
+  welcomeEmailSent: Boolean
+  worksWith: String
+  year: String
+}
+
+input UpdateAPSSpeaker2024Input {
+  bio: String
+  company: String
+  email: String
+  firstName: String
+  headshot: String
+  id: ID!
+  lastName: String
+  linkedin: String
+  mediaConsent: Boolean
+  phone: String
+  presentationSummary: String
+  presentationTitle: String
+  privacyConsent: Boolean
+  title: String
+}
+
+input UpdateAPSSpeakerInput {
+  aPSSpeakersId: ID
+  bio: String
+  company: String
+  email: String
+  firstName: String
+  headshot: String
+  id: ID!
+  lastName: String
+  linkedin: String
+  mediaConsent: Boolean
+  phone: String
+  presentationSummary: String
+  presentationTitle: String
+  privacyConsent: Boolean
+  title: String
+}
+
+input UpdateAPSSponsorInput {
+  aPSId: ID
+  companyId: ID
+  id: ID!
+}
+
+input UpdateAPSTicketInput {
+  company: String
+  email: String
+  id: ID!
+  name: String
+  paymentConfirmation: String
+  phone: String
+  title: String
+}
+
+input UpdateAPSTicketRegistrantInput {
+  code: String
+  company: String
+  email: String
+  id: ID!
+  innovationWorkshop: String
+  name: String
+  phone: String
+  plantTour: String
+  registrationReceived: Boolean
+  speedNetworking: String
+  title: String
+  welcomeEmailSent: Boolean
+  worksWith: String
+  year: String
+}
+
+input UpdateAPSUserInput {
+  aPSId: ID
+  id: ID!
+  userId: ID
+}
+
+input UpdateAddOnRegistrantInput {
+  company: String
+  email: String
+  fullName: String
+  id: ID!
+  tour: String
+}
+
+input UpdateAppStartInput {
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  phone: String
+  source: String
+  sourceUrl: String
+}
+
+input UpdateApplicationStartInput {
+  createdAt: String!
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  phone: String
+  source: String
+  sourceUrl: String
+}
+
+input UpdateAristosFormInput {
+  approved: Boolean
+  company: String
+  email: String
+  id: ID!
+  name: String
+  title: String
+}
+
+input UpdateArticleInput {
+  content: String
+  id: ID!
+  media: String
+  seoImage: String
+  slug: String
+  subhead: String
+  tags: [String]
+  title: String
+}
+
+input UpdateArticleRelatedCoursesInput {
+  articleId: ID
+  courseId: ID
+  id: ID!
+}
+
+input UpdateAuthorInput {
+  company: String
+  headshot: String
+  id: ID!
+  linkedIn: String
+  name: String
+  title: String
+}
+
+input UpdateAuthorTemplatesInput {
+  authorId: ID
+  id: ID!
+  indexTemplateId: ID
+}
+
+input UpdateBlogInput {
+  author: String
+  content: String
+  date: String
+  id: ID!
+  media: String
+  slug: String
+  tags: [String]
+  title: String
+}
+
+input UpdateBoschFormInput {
+  approved: Boolean
+  company: String
+  email: String
+  id: ID!
+  name: String
+  title: String
+  topicFour: Boolean
+  topicOne: Boolean
+  topicThree: Boolean
+  topicTwo: Boolean
+}
+
+input UpdateCMPMFormInput {
+  addressExtra: String
+  areaOfInterest: String
+  background: String
+  birthYear: String
+  cMPMFormUserId: ID
+  city: String
+  cmpmGoals: String
+  companyName: String
+  companyTitle: String
+  country: String
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  linkedin: String
+  moreAboutYou: String
+  optOut: Boolean
+  payment: String
+  paymentConfirmation: String
+  phone: String
+  referral: String
+  sessionApplying: String
+  state: String
+  status: String
+  streetAddress: String
+  whyPackaging: String
+  yearGoals: String
+}
+
+input UpdateCMPMSessionInput {
+  deadline: String
+  endDate: String
+  id: ID!
+  startDate: String
+  title: String
+}
+
+input UpdateCPSFormInput {
+  addressExtra: String
+  areaOfInterest: String
+  background: String
+  birthYear: String
+  cPSFormUserId: ID
+  city: String
+  companyName: String
+  companyTitle: String
+  country: String
+  cpsGoals: String
+  elective: String
+  email: String
+  firstName: String
+  id: ID!
+  lastName: String
+  linkedin: String
+  moreAboutYou: String
+  optOut: Boolean
+  payment: String
+  paymentConfirmation: String
+  phone: String
+  referral: String
+  sessionApplying: String
+  state: String
+  status: String
+  streetAddress: String
+  whyPackaging: String
+  yearGoals: String
+}
+
+input UpdateCareerInput {
+  altName: String
+  apcCopy: String
+  beverageCopy: String
+  cmpmCopy: String
+  coreCopy: String
+  cpsCopy: String
+  electiveCopy: String
+  freeCopy: String
+  id: ID!
+  media: String
+  slug: String
+  subhead: String
+  title: String
+}
+
+input UpdateCertAppStartInput {
+  country: String
+  createdAt: String
+  email: String
+  firstName: String
+  id: ID!
+  ipAddress: String
+  lastName: String
+  phone: String
+  source: String
+  sourceUrl: String
+  type: String
+}
+
+input UpdateCertificateCoursesInput {
+  certificateId: ID
+  courseId: ID
+  id: ID!
+}
+
+input UpdateCertificateInput {
+  brochure_link: String
+  ceus_total: Int
+  courses_total: Int
+  demoLink: String
+  hours_total: Int
+  id: ID!
+  lmsLink: String
+  price_features: [String]
+  price_full: Int
+  price_monthly: Int
+  slug: String
+  title: String
+  title_button_1_link: String
+  title_button_1_text: String
+  title_button_2_link: String
+  title_button_2_text: String
+  title_callout_1: String
+  title_callout_2: String
+  title_image: String
+  title_text: String
+  video: String
+  whoText: String
+}
+
+input UpdateCirriculumCoursesInput {
+  id: ID!
+  lMSCirriculumId: ID
+  lMSCourseId: ID
+}
+
+input UpdateClickInput {
+  id: ID!
+  identifier: String
+  ipAddress: String
+  location: String
+  nextPath: String
+  path: String
+  ref: String
+  type: String
+}
+
+input UpdateCompanyInput {
+  city: String
+  email: String
+  id: ID!
+  name: String
+  phone: String
+  state: String
+  street_1: String
+  street_2: String
+  website: String
+  zip: String
+}
+
+input UpdateCourseClickInput {
+  country: String
+  courseID: String
+  format: String
+  id: ID!
+  ipAddress: String
+  lat: String
+  long: String
+  nextPath: String
+  page: String
+  referrer: String
+}
+
+input UpdateCourseInput {
+  category: CategoryType
+  hour: Int
+  id: ID!
+  lessons: Int
+  media: String
+  price: Int
+  slug: String
+  subhead: String
+  title: String
+  video: String
+  videos: Int
+}
+
+input UpdateCourseInstructorsInput {
+  id: ID!
+  instructorId: ID
+  lMSCourseId: ID
+}
+
+input UpdateCourseLessonsInput {
+  id: ID!
+  lMSCourseId: ID
+  lMSLessonId: ID
+}
+
+input UpdateCourseSearchInput {
+  country: String
+  id: ID!
+  ipAddress: String
+  term: String
+}
+
+input UpdateCustomerInput {
+  displayName: String
+  email: String
+  highlightColor: String
+  id: ID!
+  link: String
+  logo: String
+  offered: [String]
+  offerings: [String]
+  pdf: String
+  primaryColor: String
+  slide: String
+  status: String
+  video: String
+}
+
+input UpdateCustomerLibaryInput {
+  addOns: [String]
+  clientCourses: [String]
+  description: String
+  displayName: String
+  email: String
+  highlightColor: String
+  id: ID!
+  link: String
+  logo: String
+  pdf: String
+  primaryColor: String
+  pschoolCourses: [String]
+  slide: String
+  slug: String
+  status: String
+  video: String
+}
+
+input UpdateDayInLifeItemInput {
+  careerDayInLifeId: ID
+  desc: String
+  icon: String
+  id: ID!
+  name: String
+}
+
+input UpdateGuardianFormInput {
+  approved: Boolean
+  company: String
+  email: String
+  id: ID!
+  name: String
+  title: String
+}
+
+input UpdateIncludedCourseInput {
+  courseId: String
+  customerId: ID
+  id: ID!
+}
+
+input UpdateIndexRowInput {
+  content: [String]
+  headline: String
+  id: ID!
+  subhead: String
+  type: String
+}
+
+input UpdateIndexTemplateInput {
+  id: ID!
+  slug: String
+  subhead: String
+  title: String
+}
+
+input UpdateIndexTemplateRowsInput {
+  id: ID!
+  indexRowId: ID
+  indexTemplateId: ID
+}
+
+input UpdateInstructorInput {
+  id: ID!
+  userId: ID
+}
+
+input UpdateLMSCirriculumInput {
+  description: String
+  id: ID!
+  shorthand: String
+  slug: String
+  title: String
+}
+
+input UpdateLMSCollectionInput {
+  category: CategoryType
+  collectionId: String
+  courses: [String]
+  description: String
+  hours: String
+  id: ID!
+  instructor: String
+  instructorDescription: String
+  instructorImage: String
+  instructorLink: String
+  lmsLink: String
+  price: Int
+  slug: String
+  subtitle: String
+  title: String
+}
+
+input UpdateLMSCourseInput {
+  altLink: String
+  category: CategoryType
+  categoryArray: [String]
+  collection: [String]
+  courseId: String
+  demo: Boolean
+  hours: String
+  id: ID!
+  infoSheet: String
+  lessons: String
+  link: String
+  objectives: [String]
+  partOf: [String]
+  percentComplete: Int
+  preview: String
+  price: String
+  seoImage: String
+  shortDescription: String
+  slug: String
+  studentCourseEnrolledId: ID
+  subheadline: String
+  title: String
+  trial_link: String
+  type: String
+  videos: String
+  what_learned: String
+}
+
+input UpdateLMSLessonInput {
+  content: String
+  id: ID!
+  media: String
+  objectives: [String]
+  percentComplete: Int
+  slug: String
+  subheadline: String
+  title: String
+}
+
+input UpdateLMSModuleInput {
+  content: String
+  id: ID!
+  lMSLessonModulesId: ID
+  lMSModuleQuizId: ID
+  media: String
+  mediaType: MediaType
+  objectives: [String]
+  slug: String
+  subheadline: String
+  title: String
+}
+
+input UpdateLMSQuizInput {
+  answer1: String
+  answer2: String
+  answer3: String
+  answer4: String
+  correctAnswer: String
+  id: ID!
+  lMSQuizModuleId: ID
+  prompt: String
+}
+
+input UpdateLessonClickInput {
+  LessonID: String
+  country: String
+  format: String
+  id: ID!
+  ipAddress: String
+  lat: String
+  long: String
+  page: String
+  referrer: String
+}
+
+input UpdateLessonInput {
+  actionCTA: String
+  actionExample: String
+  actionLink: String
+  actionLinkTitle: String
+  actionSubhead: String
+  author: [String]
+  backdate: String
+  content: String
+  createdBy: String
+  featured: String
+  id: ID!
+  lastEditedBy: String
+  media: String
+  mediaType: MediaType
+  objectives: [String]
+  related: [String]
+  screengrab: String
+  seoImage: String
+  slides: [String]
+  slug: String
+  status: String
+  subhead: String
+  title: String
+  type: ModuleType
+  videoLink: String
+}
+
+input UpdateLessonLinkInput {
+  id: ID!
+  lessonLinksId: ID
+  link: String
+  name: String
+}
+
+input UpdateLessonSourceInput {
+  id: ID!
+  lessonSourcesId: ID
+  link: String
+  name: String
+  position: Int
+}
+
+input UpdateLessonTagsInput {
+  id: ID!
+  lessonId: ID
+  tagsId: ID
+}
+
+input UpdateMorrisetteFormInput {
+  approved: Boolean
+  company: String
+  email: String
+  id: ID!
+  name: String
+  preference: String
+  title: String
+}
+
+input UpdateObjectiveInput {
+  completed: Boolean
+  id: ID!
+  objective: String
+}
+
+input UpdateSalesBarInput {
+  icon: String
+  id: ID!
+  link: String
+  text: String
+  type: String
+}
+
+input UpdateSalesbarClickInput {
+  country: String
+  id: ID!
+  ipAddress: String
+  link: String
+  page: String
+}
+
+input UpdateSlideInput {
+  description: String
+  id: ID!
+  lMSModuleSlidesId: ID
+  slideSource: String
+}
+
+input UpdateStaffInput {
+  fullName: String
+  id: ID!
+  image: String
+  linkedIn: String
+  title: String
+}
+
+input UpdateStudentInput {
+  id: ID!
+  studentId: ID
+}
+
+input UpdateSurgereFormInput {
+  approved: Boolean
+  company: String
+  email: String
+  id: ID!
+  name: String
+  title: String
+}
+
+input UpdateTagsInput {
+  id: ID!
+  tag: String
+}
+
+input UpdateTestimonialInput {
+  affiliation: String
+  author: String
+  company: String
+  content: String
+  date: String
+  featured: Boolean
+  headshot: String
+  id: ID!
+  linkedin: String
+  tags: [String]
+  title: String
+  video: String
+}
+
+input UpdateTimestampInput {
+  description: String
+  id: ID!
+  time: String
+}
+
+input UpdateTouristInput {
+  company: String
+  email: String
+  fullName: String
+  id: ID!
+  phone: String
+  tour: String
+}
+
+input UpdateTrackedCourseInput {
+  clicks: Int
+  courseId: String
+  customerId: ID
+  id: ID!
+}
+
+input UpdateUserInput {
+  bio: String
+  cell: String
+  cmpmFormID: ID
+  company: String
+  companyID: ID
+  cpsFormID: ID
+  email: String
+  id: ID!
+  linkedin: String
+  name: String
+  office: String
+  picture: String
+  savedArticles: [String]
+  savedCourses: [String]
+  savedLessons: [String]
+  source: String
+  title: String
+  userInstructorIdId: ID
+  userStudentIdId: ID
+}
+
+input UpdateWorkshopFormInput {
+  audienceSize: String
+  companyName: String
+  email: String
+  eventDate: String
+  eventDescription: String
+  eventLocation: String
+  firstName: String
+  id: ID!
+  lastName: String
+  phone: String
+}
