@@ -42,7 +42,7 @@ export const LessonCardItem: React.FC<LessonComponentProps> = ({
   lessonData,
   view,
 }) => {
-  const { getLesson } = lessonData.data;
+  const { getLesson } = lessonData;
 
   const newDate =
     getLesson &&
@@ -75,7 +75,7 @@ export const LessonCardItem: React.FC<LessonComponentProps> = ({
       <div className='bg-white border-black border flex flex-col gap-2 p-5 h-full relative'>
         <div className='absolute w-full h-16 bg-gradient-to-t from-white via-white z-10 bottom-0 left-0 right-0'></div>
         <div className='text-sm'>{newDate}</div>
-        <div className='h3-base'>{getLesson.title}</div>
+        <div className='h4-base'>{getLesson.title}</div>
         <div className='flex flex-wrap max-w-[75%] gap-x-1.5 gap-y-1'>
           {authors &&
             authors.map((auth) => (
