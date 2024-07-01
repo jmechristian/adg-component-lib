@@ -36,9 +36,11 @@ interface GetLessonResponse {
 interface LessonComponentProps {
   lessonData: GetLessonResponse;
   view: () => void;
+  authors: string[];
 }
 
 export const LessonCardItem: React.FC<LessonComponentProps> = ({
+  authors,
   lessonData,
   view,
 }) => {
@@ -77,14 +79,15 @@ export const LessonCardItem: React.FC<LessonComponentProps> = ({
         <div className='text-sm'>{newDate}</div>
         <div className='h3-base'>{getLesson.title}</div>
         <div className='flex flex-wrap max-w-[75%] gap-x-1.5 gap-y-1'>
-          {getLesson.author.map((auth) => (
-            <div className='flex items-center gap-0.5' key={auth}>
-              <div>
-                <MdAccountCircle color='gray' size={16} />
+          {authors &&
+            authors.map((auth) => (
+              <div className='flex items-center gap-0.5' key={auth}>
+                <div>
+                  <MdAccountCircle color='gray' size={16} />
+                </div>
+                <AuthorName name={auth} />
               </div>
-              <AuthorName id={auth} />
-            </div>
-          ))}
+            ))}
         </div>
         <div
           className='text-sm leading-tight max-h-[157px] overflow-scroll pb-10'
