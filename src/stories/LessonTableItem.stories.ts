@@ -13,6 +13,10 @@ const meta: Meta<typeof LessonTableItem> = {
     view: {
       description: 'View Lesson Function',
     },
+    authors: {
+      description:
+        'API call happens on the front end and populates author names',
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -79,5 +83,6 @@ export const Primary: Story = {
       },
     },
     view: () => {},
+    authors: ['Mitch Webster', 'Alli Keigley'],
   },
 };
