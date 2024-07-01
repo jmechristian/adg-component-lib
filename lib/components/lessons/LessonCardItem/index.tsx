@@ -3,33 +3,31 @@ import { BrutalCircleIconTooltip } from '../../../main';
 import { AuthorName } from '../../../main';
 
 interface GetLessonResponse {
-  data: {
-    getLesson: {
-      author: string[];
-      backdate: string;
-      content: string;
-      createdAt: string;
-      id: string;
-      media: string;
-      objectives: string[];
-      screengrab: string | null;
-      seoImage: string;
-      slug: string;
-      status: string;
-      subhead: string;
-      tags: {
-        items: {
+  getLesson: {
+    author: string[];
+    backdate: string;
+    content: string;
+    createdAt: string;
+    id: string;
+    media: string;
+    objectives: string[];
+    screengrab: string | null;
+    seoImage: string;
+    slug: string;
+    status: string;
+    subhead: string;
+    tags: {
+      items: {
+        id: string;
+        tags: {
           id: string;
-          tags: {
-            id: string;
-            tag: string;
-          };
-        }[];
-      };
-      title: string;
-      type: string;
-      videoLink: string | null;
+          tag: string;
+        };
+      }[];
     };
+    title: string;
+    type: string;
+    videoLink: string | null;
   };
 }
 
