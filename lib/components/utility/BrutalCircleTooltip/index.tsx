@@ -7,12 +7,13 @@ interface BrutalCircleIconTooltipProps {
   children: ReactNode;
   tooltip: string;
   bgColor: string;
+  bottom?: boolean;
   fn: () => void;
 }
 
 export const BrutalCircleIconTooltip: React.FC<
   BrutalCircleIconTooltipProps
-> = ({ children, tooltip, bgColor, fn }) => {
+> = ({ children, tooltip, bgColor, fn, bottom }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -25,7 +26,7 @@ export const BrutalCircleIconTooltip: React.FC<
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            className='absolute w-fit z-[120] bottom-full mb-1'
+            className={`absolute w-fit z-[200] ${bottom ? 'top-full mt-1' : 'bottom-full'} mb-1`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

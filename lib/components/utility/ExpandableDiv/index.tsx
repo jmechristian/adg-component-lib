@@ -39,7 +39,7 @@ export const ExpandableDiv: React.FC<ExpandableDivProps> = ({
       >
         <div
           ref={contentRef}
-          className={`text-sm ${textColor} ${!isExpanded ? 'line-clamp-6' : ''}`}
+          className={`text-sm ${textColor} ${!isExpanded ? 'line-clamp-6' : ''} leading-snug`}
         >
           {content}
         </div>

@@ -8,7 +8,7 @@
 }
 
 .h1-base {
-  @apply text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.04em] lg:leading-[1.1em];
+  @apply text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] lg:leading-[1.1em];
 }
 
 .h2-base {
@@ -16,9 +16,9 @@
 }
 
 .h3-base {
-  @apply font-semibold text-xl md:text-2xl lg:text-3xl leading-tight lg:leading-[1.1em] tracking-[-0.04em];
+  @apply font-semibold text-xl md:text-2xl lg:text-3xl leading-tight lg:leading-[1.1em] tracking-[-0.03em];
 }
 
 .h4-base {
-  @apply text-lg font-semibold md:text-xl leading-tight lg:leading-[1.1em] tracking-[-0.04em];
+  @apply text-lg font-semibold md:text-xl leading-tight lg:leading-[1.1em] tracking-[-0.02em];
 }
