@@ -1,7 +1,7 @@
 'use client';
 
 interface AuthorBlockProps {
-  pic: boolean;
+  pic?: boolean;
   small?: boolean;
   author: {
     name: string;

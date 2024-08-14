@@ -1,4 +1,3 @@
-import '../../../../../src/index.css';
 import { CourseTableItem } from '../../../courses/courseTableItem';
 import { H3 } from '../../../H3';
 

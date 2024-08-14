@@ -1,4 +1,3 @@
-import '../../../../../src/index.css';
 import { H2 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 import { LessonPreviewMini } from '../../../utility/LessonPreviewMini';

@@ -28,3 +28,5 @@ export { CourseTable } from './components/blocks/grids/courseTable';
 
 export { CourseCardCallout } from './components/blocks/callouts/courseCardCallout';
 export { BasicCallout } from './components/blocks/callouts/basicCallout';
+
+export { LibraryLotmGrid } from './components/library/libraryLotmGrid';

@@ -1,4 +1,3 @@
-import '../../../../../src/index.css';
 import { H1 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 

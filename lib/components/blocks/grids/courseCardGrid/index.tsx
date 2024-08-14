@@ -1,4 +1,3 @@
-import '../../../../../src/index.css';
 import { H3 } from '../../../../main';
 import { CourseCard } from '../../../courses/courseCard';
 
