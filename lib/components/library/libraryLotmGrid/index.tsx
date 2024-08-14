@@ -1,4 +1,3 @@
-import '../../../../src/index.css';
 import { SocialGridItem } from '../../blocks/grids/socialGridItem';
 import { H2 } from '../../H2';
 import { AuthorBlock } from '../../utility/AuthorBlock';

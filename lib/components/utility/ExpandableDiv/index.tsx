@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { MdArrowDropDown } from 'react-icons/md';
-import '../../../../src/index.css';
 
 // Define the props type
 interface ExpandableDivProps {
