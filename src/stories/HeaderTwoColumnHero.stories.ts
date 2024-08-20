@@ -26,6 +26,10 @@ const meta: Meta<typeof HeaderTwoColumnHero> = {
       control: 'text',
       description: 'hero image used in background of container',
     },
+    setNewHero: {
+      control: 'boolean',
+      description: 'Function to set new Hero',
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -42,7 +46,7 @@ export const Primary: Story = {
   args: {
     headline: 'Extended Producer Responsibility (EPR)',
     subheadline:
-      'Extended Producer Responsibility (EPR) in packaging design is a policy approach that holds manufacturers accountable for the entire lifecycle of their products, including end-of-life management. This means that producers are responsible for the collection, recycling, and disposal of their packaging materials, incentivizing them to design more sustainable and eco-friendly packaging solutions. EPR aims to reduce environmental impact and promote a circular economy by shifting the cost and responsibility of waste management from taxpayers to producers.',
+      'Enter your index description here – where captivating content meets concise information in exactly 350 characters (give or take a smidge)! Whether you’re searching for the perfect blend of facts and flair or just love the idea of placeholders, we’ve got you covered. Stay tuned as this space fills up with awe-inspiring details…eventually. Until then, imagine something incredible!',
     centered: false,
     authors: [
       {

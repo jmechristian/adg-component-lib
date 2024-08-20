@@ -9,6 +9,10 @@ export { BrutalCircleIconTooltip } from './components/utility/BrutalCircleToolti
 export { BrutalButton } from './components/utility/BrutalButton';
 export { AuthorName } from './components/utility/AuthorName';
 export { GridToggle } from './components/utility/GridToggle';
+export { ImageUpload } from './components/utility/ImageUpload';
+export { LessonSelector } from './components/utility/LessonSelector';
+export { CourseSelector } from './components/utility/CourseSelector';
+export { Pagination } from './components/utility/Pagination';
 
 export { CourseCard } from './components/courses/courseCard';
 export { CourseTableItem } from './components/courses/courseTableItem';

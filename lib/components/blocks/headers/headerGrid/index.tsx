@@ -1,6 +1,7 @@
 import { H2 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 import { LessonPreviewMini } from '../../../utility/LessonPreviewMini';
+import { ImageUpload } from '../../../../main';
 
 // Define the props type
 
@@ -50,6 +51,7 @@ interface HeaderGridProps {
   hero: string;
   sidebarHeadline: string;
   lessons: GetLessonResponse[];
+  setNewHero: (val: string) => void;
 }
 
 export const HeaderGrid: React.FC<HeaderGridProps> = ({
@@ -59,6 +61,7 @@ export const HeaderGrid: React.FC<HeaderGridProps> = ({
   hero = 'https://packschool.s3.amazonaws.com/cadboard-plant.webp',
   sidebarHeadline = 'Latest EPR Lessons',
   lessons,
+  setNewHero,
 }) => {
   return (
     <div
@@ -66,10 +69,16 @@ export const HeaderGrid: React.FC<HeaderGridProps> = ({
     >
       <div className='col-span-8 w-full'>
         <div className='flex flex-col gap-5'>
-          <div
-            className='aspect-video w-full bg-black bg-cover bg-center'
-            style={{ backgroundImage: `url(${hero})` }}
-          ></div>
+          <div className='aspect-video w-full'>
+            <ImageUpload
+              placeholderSrc={
+                hero
+                  ? hero
+                  : 'https://packschool.s3.amazonaws.com/cadboard-plant.webp'
+              }
+              setNewImage={(val) => setNewHero(val)}
+            />
+          </div>
           <div className='flex flex-col gap-3'>
             <H2 children={headline} textColor='text-black' />
             <div className='flex items-center flex-wrap gap-5'>
@@ -85,7 +94,7 @@ export const HeaderGrid: React.FC<HeaderGridProps> = ({
           <div className='text-lg'>{subheadline}</div>
         </div>
       </div>
-      <div className='col-span-4 h-full border-l flex flex-col divide-y divide-black  border-l-black'>
+      <div className='col-span-4 border-l flex flex-col justify-between divide-y divide-black  border-l-black'>
         <div className='pb-2.5 pl-5'>
           <div className='text-xs uppercase tracking-widest font-semibold'>
             {sidebarHeadline}

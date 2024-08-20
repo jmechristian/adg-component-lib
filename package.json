@@ -1,7 +1,7 @@
 {
   "name": "@jmechristian/ps-component-library",
   "private": false,
-  "version": "2.1.1",
+  "version": "2.2.3",
   "main": "dist/ps-component-library.js",
   "types": "dist/main.d.ts",
   "type": "module",
@@ -35,6 +35,7 @@
     "@storybook/react": "^8.1.9",
     "@storybook/react-vite": "^8.1.9",
     "@storybook/test": "^8.1.9",
+    "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
