@@ -2,55 +2,18 @@ import { H2 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 import { LessonPreviewMini } from '../../../utility/LessonPreviewMini';
 import { ImageUpload } from '../../../../main';
+import { Lesson, Author } from '../../../../defs';
 
 // Define the props type
-
-interface authorType {
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
-}
-
-interface GetLessonResponse {
-  getLesson: {
-    author: string[];
-    backdate: string;
-    content: string;
-    createdAt: string;
-    id: string;
-    media: string;
-    objectives: string[];
-    screengrab: string | null;
-    seoImage: string;
-    slug: string;
-    status: string;
-    subhead: string;
-    tags: {
-      items: {
-        id: string;
-        tags: {
-          id: string;
-          tag: string;
-        };
-      }[];
-    };
-    title: string;
-    type: string;
-    videoLink: string | null;
-  };
-}
 
 interface HeaderGridProps {
   headline: string;
   subheadline: string;
   centered?: boolean;
-  authors?: authorType[];
+  authors?: Author[];
   hero: string;
   sidebarHeadline: string;
-  lessons: GetLessonResponse[];
+  lessons: Lesson[];
   setNewHero: (val: string) => void;
 }
 
@@ -63,6 +26,15 @@ export const HeaderGrid: React.FC<HeaderGridProps> = ({
   lessons,
   setNewHero,
 }) => {
+  const formatDate = (isoString: string) => {
+    const date = new Date(isoString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}/${month}/${day}`;
+  };
+
   return (
     <div
       className={`grid lg:grid-cols-12 w-full gap-10 lg:gap-16 max-w-7xl mx-auto px-4 xl:px-0`}
@@ -83,9 +55,7 @@ export const HeaderGrid: React.FC<HeaderGridProps> = ({
             <H2 children={headline} textColor='text-black' />
             <div className='flex items-center flex-wrap gap-5'>
               {authors && authors.length > 0 ? (
-                authors.map((au) => (
-                  <AuthorBlock author={au.author} pic={true} />
-                ))
+                authors.map((au) => <AuthorBlock author={au} pic={true} />)
               ) : (
                 <></>
               )}
@@ -102,20 +72,12 @@ export const HeaderGrid: React.FC<HeaderGridProps> = ({
         </div>
         {lessons.map((les) => (
           <LessonPreviewMini
-            key={les.getLesson.id}
-            title={les.getLesson.title}
-            authors={authors}
-            hero={
-              les.getLesson.screengrab
-                ? les.getLesson.screengrab
-                : les.getLesson.seoImage
-            }
-            date={
-              les.getLesson.backdate
-                ? les.getLesson.backdate
-                : les.getLesson.createdAt
-            }
-            slug={les.getLesson.slug}
+            key={les.id}
+            title={les.title}
+            authors={les.author}
+            hero={les.screengrab ? les.screengrab : les.seoImage}
+            date={les.backdate ? les.backdate : formatDate(les.createdAt)}
+            slug={les.slug}
           />
         ))}
       </div>

@@ -1,14 +1,10 @@
 'use client';
+import { Author } from '../../../defs';
 
 interface AuthorBlockProps {
   pic?: boolean;
   small?: boolean;
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
+  author: Author;
 }
 
 export const AuthorBlock: React.FC<AuthorBlockProps> = ({

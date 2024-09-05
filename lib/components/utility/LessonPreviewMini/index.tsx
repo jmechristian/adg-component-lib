@@ -1,19 +1,11 @@
 'use client';
 
 import { AuthorBlock } from '../AuthorBlock';
-
-interface authorType {
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
-}
+import { Author } from '../../../defs';
 
 interface LessonPreviewMiniProps {
   title: string;
-  authors?: authorType[];
+  authors?: Author[];
   date: string;
   slug: string;
   hero: string;
@@ -39,8 +31,8 @@ export const LessonPreviewMini: React.FC<LessonPreviewMiniProps> = ({
             <div className='w-full flex items-center flex-wrap gap-x-3'>
               {authors &&
                 authors.map((au) => (
-                  <div key={au.author.id}>
-                    <AuthorBlock author={au.author} pic={false} small={true} />
+                  <div key={au.id}>
+                    <AuthorBlock author={au} pic={false} small={true} />
                   </div>
                 ))}
             </div>

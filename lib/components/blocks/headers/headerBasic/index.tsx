@@ -1,22 +1,12 @@
+import { Author } from '../../../../defs';
 import { H1 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
-
-// Define the props type
-
-interface authorType {
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
-}
 
 interface HeaderBasicProps {
   headline: string;
   subheadline: string;
   centered: boolean;
-  authors?: authorType[];
+  authors?: Author[];
 }
 
 export const HeaderBasic: React.FC<HeaderBasicProps> = ({
@@ -35,7 +25,7 @@ export const HeaderBasic: React.FC<HeaderBasicProps> = ({
           className={`flex items-center flex-wrap gap-5 ${centered ? 'justify-center' : ''}`}
         >
           {authors && authors.length > 0 ? (
-            authors.map((au) => <AuthorBlock author={au.author} />)
+            authors.map((au) => <AuthorBlock author={au} />)
           ) : (
             <></>
           )}

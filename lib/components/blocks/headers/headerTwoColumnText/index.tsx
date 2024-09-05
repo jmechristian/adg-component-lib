@@ -1,22 +1,14 @@
+import { Author } from '../../../../defs';
 import { H1 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 
 // Define the props type
 
-interface authorType {
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
-}
-
 interface HeaderTwoColumnTextProps {
   headline: string;
   subheadline: string;
   centered: boolean;
-  authors?: authorType[];
+  authors?: Author[];
 }
 
 export const HeaderTwoColumnText: React.FC<HeaderTwoColumnTextProps> = ({
@@ -33,7 +25,7 @@ export const HeaderTwoColumnText: React.FC<HeaderTwoColumnTextProps> = ({
         <H1 children={headline} textColor='text-black' />
         <div className='flex items-center flex-wrap gap-5'>
           {authors && authors.length > 0 ? (
-            authors.map((au) => <AuthorBlock author={au.author} />)
+            authors.map((au) => <AuthorBlock author={au} />)
           ) : (
             <></>
           )}

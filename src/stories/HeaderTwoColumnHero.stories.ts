@@ -50,29 +50,25 @@ export const Primary: Story = {
     centered: false,
     authors: [
       {
-        author: {
-          headshot:
-            'https://packschool.s3.amazonaws.com/headshots/ALLI-2018-sm.jpeg',
-          linkedIn: 'https://www.linkedin.com/in/allikeigley/',
-          name: 'Alli Keigley',
-          id: '89d486ff-5870-4ddb-816d-6adbc7935075',
-        },
+        company: 'Packaging School',
+        headshot: 'https://packschool.s3.amazonaws.com/mitch-headshot-sm.png',
+        createdAt: '2023-08-22T21:11:37.128Z',
+        id: '41f53c00-b19f-43ab-ae79-763cb4c88dc4',
+        linkedIn: 'https://www.linkedin.com/in/mitchwebster/',
+        name: 'Mitch Webster',
+        title: 'Business Solutions Strategist',
+        updatedAt: '2023-09-26T16:09:59.874Z',
       },
       {
-        author: {
-          headshot: 'https://packschool.s3.amazonaws.com/mitch-headshot-sm.png',
-          linkedIn: 'https://www.linkedin.com/in/mitchwebster/',
-          name: 'Mitch Webster',
-          id: '41f53c00-b19f-43ab-ae79-763cb4c88dc4',
-        },
-      },
-      {
-        author: {
-          headshot: 'https://packschool.s3.amazonaws.com/JULIE-2018-sm.jpg',
-          linkedIn: 'https://www.linkedin.com/in/julie-rice-phdfoodtechnology/',
-          name: 'Julie Rice Suggs, PhD',
-          id: 'a846afef-8a70-4c17-9f38-5e4768c5ed94',
-        },
+        company: 'Packaging School',
+        headshot:
+          'https://packschool.s3.amazonaws.com/headshots/ALLI-2018-sm.jpeg',
+        createdAt: '2023-09-20T17:13:49.886Z',
+        id: '89d486ff-5870-4ddb-816d-6adbc7935075',
+        linkedIn: 'https://www.linkedin.com/in/allikeigley/',
+        name: 'Alli Keigley',
+        title: 'Production Coordinator',
+        updatedAt: '2023-09-26T16:00:26.775Z',
       },
     ],
     hero: 'https://packschool.s3.amazonaws.com/cadboard-plant.webp',

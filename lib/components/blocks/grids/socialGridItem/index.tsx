@@ -12,43 +12,10 @@ import {
   WhatsappShareButton,
   XIcon,
 } from 'react-share';
-
-interface authorType {
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
-}
+import { Lesson } from '../../../../defs';
 
 interface SocialGridItemProps {
-  lesson: {
-    authors: authorType[];
-    backdate: string;
-    content: string;
-    createdAt: string;
-    id: string;
-    media: string;
-    objectives: string[];
-    screengrab: string | null;
-    seoImage: string;
-    slug: string;
-    status: string;
-    subhead: string;
-    tags: {
-      items: {
-        id: string;
-        tags: {
-          id: string;
-          tag: string;
-        };
-      }[];
-    };
-    title: string;
-    type: string;
-    videoLink: string | null;
-  };
+  lesson: Lesson;
 }
 
 export const SocialGridItem: React.FC<SocialGridItemProps> = ({ lesson }) => {
@@ -71,9 +38,9 @@ export const SocialGridItem: React.FC<SocialGridItemProps> = ({ lesson }) => {
           }}
         ></div>
         <div className='flex w-full items-center flex-wrap gap-x-2 gap-y-1'>
-          {lesson.authors && lesson.authors.length > 0 ? (
-            lesson.authors.map((au) => (
-              <AuthorBlock author={au.author} pic={true} small={true} />
+          {lesson.author && lesson.author.length > 0 ? (
+            lesson.author.map((au) => (
+              <AuthorBlock author={au} pic={true} small={true} />
             ))
           ) : (
             <></>

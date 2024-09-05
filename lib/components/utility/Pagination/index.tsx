@@ -17,7 +17,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className='flex items-center gap-2'>
+    <div className='flex flex-wrap justify-center items-center gap-2'>
       {pageNumbers.length > 1 &&
         pageNumbers.map((number) => (
           <button

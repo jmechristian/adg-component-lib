@@ -1,57 +1,24 @@
 import React, { useState, useMemo } from 'react';
 import { MdSearch } from 'react-icons/md';
 import Pagination from '../Pagination';
-
-interface Author {
-  company: string | null;
-  headshot?: string | null;
-  createdAt: string;
-  id: string;
-  linkedIn: string;
-  name: string;
-  title: string;
-  updatedAt: string;
-}
-
-interface Tag {
-  id: string;
-  tag: string;
-}
-
-interface TagItem {
-  tags: Tag;
-}
-
-interface Tags {
-  items: TagItem[];
-}
-
-interface Lesson {
-  author: Author[];
-  backdate: string;
-  content: string;
-  createdAt: string;
-  id: string;
-  objectives: string[];
-  screengrab: string | null;
-  seoImage: string;
-  slug: string;
-  tags: Tags;
-  title: string;
-  type: string;
-  subhead: string;
-}
+import { Lesson } from '../../../defs';
 
 interface LessonSelectorProps {
   lessons: Lesson[];
+  selected: Lesson[];
   onSelectionChange?: (selectedLessons: Lesson[]) => void;
+  onClose?: () => void;
 }
 
 export const LessonSelector: React.FC<LessonSelectorProps> = ({
   lessons,
-  //   onSelectionChange,
+  selected,
+  onSelectionChange,
+  onClose,
 }) => {
-  const [selectedLessons, setSelectedLessons] = useState<Lesson[]>([]);
+  const [selectedLessons, setSelectedLessons] = useState<Lesson[]>(
+    selected ? selected : []
+  );
   const [isSearchTerm, setIsSearchTerm] = useState<string>('');
   const [isCurrentPage, setIsCurrentPage] = useState(1);
   const [filterSelected, setFilterSelected] = useState(false);
@@ -88,47 +55,64 @@ export const LessonSelector: React.FC<LessonSelectorProps> = ({
       } else {
         return [...prevSelected, lesson];
       }
-
-      console.log(selectedLessons);
     });
   };
 
   const paginatedItems = useMemo(() => {
     if (filteredLessons && !filterSelected) {
-      const currentPageData = GFG(filteredLessons, isCurrentPage, 9);
+      const currentPageData = GFG(filteredLessons, isCurrentPage, 6);
       return currentPageData;
     }
 
     if (filteredLessons && filterSelected) {
-      const currentPageData = GFG(selectedLessons, isCurrentPage, 9);
+      const currentPageData = GFG(selectedLessons, isCurrentPage, 6);
       return currentPageData;
     }
   }, [filterSelected, filteredLessons, isCurrentPage, selectedLessons]);
 
+  const handleSave = () => {
+    if (onSelectionChange) {
+      onSelectionChange(selectedLessons);
+    }
+    onClose && onClose();
+  };
+
   return (
-    <div className='p-8 border w-[1024px] bg-neutral-100 border-black rounded-lg shadow-md max-w-5xl'>
+    <div className='p-8 w-[1024px] max-h-[100vh] shadow-xl border-black border-2 overflow-y-scroll scrollbar-hide overflow-x-hidden bg-white max-w-5xl'>
       <div className='flex w-full items-end justify-between mb-10'>
         <div className='flex items-center gap-2'>
-          <h2 className='h3-base text-base-brand'>Select Lessons</h2>
-          <div
-            className='bg-black flex items-center px-4 py-1 text-white cursor-pointer'
-            onClick={() => setFilterSelected(!filterSelected)}
-          >
-            {selectedLessons.length} Selected
+          <div className='flex items-center gap-3'>
+            <h2 className='h3-base text-base-brand'>Select Lessons</h2>
           </div>
         </div>
-        <div className='flex w-1/2 items-center gap-1 border-b border-black px-2 py-1 bg-transparent'>
-          <div>
-            <MdSearch size={24} color='black' />
+        <div className='flex w-2/3 items-center gap-5 bg-transparent'>
+          <div className='flex items-center gap-1 border-b border-black flex-1'>
+            <div>
+              <MdSearch size={24} color='black' />
+            </div>
+            <input
+              type='text'
+              value={isSearchTerm}
+              onChange={(e) => setIsSearchTerm(e.target.value)}
+              name='search'
+              className='focus:border-0 w-full bg-transparent focus:ring-0 ring-0 border-0 pl-2 py-1 placeholder:text-sm'
+              placeholder='Search Lessons'
+            />
           </div>
-          <input
-            type='text'
-            value={isSearchTerm}
-            onChange={(e) => setIsSearchTerm(e.target.value)}
-            name='search'
-            className='focus:border-0 w-full bg-transparent focus:ring-0 ring-0 border-0 pl-2 py-1 placeholder:text-sm'
-            placeholder='Search Lessons'
-          />
+          <div className='bg-black flex gap-2 items-center p-2 '>
+            <div
+              className='cursor-pointer text-white text-sm'
+              onClick={() => setFilterSelected(!filterSelected)}
+            >
+              {selectedLessons.length} Selected
+            </div>
+            <div
+              className='bg-clemson py-1 px-2 text-sm uppercase font-semibold text-white cursor-pointer hover:bg-clemson-dark transition-colors ease-in'
+              onClick={handleSave}
+            >
+              Save & Close
+            </div>
+          </div>
         </div>
       </div>
       {paginatedItems ? (
@@ -191,7 +175,7 @@ export const LessonSelector: React.FC<LessonSelectorProps> = ({
           <div className='w-full flex justify-center items-center gap-1 mt-3'>
             <Pagination
               totalItems={filteredLessons.length}
-              itemsPerPage={12}
+              itemsPerPage={6}
               currentPage={1}
               onPageChange={(val) => setIsCurrentPage(val)}
             />

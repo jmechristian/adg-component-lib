@@ -2,22 +2,14 @@ import { H2 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 import { ImageUpload } from '../../../../main';
 import '../../../../../src/index.css';
+import { Author } from '../../../../defs';
 // Define the props type
-
-interface authorType {
-  author: {
-    name: string;
-    headshot: string;
-    linkedIn: string;
-    id: string;
-  };
-}
 
 interface HeaderTwoColumnHeroProps {
   headline: string;
   subheadline: string;
   centered: boolean;
-  authors?: authorType[];
+  authors?: Author[];
   hero: string;
   setNewHero?: (val: string) => void;
 }
@@ -46,16 +38,18 @@ export const HeaderTwoColumnHero: React.FC<HeaderTwoColumnHeroProps> = ({
           />
         </div>
       </div>
-      <div className='flex flex-col gap-16'>
+      <div className='flex flex-col gap-10'>
         <div className='flex flex-col gap-3'>
           <H2 children={headline} textColor='text-black' />
-          <div className='flex items-center flex-wrap gap-5'>
-            {authors && authors.length > 0 ? (
-              authors.map((au) => <AuthorBlock author={au.author} />)
-            ) : (
-              <></>
-            )}
-          </div>
+          {authors && authors.length > 0 ? (
+            <div className='flex items-center flex-wrap gap-5'>
+              {authors.map((au) => (
+                <AuthorBlock author={au} />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className='text-lg'>{subheadline}</div>
       </div>
