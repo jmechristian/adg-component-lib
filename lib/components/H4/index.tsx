@@ -1,3 +1,5 @@
+import '../../styles.css';
+
 // Define the props type
 interface H4Props {
   children: string;

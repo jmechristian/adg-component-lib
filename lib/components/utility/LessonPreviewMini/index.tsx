@@ -2,6 +2,7 @@
 
 import { AuthorBlock } from '../AuthorBlock';
 import { Author } from '../../../defs';
+import '../../../styles.css';
 
 interface LessonPreviewMiniProps {
   title: string;

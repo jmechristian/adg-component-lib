@@ -1,5 +1,6 @@
 import { BrutalButton, CourseCard } from '../../../../main';
 import { H2 } from '../../../H2';
+import '../../../../styles.css';
 
 interface CourseCardCallout {
   headline: string;

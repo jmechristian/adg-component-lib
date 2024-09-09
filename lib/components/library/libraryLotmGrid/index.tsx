@@ -13,7 +13,7 @@ import {
   XIcon,
 } from 'react-share';
 import { Lesson } from '../../../defs';
-
+import '../../../styles.css';
 // Define the props type
 
 interface LibraryLotmGridProps {

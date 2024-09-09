@@ -1,10 +1,5 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import './index.css';
 import { AuthorName } from '../lib/main';
-import { Amplify } from 'aws-amplify';
-import awsConfig from './aws-exports';
-
-Amplify.configure(awsConfig);
 
 function App() {
   return (

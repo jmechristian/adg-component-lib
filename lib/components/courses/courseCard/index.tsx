@@ -6,6 +6,7 @@ import { MdVideocam, MdLocalGroceryStore, Md360 } from 'react-icons/md';
 import { AcademicCapIcon } from '@heroicons/react/24/solid';
 import { FiTarget } from 'react-icons/fi';
 import ReactPlayer from 'react-player';
+import '../../../styles.css';
 
 interface CourseCardProps {
   course: {

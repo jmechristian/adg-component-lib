@@ -4,6 +4,7 @@ export default {
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
     './lib/**/*.{js,ts,jsx,tsx}',
+    './lib/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -28,5 +29,9 @@ export default {
     },
   },
   // eslint-disable-next-line no-undef
-  plugins: [require('@tailwindcss/forms'), require('tailwind-scrollbar-hide')],
+  plugins: [require('@tailwindcss/forms')],
+  // corePlugins: {
+  //   preflight: false,
+  //   border: true,
+  // },
 };

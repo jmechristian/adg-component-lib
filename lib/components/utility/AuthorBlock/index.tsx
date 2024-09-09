@@ -1,6 +1,6 @@
 'use client';
 import { Author } from '../../../defs';
-
+import '../../../styles.css';
 interface AuthorBlockProps {
   pic?: boolean;
   small?: boolean;

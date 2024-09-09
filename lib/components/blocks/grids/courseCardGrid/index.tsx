@@ -1,5 +1,6 @@
 import { H3 } from '../../../../main';
 import { CourseCard } from '../../../courses/courseCard';
+import '../../../../styles.css';
 
 // Define the props type
 

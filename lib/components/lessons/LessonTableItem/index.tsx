@@ -4,6 +4,7 @@ import {
   ExpandableDiv,
   AuthorName,
 } from '../../../main';
+import '../../../styles.css';
 
 interface GetLessonResponse {
   getLesson: {

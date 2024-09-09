@@ -1,6 +1,7 @@
 'use client';
 
 import { AuthorBlock } from '../../../utility/AuthorBlock';
+import '../../../../styles.css';
 import { H4 } from '../../../H4';
 import {
   FacebookIcon,

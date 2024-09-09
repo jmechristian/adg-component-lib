@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, ChangeEvent } from 'react';
+import '../../../styles.css';
 
 interface ImageUploadProps {
   placeholderSrc: string;

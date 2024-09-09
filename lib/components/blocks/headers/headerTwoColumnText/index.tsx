@@ -1,7 +1,7 @@
 import { Author } from '../../../../defs';
 import { H1 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
-
+import '../../../../styles.css';
 // Define the props type
 
 interface HeaderTwoColumnTextProps {

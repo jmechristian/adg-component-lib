@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { MdSearch } from 'react-icons/md';
 import Pagination from '../Pagination';
+import '../../../styles.css';
 
 interface Course {
   id: string;
@@ -123,8 +124,8 @@ export const CourseSelector: React.FC<CourseSelectorProps> = ({
             <h2 className='h3-base text-base-brand'>Select Courses</h2>
           </div>
         </div>
-        <div className='flex w-2/3 items-center gap-5 bg-transparent'>
-          <div className='flex items-center gap-1 border-b border-black flex-1'>
+        <div className='flex w-2/3 items-center gap-5'>
+          <div className='flex items-center gap-1 py-2 !border-b-2 !border-black flex-1'>
             <div>
               <MdSearch size={24} color='black' />
             </div>

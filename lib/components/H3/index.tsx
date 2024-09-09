@@ -1,3 +1,5 @@
+import '../../styles.css';
+
 // Define the props type
 interface H3Props {
   children: string;

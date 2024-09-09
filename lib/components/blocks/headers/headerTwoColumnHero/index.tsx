@@ -1,7 +1,7 @@
 import { H2 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
 import { ImageUpload } from '../../../../main';
-import '../../../../../src/index.css';
+import '../../../../styles.css';
 import { Author } from '../../../../defs';
 // Define the props type
 

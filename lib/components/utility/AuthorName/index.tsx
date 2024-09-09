@@ -1,5 +1,5 @@
 'use client';
-
+import '../../../styles.css';
 interface AuthorNameProps {
   name: string;
 }

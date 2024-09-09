@@ -1,5 +1,5 @@
 import { MdApps, MdDehaze } from 'react-icons/md';
-
+import '../../../styles.css';
 // Define the props type
 interface GridToggleProps {
   isTable: boolean;

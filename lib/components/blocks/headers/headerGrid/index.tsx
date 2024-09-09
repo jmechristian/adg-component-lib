@@ -3,6 +3,7 @@ import { AuthorBlock } from '../../../utility/AuthorBlock';
 import { LessonPreviewMini } from '../../../utility/LessonPreviewMini';
 import { ImageUpload } from '../../../../main';
 import { Lesson, Author } from '../../../../defs';
+import '../../../../styles.css';
 
 // Define the props type
 

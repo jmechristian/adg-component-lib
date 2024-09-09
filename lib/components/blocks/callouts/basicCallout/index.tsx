@@ -1,5 +1,6 @@
 import { BrutalButton } from '../../../../main';
 import { H2 } from '../../../H2';
+import '../../../../styles.css';
 
 interface BasicCallout {
   headline: string;

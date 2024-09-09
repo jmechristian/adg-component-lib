@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BrutalCircleIconTooltip } from '../../utility/BrutalCircleTooltip';
 import { MdVideocam, MdCancel, MdArrowDropDown } from 'react-icons/md';
 import ReactPlayer from 'react-player';
+import '../../../styles.css';
 
 interface CourseTableItemProps {
   course: {

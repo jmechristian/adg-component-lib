@@ -1,6 +1,7 @@
 import { Lesson } from '../../../../defs';
 import { H3 } from '../../../../main';
 import { SocialGridItem } from '../socialGridItem';
+import '../../../../styles.css';
 
 interface SocialGridProps {
   headline: string;

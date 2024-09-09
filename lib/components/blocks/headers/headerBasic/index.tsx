@@ -1,6 +1,7 @@
 import { Author } from '../../../../defs';
 import { H1 } from '../../../../main';
 import { AuthorBlock } from '../../../utility/AuthorBlock';
+import '../../../../styles.css';
 
 interface HeaderBasicProps {
   headline: string;

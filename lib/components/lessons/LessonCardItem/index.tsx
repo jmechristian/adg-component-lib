@@ -1,6 +1,7 @@
 import { MdAccountCircle, MdExitToApp } from 'react-icons/md';
 import { BrutalCircleIconTooltip } from '../../../main';
 import { AuthorName } from '../../../main';
+import '../../../styles.css';
 
 interface GetLessonResponse {
   getLesson: {

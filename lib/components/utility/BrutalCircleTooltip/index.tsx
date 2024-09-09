@@ -1,7 +1,7 @@
 'use client';
 import React, { ReactNode, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import '../../../styles.css';
 // Define the props type
 interface BrutalCircleIconTooltipProps {
   children: ReactNode;

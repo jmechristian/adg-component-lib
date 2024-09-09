@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { MdSearch } from 'react-icons/md';
 import Pagination from '../Pagination';
 import { Lesson } from '../../../defs';
+import '../../../styles.css';
 
 interface LessonSelectorProps {
   lessons: Lesson[];

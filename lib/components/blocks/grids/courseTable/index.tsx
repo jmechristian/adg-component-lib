@@ -1,6 +1,6 @@
 import { CourseTableItem } from '../../../courses/courseTableItem';
 import { H3 } from '../../../H3';
-
+import '../../../../styles.css';
 // Define the props type
 
 interface GetLMSCourse {
