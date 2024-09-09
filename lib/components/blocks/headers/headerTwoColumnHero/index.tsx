@@ -11,7 +11,7 @@ interface HeaderTwoColumnHeroProps {
   centered: boolean;
   authors?: Author[];
   hero: string;
-  setNewHero?: (val: string) => void;
+  setNewHero?: (val: File) => void;
 }
 
 export const HeaderTwoColumnHero: React.FC<HeaderTwoColumnHeroProps> = ({

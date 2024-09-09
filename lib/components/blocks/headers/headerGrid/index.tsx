@@ -14,7 +14,7 @@ interface HeaderGridProps {
   hero: string;
   sidebarHeadline: string;
   lessons: Lesson[];
-  setNewHero: (val: string) => void;
+  setNewHero: (val: File) => void;
 }
 
 export const HeaderGrid: React.FC<HeaderGridProps> = ({

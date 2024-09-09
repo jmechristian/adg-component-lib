@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent } from 'react';
 
 interface ImageUploadProps {
   placeholderSrc: string;
-  setNewImage?: ((val: string) => void | null) | undefined;
+  setNewImage?: ((val: File) => void | null) | undefined;
 }
 
 export const ImageUpload: React.FC<ImageUploadProps> = ({
@@ -17,7 +17,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
     if (file && setNewImage) {
       const imageUrl = URL.createObjectURL(file);
       setSelectedImage(imageUrl);
-      setNewImage(imageUrl);
+      setNewImage(file);
     }
   };
 
