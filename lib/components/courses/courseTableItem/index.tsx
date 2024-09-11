@@ -26,10 +26,22 @@ interface CourseTableItemProps {
     title: string;
     videos: string | null;
     what_learned: string;
+    type: string | null;
   };
+  cardClickHandler: (
+    id: string,
+    slug: string,
+    altLink: string | null,
+    type: string | null
+  ) => void;
+  discount: number | null;
 }
 
-export const CourseTableItem: React.FC<CourseTableItemProps> = ({ course }) => {
+export const CourseTableItem: React.FC<CourseTableItemProps> = ({
+  course,
+  cardClickHandler,
+  discount,
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -85,6 +97,13 @@ export const CourseTableItem: React.FC<CourseTableItemProps> = ({ course }) => {
     }
   };
 
+  function applyDiscount(originalPrice: string, discountPercentage: number) {
+    const price = parseFloat(originalPrice);
+    const discountAmount = (price * discountPercentage) / 100;
+    const discountedPrice = price - discountAmount;
+    return discountedPrice.toFixed(2);
+  }
+
   return (
     <div
       className={`w-full max-w-7xl border-2 border-black ${setColorByCategory(
@@ -131,7 +150,17 @@ export const CourseTableItem: React.FC<CourseTableItemProps> = ({ course }) => {
 
       <div className='hidden lg:grid lg:grid-cols-12 items-center gap-3 divide-x-black w-full px-2 py-2 min-h-[90px]'>
         <div className='col-span-4 pl-2 content-center cursor-pointer'>
-          <div className='grid grid-cols-4'>
+          <div
+            className='grid grid-cols-4'
+            onClick={() =>
+              cardClickHandler(
+                course.id,
+                course.slug,
+                course.altLink,
+                course.type
+              )
+            }
+          >
             <div className='col-span-1 text-xs content-center'>
               {course.courseId}
             </div>
@@ -157,12 +186,48 @@ export const CourseTableItem: React.FC<CourseTableItemProps> = ({ course }) => {
             </div>
           </div>
         </div>
-        <div className='col-span-1 content-center cursor-pointer'>
-          <div className='font-semibold text-sm'>
-            {course.price === 'FREE' ? 'Free' : '$' + course.price}
-          </div>
+        <div
+          className='col-span-1 content-center cursor-pointer'
+          onClick={() =>
+            cardClickHandler(
+              course.id,
+              course.slug,
+              course.altLink,
+              course.type
+            )
+          }
+        >
+          {discount ? (
+            <div className='flex flex-col items-center'>
+              <div>
+                <div className='bg-black text-white font-semibold px-1'>
+                  <div className='text-lg'>
+                    {'$'}
+                    {applyDiscount(course.price, discount)}
+                  </div>
+                </div>
+                <div className='line-through text-center'>
+                  {course.price === 'FREE' ? 'FREE' : '$' + course.price}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className='font-bold tracking-tight'>
+              {course.price === 'FREE' ? 'FREE' : '$' + course.price}
+            </div>
+          )}
         </div>
-        <div className='flex items-center gap-2 col-span-5 '>
+        <div
+          className='flex items-center gap-2 col-span-5 cursor-pointer'
+          onClick={() =>
+            cardClickHandler(
+              course.id,
+              course.slug,
+              course.altLink,
+              course.type
+            )
+          }
+        >
           <ExpandableDiv
             content={course.subheadline}
             textColor='text-neutral-900'
@@ -172,7 +237,19 @@ export const CourseTableItem: React.FC<CourseTableItemProps> = ({ course }) => {
 
         <div className='col-span-2 content-center cursor-pointer'>
           <div className='grid grid-cols-3 w-full gap-3 text-center text-sm'>
-            <div className='font-bold content-center'>{course.hours}</div>
+            <div
+              className='font-bold content-center'
+              onClick={() =>
+                cardClickHandler(
+                  course.id,
+                  course.slug,
+                  course.altLink,
+                  course.type
+                )
+              }
+            >
+              {course.hours}
+            </div>
             <div className='font-bold content-center'>{course.lessons}</div>
             {course.preview ? (
               <div className='content-center mx-auto'>
@@ -269,7 +346,17 @@ export const CourseTableItem: React.FC<CourseTableItemProps> = ({ course }) => {
                 <></>
               )}
 
-              <div className='text-sm text-white font-semibold text-right cursor-pointer'>
+              <div
+                className='text-sm text-white font-semibold text-right cursor-pointer'
+                onClick={() =>
+                  cardClickHandler(
+                    course.id,
+                    course.slug,
+                    course.altLink,
+                    course.type
+                  )
+                }
+              >
                 View More
               </div>
             </div>

@@ -10,6 +10,14 @@ const meta: Meta<typeof CourseTableItem> = {
     course: {
       description: 'It is the course.',
     },
+    cardClickHandler: {
+      description: 'The function to call when the card is clicked.',
+      action: 'clicked',
+    },
+    discount: {
+      description: 'The discount for the course.',
+      control: 'number',
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -25,6 +33,7 @@ type Story = StoryObj<typeof CourseTableItem>;
 export const Primary: Story = {
   args: {
     course: {
+      type: null,
       altLink: null,
       categoryArray: ['INDUSTRY'],
       courseId: 'CPS-C01',

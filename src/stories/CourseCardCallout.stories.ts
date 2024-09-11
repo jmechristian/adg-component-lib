@@ -22,6 +22,18 @@ const meta: Meta<typeof CourseCardCallout> = {
     course: {
       description: 'The course for the card.',
     },
+    cardClickHandler: {
+      description: 'The function to call when the card is clicked.',
+      action: 'clicked',
+    },
+    cardPurchaseHandler: {
+      description: 'The function to call when the card is purchased.',
+      action: 'purchased',
+    },
+    discount: {
+      description: 'The discount for the course.',
+      control: 'number',
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -41,6 +53,7 @@ export const Primary: Story = {
       'Gain insights from OEM professionals and learn the unique packaging challenges in the automotive industry. Understand processes from production to after-sales and the crucial role of vehicle launches.',
     linkText: 'View Course',
     course: {
+      type: null,
       altLink: null,
       categoryArray: ['AUTO', 'SUPPLYCHAIN'],
       courseId: 'APC-A04',

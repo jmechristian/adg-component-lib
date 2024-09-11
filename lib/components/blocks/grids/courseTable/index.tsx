@@ -4,6 +4,7 @@ import '../../../../styles.css';
 // Define the props type
 
 interface GetLMSCourse {
+  type: string | null;
   altLink: string | null;
   categoryArray: string[];
   courseId: string;
@@ -27,12 +28,21 @@ interface CourseTableProps {
   headline: string;
   subheadline?: string;
   courses: GetLMSCourse[];
+  cardClickHandler: (
+    id: string,
+    slug: string,
+    altLink: string | null,
+    type: string | null
+  ) => void;
+  discount: number;
 }
 
 export const CourseTable: React.FC<CourseTableProps> = ({
   headline,
   subheadline,
   courses,
+  cardClickHandler,
+  discount,
 }) => {
   return (
     <div className='flex flex-col gap-5 w-full max-w-7xl mx-auto'>
@@ -45,7 +55,13 @@ export const CourseTable: React.FC<CourseTableProps> = ({
       <div className='flex flex-col gap-3'>
         {courses.map((cou) => (
           <div key={cou.id}>
-            <CourseTableItem course={cou} />
+            <CourseTableItem
+              course={cou}
+              cardClickHandler={() =>
+                cardClickHandler(cou.id, cou.slug, cou.altLink, cou.type)
+              }
+              discount={discount}
+            />
           </div>
         ))}
       </div>

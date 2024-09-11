@@ -14,16 +14,28 @@ import {
   XIcon,
 } from 'react-share';
 import { Lesson } from '../../../../defs';
-
+import { format } from 'date-fns';
 interface SocialGridItemProps {
   lesson: Lesson;
 }
 
 export const SocialGridItem: React.FC<SocialGridItemProps> = ({ lesson }) => {
+  const formatDate = (dateString: string): string => {
+    try {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) {
+        throw new Error('Invalid date');
+      }
+      return format(date, 'yyyy/MM/dd');
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return dateString; // Return original string if there's an error
+    }
+  };
+
   return (
     <div className='flex flex-1 justify-between flex-col group cursor-pointer'>
       <div
-        key={lesson.id}
         className='w-full flex flex-col gap-3'
         onClick={() =>
           window.open(
@@ -41,7 +53,7 @@ export const SocialGridItem: React.FC<SocialGridItemProps> = ({ lesson }) => {
         <div className='flex w-full items-center flex-wrap gap-x-2 gap-y-1'>
           {lesson.author && lesson.author.length > 0 ? (
             lesson.author.map((au) => (
-              <AuthorBlock author={au} pic={true} small={true} />
+              <AuthorBlock author={au} pic={true} small={true} key={au.id} />
             ))
           ) : (
             <></>
@@ -55,7 +67,9 @@ export const SocialGridItem: React.FC<SocialGridItemProps> = ({ lesson }) => {
       <div className='flex justify-between w-full items-end'>
         <div className='w-full flex flex-col'>
           <div className='text-xs font-medium text-clemson-dark'>
-            {lesson.backdate ? lesson.backdate : lesson.createdAt}
+            {lesson.backdate
+              ? formatDate(lesson.backdate)
+              : formatDate(lesson.createdAt)}
           </div>
         </div>
         <div className='flex items-center gap-1 mt-3'>

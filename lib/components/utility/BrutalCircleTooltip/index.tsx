@@ -9,16 +9,17 @@ interface BrutalCircleIconTooltipProps {
   bgColor: string;
   bottom?: boolean;
   fn: () => void;
+  pulse?: boolean;
 }
 
 export const BrutalCircleIconTooltip: React.FC<
   BrutalCircleIconTooltipProps
-> = ({ children, tooltip, bgColor, fn, bottom }) => {
+> = ({ children, tooltip, bgColor, fn, bottom, pulse }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
-      className={`${bgColor} relative cursor-pointer w-10 h-10 border-2 border-black rounded-full transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 shadow-[2px_2px_0px_black] hover:shadow-[4px_4px_0px_black] flex items-center justify-center`}
+      className={`${bgColor} relative cursor-pointer w-10 h-10 border-2 border-black rounded-full transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 shadow-[2px_2px_0px_black] hover:shadow-[4px_4px_0px_black] flex items-center justify-center ${pulse ? 'animate-pulse' : ''}`}
       onClick={fn}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

@@ -18,6 +18,18 @@ const meta: Meta<typeof CourseCardGrid> = {
     courses: {
       description: ' lessons attached to grid',
     },
+    cardClickHandler: {
+      description: 'Function to handle card click',
+      action: 'clicked',
+    },
+    cardPurchaseHandler: {
+      description: 'Function to handle card purchase',
+      action: 'purchased',
+    },
+    discount: {
+      description: 'Discount to apply to the course',
+      control: 'number',
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -37,6 +49,7 @@ export const Primary: Story = {
       'Empower your career with expert-led courses designed to give you a competitive edge and drive your professional growth. Unlock your potential and achieve your career goals today.',
     courses: [
       {
+        type: 'course',
         altLink: null,
         categoryArray: ['INDUSTRY'],
         courseId: 'CPS-C01',
@@ -72,6 +85,7 @@ export const Primary: Story = {
           'Packaging is a complex process that must be seen as part of a greater system, where each activity has an impact on the final package. Departments such as marketing, sales, procurement, legal, distribution, quality control, manufacturing and warehousing all have unique demands on the package design. After taking this course, you will have the thought process required of a successful stakeholder in the packaging development process.',
       },
       {
+        type: 'course',
         altLink: null,
         categoryArray: ['MATERIALS'],
         courseId: 'CPS-C03',
@@ -101,6 +115,7 @@ export const Primary: Story = {
           'From learning how corrugated fiberboard is manufactured, to how corrugated containers are designed and produced on packaging machinery, this course offers a 360° view of the corrugated industry.',
       },
       {
+        type: 'course',
         altLink: null,
         categoryArray: ['MATERIALS'],
         courseId: 'CPS-C06',
@@ -130,6 +145,7 @@ export const Primary: Story = {
           'This course offers practical and applicable lessons on polymer selection, polymer processing, and plastic applications in packaging. Within this course, you are going to learn about the different types of polymers, their roles, functions, pros and cons of each, and real-world applications.​',
       },
       {
+        type: 'course',
         altLink: null,
         categoryArray: ['BUSINESS', 'DESIGN'],
         courseId: 'CPS-C12',

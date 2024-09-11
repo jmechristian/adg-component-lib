@@ -12,6 +12,7 @@ import {
   XIcon,
 } from 'react-share';
 import { Lesson } from '../../../../defs';
+import { format } from 'date-fns';
 import '../../../../styles.css';
 
 // Define the props type
@@ -22,6 +23,20 @@ interface EditorialGridProps {
   heroLesson: Lesson;
   lessons: Lesson[];
 }
+
+// Add this helper function at the top of the file, outside the component
+const formatDate = (dateString: string): string => {
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      throw new Error('Invalid date');
+    }
+    return format(date, 'yyyy/MM/dd');
+  } catch (error) {
+    console.error('Error formatting date:', error);
+    return dateString; // Return original string if there's an error
+  }
+};
 
 export const EditorialGrid: React.FC<EditorialGridProps> = ({
   headline = 'Extended Producer Responsibility (EPR)',
@@ -39,25 +54,34 @@ export const EditorialGrid: React.FC<EditorialGridProps> = ({
       <div className='w-full flex flex-col gap-5'>
         <div className='w-full grid lg:grid-cols-2 items-center group'>
           <div
-            className='w-full aspect-video bg-cover bg-center group-hover:-translate-x-1 group-hover:shadow-[6px_6px_0px_black] group-hover:-translate-y-2 transition-all ease-in-out'
+            className='w-full aspect-video bg-cover bg-center group-hover:-translate-x-1 group-hover:shadow-[6px_6px_0px_black] group-hover:-translate-y-2 transition-all ease-in-out cursor-pointer'
             style={{
               backgroundImage: `url(${heroLesson.screengrab ? heroLesson.screengrab : heroLesson.seoImage})`,
             }}
+            onClick={() =>
+              window.open(
+                `https://www.packagingschool.com/lessons/${heroLesson.slug}`,
+                '_blank'
+              )
+            }
           ></div>
           <div className='flex flex-col gap-10 p-6 lg:p-10'>
             <div className='w-full flex flex-col gap-2'>
               <div className='w-full flex flex-col'>
                 <div className='text-xs font-medium text-clemson-dark'>
-                  {heroLesson.backdate
-                    ? heroLesson.backdate
-                    : heroLesson.createdAt}
+                  {formatDate(heroLesson.backdate || heroLesson.createdAt)}
                 </div>
               </div>
               <H2 children={heroLesson.title} textColor='text-neutral-900' />
               <div className='flex w-full items-center flex-wrap gap-x-2 gap-y-1'>
                 {heroLesson.author && heroLesson.author.length > 0 ? (
                   heroLesson.author.map((au) => (
-                    <AuthorBlock author={au} pic={true} small={true} />
+                    <AuthorBlock
+                      author={au}
+                      pic={true}
+                      small={true}
+                      key={au.id}
+                    />
                   ))
                 ) : (
                   <></>
@@ -66,7 +90,15 @@ export const EditorialGrid: React.FC<EditorialGridProps> = ({
               <div className='line-clamp-6'>{heroLesson.subhead}</div>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-1.5 mt-2 cursor-pointer border-b-black border-b pb-1 w-fit'>
-                  <div className='text-sm uppercase font-semibold'>
+                  <div
+                    className='text-sm uppercase font-semibold'
+                    onClick={() =>
+                      window.open(
+                        `https://www.packagingschool.com/lessons/${heroLesson.slug}`,
+                        '_blank'
+                      )
+                    }
+                  >
                     View Article
                   </div>
                   <div>
@@ -144,7 +176,7 @@ export const EditorialGrid: React.FC<EditorialGridProps> = ({
                 <div className='flex justify-between w-full items-end flex-1'>
                   <div className='w-full flex flex-col'>
                     <div className='text-xs font-medium text-clemson-dark'>
-                      {les.backdate ? les.backdate : les.createdAt}
+                      {formatDate(les.backdate || les.createdAt)}
                     </div>
                   </div>
                   <div className='flex items-center gap-1'>

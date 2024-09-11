@@ -17,6 +17,12 @@ export { Pagination } from './components/utility/Pagination';
 export { CourseCard } from './components/courses/courseCard';
 export { CourseTableItem } from './components/courses/courseTableItem';
 
+export { CMPMCard } from './components/certificates/CMPMCard';
+export { CPSCard } from './components/certificates/CPSCard';
+export { APCCard } from './components/certificates/APCCard';
+export { FPCCard } from './components/certificates/FPCCard';
+export { CSPCard } from './components/certificates/CSPCard';
+
 export { LessonCardItem } from './components/lessons/LessonCardItem';
 export { LessonTableItem } from './components/lessons/LessonTableItem';
 

@@ -22,7 +22,9 @@ export const SocialGrid: React.FC<SocialGridProps> = ({
       </div>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-10'>
         {lessons.map((les) => (
-          <SocialGridItem lesson={les} />
+          <div key={les.id}>
+            <SocialGridItem lesson={les} />
+          </div>
         ))}
       </div>
     </div>

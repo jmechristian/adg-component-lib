@@ -21,6 +21,10 @@ const meta: Meta<typeof BrutalCircleIconTooltip> = {
     fn: {
       description: 'OnClick Function',
     },
+    pulse: {
+      control: 'boolean',
+      description: 'Pulse Animation',
+    },
   },
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
@@ -39,5 +43,6 @@ export const Primary: Story = {
     bgColor: 'bg-orange-400',
     tooltip: 'Tooltip',
     fn: () => {},
+    pulse: false,
   },
 };

@@ -24,7 +24,11 @@ interface CourseCardCallout {
     title: string;
     videos: string | null;
     what_learned: string;
+    type: string | null;
   };
+  cardClickHandler: () => void;
+  cardPurchaseHandler: () => void;
+  discount: number | null;
 }
 
 export const CourseCardCallout: React.FC<CourseCardCallout> = ({
@@ -32,6 +36,9 @@ export const CourseCardCallout: React.FC<CourseCardCallout> = ({
   subheadline,
   linkText,
   course,
+  cardClickHandler,
+  cardPurchaseHandler,
+  discount,
 }) => {
   return (
     <div
@@ -56,7 +63,12 @@ export const CourseCardCallout: React.FC<CourseCardCallout> = ({
             className='w-full max-w-[400px] cursor-pointer'
             //   onClick={() => router.push('/food-packaging')}
           >
-            <CourseCard course={course} />
+            <CourseCard
+              course={course}
+              cardClickHandler={cardClickHandler}
+              cardPurchaseHandler={cardPurchaseHandler}
+              discount={discount}
+            />
           </div>
         </div>
       </div>

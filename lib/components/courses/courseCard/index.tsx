@@ -27,13 +27,28 @@ interface CourseCardProps {
     title: string;
     videos: string | null;
     what_learned: string;
+    type: string | null;
   };
+  cardClickHandler: (
+    id: string,
+    slug: string,
+    altLink: string | null,
+    type: string | null
+  ) => void;
+  cardPurchaseHandler: (id: string, link: string) => void;
+  discount: number | null;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+export const CourseCard: React.FC<CourseCardProps> = ({
+  course,
+  cardClickHandler,
+  cardPurchaseHandler,
+  discount,
+}) => {
   const [isEntered, setIsEntered] = useState(false);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(false);
 
   const setColorByCategory = (catArray: string) => {
     switch (catArray) {
@@ -56,6 +71,13 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     }
   };
 
+  function applyDiscount(originalPrice: string, discountPercentage: number) {
+    const price = parseFloat(originalPrice);
+    const discountAmount = (price * discountPercentage) / 100;
+    const discountedPrice = price - discountAmount;
+    return discountedPrice.toFixed(2);
+  }
+
   return (
     <div className='w-[281px] h-[405px] relative mx-auto overflow-hidden'>
       {/* FRONT */}
@@ -74,12 +96,30 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
         <div className='w-full h-full border-[3px] rounded-lg border-black relative bg-cover bg-top bg-no-repeat overflow-hidden'>
           {/* COURSE ID */}
           <motion.div
+            onClick={() =>
+              cardClickHandler(
+                course.id,
+                course.slug,
+                course.altLink,
+                course.type
+              )
+            }
             initial={{ scale: 1 }}
             animate={isEntered ? { scale: 1.1 } : { scale: 1 }}
             className='bg-center bg-cover w-full h-full absolute z-[5]'
             style={{ backgroundImage: `url(${course.seoImage})` }}
           ></motion.div>
-          <div className='absolute right-0 top-1 py1 px-1.5 text-xs text-white z-10 cursor-pointer'>
+          <div
+            className='absolute right-0 top-1 py1 px-1.5 text-xs text-white z-10 cursor-pointer'
+            onClick={() =>
+              cardClickHandler(
+                course.id,
+                course.slug,
+                course.altLink,
+                course.type
+              )
+            }
+          >
             {course.courseId}
           </div>
           {/* VIDEO */}
@@ -108,7 +148,17 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
           <div className='w-full h-40 bg-gradient-to-b from-black/90 absolute inset-x-0 top-0 z-[8]'></div>
           <div className='w-full h-28 bg-gradient-to-t from-black/90 absolute inset-x-0 bottom-0 z-[8]'></div>
           {/* CONTENT */}
-          <div className='flex flex-col gap-1.5 max-w-[160px] absolute z-20 top-3 cursor-pointer left-3 w-fit'>
+          <div
+            className='flex flex-col gap-1.5 max-w-[160px] absolute z-20 top-3 cursor-pointer left-3 w-fit'
+            onClick={() =>
+              cardClickHandler(
+                course.id,
+                course.slug,
+                course.altLink,
+                course.type
+              )
+            }
+          >
             <div className='text-xl leading-none font-semibold text-white tracking-tight '>
               {course.title}
             </div>
@@ -122,11 +172,28 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             </div>
           </div>
           {/* BOTTOM */}
-          <div className={`absolute z-20 right-0 left-0 bottom-0 p-1`}>
-            <div className='flex items-end justify-between'>
-              <div className='pl-3 text-lg font-bold text-white tracking-tight'>
-                {course.price === 'FREE' ? 'FREE' : '$' + course.price}
-              </div>
+          <div className={`absolute z-20 right-0 left-0 bottom-0 w-full pb-1`}>
+            <div className='flex items-end justify-between w-full px-1'>
+              {discount ? (
+                <div className='flex flex-col items-center'>
+                  <div>
+                    <div className='bg-black text-white font-bold px-2 py-1'>
+                      <div className='text-xl'>
+                        {'$'}
+                        {applyDiscount(course.price, discount)}
+                      </div>
+                    </div>
+                    <div className='line-through text-white text-center'>
+                      {course.price === 'FREE' ? 'FREE' : '$' + course.price}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className='text-lg font-bold text-white tracking-tight'>
+                  {course.price === 'FREE' ? 'FREE' : '$' + course.price}
+                </div>
+              )}
+
               <div className='grid grid-cols-3 gap-1'>
                 {course.preview ? (
                   <BrutalCircleIconTooltip
@@ -152,7 +219,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                 <BrutalCircleIconTooltip
                   tooltip={'Buy'}
                   bgColor={'bg-brand-green'}
-                  fn={() => {}}
+                  fn={() => {
+                    setIsPulsing(true);
+                    cardPurchaseHandler(course.id, course.link);
+                  }}
+                  pulse={isPulsing}
                 >
                   <MdLocalGroceryStore color='black' size={24} />
                 </BrutalCircleIconTooltip>
@@ -232,7 +303,11 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             <div className='w-full h-28 bg-gradient-to-t from-black/80 absolute inset-x-0 bottom-0 z-0'></div>
             <div className='flex items-center justify-between relative z-10'>
               <div className='pl-3 text-lg font-bold text-white tracking-tight'>
-                {course.price === 'FREE' ? 'FREE' : '$' + course.price}
+                {course.price === 'FREE'
+                  ? 'FREE'
+                  : discount
+                    ? '$' + applyDiscount(course.price, discount)
+                    : '$' + course.price}
               </div>
               <div className='grid grid-cols-3 gap-1'>
                 <div></div>
@@ -252,8 +327,10 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                   bgColor={'bg-brand-green'}
                   bottom={true}
                   fn={() => {
-                    window.open(course.link, '_blank');
+                    setIsPulsing(true);
+                    cardPurchaseHandler(course.id, course.link);
                   }}
+                  pulse={isPulsing}
                 >
                   <MdLocalGroceryStore color='black' size={24} />
                 </BrutalCircleIconTooltip>
