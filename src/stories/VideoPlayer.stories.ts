@@ -1,15 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { APCCard } from '../../lib/main';
+import { VideoPlayer } from '../../lib/main';
 
-const meta: Meta<typeof APCCard> = {
-  title: 'Certificates/APCCard',
-  component: APCCard,
+const meta: Meta<typeof VideoPlayer> = {
+  title: 'Utility/VideoPlayer',
+  component: VideoPlayer,
   argTypes: {
     // 👇 All Button stories expect a label arg
-    hovering: {
-      description: 'Whether the card is hovering.',
-      control: 'boolean',
+    url: {
+      control: 'text',
+      description: 'URL of the video',
+    },
+    width: {
+      control: 'text',
+      description: 'Width of the video player',
     },
   },
   parameters: {
@@ -21,10 +25,11 @@ const meta: Meta<typeof APCCard> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof APCCard>;
+type Story = StoryObj<typeof VideoPlayer>;
 
 export const Primary: Story = {
   args: {
-    hovering: false,
+    url: 'https://www.youtube.com/embed/FREWIrxnlJM?si=bGNhyyZLJINbGR8F',
+    width: '100%',
   },
 };

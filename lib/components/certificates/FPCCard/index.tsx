@@ -1,6 +1,7 @@
+import { useEffect } from 'react';
 import { useRive, useStateMachineInput } from '@rive-app/react-canvas';
 
-export const FPCCard = () => {
+export const FPCCard = ({ hovering }: { hovering: boolean }) => {
   const { rive, RiveComponent } = useRive({
     // Load a local riv `clean_the_car.riv` or upload your own!
     src: 'https://packschool.s3.amazonaws.com/fpc_card.riv',
@@ -14,8 +15,14 @@ export const FPCCard = () => {
 
   const isHovering = useStateMachineInput(rive, 'rootMachine', 'hoverInput');
 
+  useEffect(() => {
+    if (rive && hovering) {
+      isHovering!.value = true;
+    }
+  }, [rive, hovering, isHovering]);
+
   return (
-    <div className='w-[400px] h-[600px]'>
+    <div className='w-[380px] h-[550px]'>
       <RiveComponent
         onMouseEnter={() => (isHovering!.value = true)}
         onMouseLeave={() => (isHovering!.value = false)}

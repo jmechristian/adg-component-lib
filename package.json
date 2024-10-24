@@ -1,7 +1,7 @@
 {
   "name": "@jmechristian/ps-component-library",
   "private": false,
-  "version": "2.4.5",
+  "version": "2.5.14",
   "main": "dist/ps-component-library.js",
   "types": "dist/main.d.ts",
   "type": "module",
@@ -38,6 +38,7 @@
     "@tailwindcss/forms": "^0.5.7",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
+    "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
@@ -67,6 +68,7 @@
     "@rive-app/react-canvas": "^4.13.9",
     "@rive-app/webgl": "^2.20.1",
     "date-fns": "^3.6.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-player": "^2.16.0",
     "react-share": "^5.1.0",
     "tailwind-scrollbar-hide": "^1.1.7"
