@@ -145,8 +145,20 @@ export const CourseCard: React.FC<CourseCardProps> = ({
               </div>
             </div>
           )}
-          <div className='w-full h-40 bg-gradient-to-b from-black/90 absolute inset-x-0 top-0 z-[8]'></div>
-          <div className='w-full h-28 bg-gradient-to-t from-black/90 absolute inset-x-0 bottom-0 z-[8]'></div>
+          <div
+            className='w-full h-40 absolute inset-x-0 top-0 z-[8]'
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(0,0,0,0.9), transparent)',
+            }}
+          ></div>
+          <div
+            className='w-full h-28 absolute inset-x-0 bottom-0 z-[8]'
+            style={{
+              background:
+                'linear-gradient(to top, rgba(0,0,0,0.9), transparent)',
+            }}
+          ></div>
           {/* CONTENT */}
           <div
             className='flex flex-col gap-1.5 max-w-[160px] absolute z-20 top-3 cursor-pointer left-3 w-fit'
@@ -300,7 +312,15 @@ export const CourseCard: React.FC<CourseCardProps> = ({
           </div>
           {/* BOTTOM */}
           <div className={`sticky z-20 right-0 left-0 top-0 p-1`}>
-            <div className='w-full h-28 bg-gradient-to-t from-black/80 absolute inset-x-0 bottom-0 z-0'></div>
+            <div
+              className='absolute inset-x-0 bottom-0 z-0'
+              style={{
+                width: '100%',
+                height: '7rem',
+                background:
+                  'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+              }}
+            ></div>
             <div className='flex items-center justify-between relative z-10'>
               <div className='pl-3 text-lg font-bold text-white tracking-tight'>
                 {course.price === 'FREE'

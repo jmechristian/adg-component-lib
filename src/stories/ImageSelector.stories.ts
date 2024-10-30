@@ -411,9 +411,10 @@ export const Primary: Story = {
       'https://packmedia54032-staging.s3.amazonaws.com/public/workshop-seoImage.png',
     ],
     selected: [
-      'https://packmedia54032-staging.s3.amazonaws.com/public/cory-connors-course-cardpng',
-      'https://packmedia54032-staging.s3.amazonaws.com/public/cert-seoimagewebp',
-      'https://packmedia54032-staging.s3.amazonaws.com/public/ediblepackagingherov2png',
+      'https://packmedia54032-staging.s3.amazonaws.com/public/1.18.24%20-%20CMPM%20clickthrough-02.png',
+      'https://packmedia54032-staging.s3.amazonaws.com/public/1.18.24%20-%20CMPM%20clickthrough-05.png',
+      'https://packmedia54032-staging.s3.amazonaws.com/public/1.18.24CMPMclickthrough02v2.png',
+      'https://packmedia54032-staging.s3.amazonaws.com/public/14jhENKhFuFlpGGIMuPUc_07a311e577dd4a7ab72e2fce19efb094.png',
     ],
     returnSelected: (selected: string[]) => {},
   },
