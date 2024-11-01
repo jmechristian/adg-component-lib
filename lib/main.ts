@@ -20,7 +20,7 @@ export { VideoPlayer } from './components/utility/VideoPlayer';
 export { ImageSelector } from './components/utility/ImageSelector';
 export { CourseCard } from './components/courses/courseCard';
 export { CourseTableItem } from './components/courses/courseTableItem';
-
+export { DropDownSelect } from './components/utility/DropDownSelect';
 export { CMPMCard } from './components/certificates/CMPMCard';
 export { CPSCard } from './components/certificates/CPSCard';
 export { APCCard } from './components/certificates/APCCard';
