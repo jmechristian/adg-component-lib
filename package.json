@@ -1,8 +1,8 @@
 {
-  "name": "@jmechristian/ps-component-library",
+  "name": "@jmechristian/adg-component-library",
   "private": false,
-  "version": "2.5.30",
-  "main": "dist/ps-component-library.js",
+  "version": "1.0.0",
+  "main": "dist/adg-component-library.js",
   "types": "dist/main.d.ts",
   "type": "module",
   "files": [
@@ -44,7 +44,6 @@
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
-    "aws-amplify": "^5.3.6",
     "chromatic": "^11.5.4",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -68,6 +67,7 @@
     "@rive-app/react-canvas": "^4.13.9",
     "@rive-app/webgl": "^2.20.1",
     "date-fns": "^3.6.0",
+    "gsap": "npm:@gsap/shockingly@^3.12.7",
     "react-beautiful-dnd": "^13.1.1",
     "react-player": "^2.16.0",
     "react-share": "^5.1.0",

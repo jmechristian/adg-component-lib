@@ -1,39 +1,91 @@
-export interface Author {
-  company: string | null;
-  headshot?: string | null;
-  createdAt: string;
+export enum Role {
+  ADMIN = 'ADMIN',
+  EDITOR = 'EDITOR',
+  VIEWER = 'VIEWER',
+}
+
+export enum Status {
+  DRAFT = 'DRAFT',
+  PUBLISHED = 'PUBLISHED',
+  ARCHIVED = 'ARCHIVED',
+}
+
+export interface User {
   id: string;
-  linkedIn: string;
   name: string;
-  title: string;
-  updatedAt: string;
+  email: string;
+  role: Role;
 }
 
-interface Tag {
+export interface Location {
   id: string;
-  tag: string;
+  name?: string;
+  address?: string;
+  description?: string;
+  latitude: number;
+  longitude: number;
 }
 
-interface TagItem {
-  tags: Tag;
-}
-
-interface Tags {
-  items: TagItem[];
-}
-
-export interface Lesson {
-  author: Author[];
-  backdate: string;
-  content: string;
-  createdAt: string;
+export interface Project {
   id: string;
-  objectives: string[];
-  screengrab: string | null;
-  seoImage: string;
-  slug: string;
-  tags: Tags;
-  title: string;
-  type: string;
-  subhead: string;
+  oldId: string;
+  name: string;
+  description?: string;
+  location?: Location;
+  locationString?: string;
+  createdBy: User;
+  lastUpdatedBy?: User;
+  featured?: boolean;
+  link: string;
+  quote?: string;
+  quoteAttribution?: string;
+  collaborators?: Collaborator[];
+  size?: string;
+  gridOrder?: number;
+  status: Status;
+  hero?: ImageObject;
+  department: Department;
+  subcategories?: Subcategory[];
+  building_type?: BuildingType[];
+  project_type?: ProjectType[];
+}
+
+export interface Collaborator {
+  id: string;
+  name: string;
+  email?: string;
+  company?: string;
+  title?: string;
+  projects?: Project[];
+}
+
+export interface Department {
+  id: string;
+  name: string;
+  projects?: Project[];
+}
+
+export interface ImageObject {
+  id: string;
+  url: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface Subcategory {
+  id: string;
+  name: string;
+  projects?: Project[];
+}
+
+export interface BuildingType {
+  id: string;
+  name: string;
+  projects?: Project[];
+}
+
+export interface ProjectType {
+  id: string;
+  name: string;
+  projects?: Project[];
 }
