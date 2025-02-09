@@ -27,7 +27,7 @@ type Story = StoryObj<typeof ProjectDetail>;
 export const Default: Story = {
   args: {
     name: 'Category',
-    detail: 'Multi-Family',
+    detail: ['Multi-Family', 'Residential'],
     dividers: true,
   },
 };

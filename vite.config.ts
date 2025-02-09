@@ -13,14 +13,28 @@ export default defineConfig({
   plugins: [react(), dts({ include: ['lib'] })],
   build: {
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
+      external: ['react', 'react/jsx-runtime', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React',
+          'react/jsx-runtime': 'jsx',
+          'react-dom': 'ReactDOM',
+        },
+        preserveModules: true,
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'style.css';
+          return assetInfo.name;
+        },
+      },
     },
     copyPublicDir: false,
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
-      formats: ['es'],
+      formats: ['es', 'cjs'],
+      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     cssMinify: true,
+    cssCodeSplit: false,
   },
   css: {
     postcss: {

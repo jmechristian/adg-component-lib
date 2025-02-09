@@ -11,11 +11,11 @@ export const TwoColIntro = ({
   id,
 }: {
   description: string;
-  collaborators: string;
+  collaborators: string[];
   size: string;
-  subcategory: string;
-  project_type: string;
-  building_type: string;
+  subcategory: string[];
+  project_type: string[];
+  building_type: string[];
   id: string;
 }) => {
   return (

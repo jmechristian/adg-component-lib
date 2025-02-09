@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useInView, motion } from 'framer-motion';
 
 export const ProjectDetail = ({
@@ -7,7 +7,7 @@ export const ProjectDetail = ({
   dividers,
 }: {
   name: string;
-  detail: string;
+  detail: string | string[];
   dividers: boolean;
 }) => {
   const categoryRef = useRef<HTMLDivElement>(null);
@@ -44,7 +44,9 @@ export const ProjectDetail = ({
             animate={lineInView && { opacity: 1 }}
             transition={{ duration: 1, ease: 'easeInOut', delay: 0.4 }}
           >
-            {detail}
+            {Array.isArray(detail)
+              ? detail.map((item, index) => <span key={index}>{item}</span>)
+              : detail}
           </motion.div>
         </div>
       ) : (

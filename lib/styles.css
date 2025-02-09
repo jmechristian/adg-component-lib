@@ -1,27 +1,36 @@
+@import url('https://use.typekit.net/uji2lsl.css');
+
+@font-face {
+  font-family: 'Gotham Book';
+  src: url('/fonts/Gotham-Book.eot');
+  src:
+    url('/fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Gotham-Book.woff2') format('woff2'),
+    url('/fonts/Gotham-Book.woff') format('woff'),
+    url('/fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url('/fonts/Gotham-Bold.eot');
+  src:
+    url('/fonts/Gotham-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/Gotham-Bold.woff2') format('woff2'),
+    url('/fonts/Gotham-Bold.woff') format('woff'),
+    url('/fonts/Gotham-Bold.svg#Gotham-Bold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: auto;
+}
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 #scrollers::-webkit-scrollbar {
   display: none;
   width: 0;
-}
-
-html {
-  @apply font-sans;
-}
-
-.h1-base {
-  @apply font-sans text-4xl md:text-5xl lg:text-6xl font-semibold tracking-[-0.02em] lg:leading-[1.1em];
-}
-
-.h2-base {
-  @apply font-sans font-semibold text-2xl md:text-4xl lg:text-5xl leading-tight lg:leading-[1.1em] tracking-[-0.04em];
-}
-
-.h3-base {
-  @apply font-sans font-semibold text-xl md:text-2xl lg:text-3xl leading-tight lg:leading-[1.1em] tracking-[-0.03em];
-}
-
-.h4-base {
-  @apply font-sans text-lg font-semibold md:text-xl leading-tight lg:leading-[1.1em] tracking-[-0.02em];
 }

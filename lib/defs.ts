@@ -89,3 +89,9 @@ export interface ProjectType {
   name: string;
   projects?: Project[];
 }
+
+export interface Image {
+  id: string;
+  url: string;
+  caption?: string;
+}
